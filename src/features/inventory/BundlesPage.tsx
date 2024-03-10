@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { supabase } from '../../utils/supabase/client';
 import {
   Box,
   Typography,
@@ -15,7 +16,7 @@ import {
   CircularProgress,
   Alert,
 } from '@mui/material';
-import { Add as AddIcon, Search as SearchIcon } from '@mui/icons-material';
+import { Add as AddIcon, Search as SearchIcon, Edit as EditIcon } from '@mui/icons-material';
 import { bundleService } from '../../services/bundles';
 import { BundleFormModal } from './components/BundleFormModal';
 import { useDebounce } from '../../hooks/useDebounce';
@@ -30,25 +31,42 @@ interface Bundle {
   bundle_items?: any[];
 }
 
-export const BundlesPage: React.FC = () => {
+const BundlesPage: React.FC = () => {
   const [bundles, setBundles] = useState<Bundle[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingBundle, setIsLoadingBundle] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedBundle, setSelectedBundle] = useState<Bundle | null>(null);
   const debouncedSearch = useDebounce(searchTerm, 300);
 
   const loadBundles = async () => {
     try {
       setError(null);
+      setIsLoading(true);
+
+      // Check authentication first
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        throw new Error('Please sign in to view bundles');
+      }
+
       const data = await bundleService.getBundles({
         search: debouncedSearch,
         tags: selectedTags.length > 0 ? selectedTags : undefined,
       });
       setBundles(data || []);
     } catch (error) {
-      setError('Failed to load bundles');
+      let errorMessage = 'Failed to load bundles';
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      } else if (typeof error === 'object' && error !== null) {
+        const supabaseError = error as { message?: string; details?: string; hint?: string };
+        errorMessage = supabaseError.message || supabaseError.details || supabaseError.hint || errorMessage;
+      }
+      setError(errorMessage);
       console.error('Error loading bundles:', error);
     } finally {
       setIsLoading(false);
@@ -59,9 +77,51 @@ export const BundlesPage: React.FC = () => {
     loadBundles();
   }, [debouncedSearch, selectedTags]);
 
-  const handleCreateSuccess = () => {
+  const handleModalClose = () => {
     setIsModalOpen(false);
-    loadBundles();
+    setSelectedBundle(null);
+    setError(null);
+  };
+
+  const handleSuccess = async () => {
+    try {
+      setError(null);
+      handleModalClose();
+      await loadBundles();
+    } catch (error) {
+      let errorMessage = 'Failed to refresh bundles';
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      } else if (typeof error === 'object' && error !== null) {
+        const supabaseError = error as { message?: string; details?: string; hint?: string };
+        errorMessage = supabaseError.message || supabaseError.details || supabaseError.hint || errorMessage;
+      }
+      setError(errorMessage);
+      console.error('Error refreshing bundles:', error);
+    }
+  };
+
+  const handleManageBundle = async (bundle: Bundle) => {
+    try {
+      setError(null);
+      setIsLoadingBundle(true);
+      // Get the full bundle details before opening the modal
+      const fullBundle = await bundleService.getBundle(bundle.id);
+      setSelectedBundle(fullBundle);
+      setIsModalOpen(true);
+    } catch (error) {
+      let errorMessage = 'Failed to load bundle details';
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      } else if (typeof error === 'object' && error !== null) {
+        const supabaseError = error as { message?: string; details?: string; hint?: string };
+        errorMessage = supabaseError.message || supabaseError.details || supabaseError.hint || errorMessage;
+      }
+      setError(errorMessage);
+      console.error('Error loading bundle details:', error);
+    } finally {
+      setIsLoadingBundle(false);
+    }
   };
 
   return (
@@ -79,6 +139,7 @@ export const BundlesPage: React.FC = () => {
           variant="contained"
           startIcon={<AddIcon />}
           onClick={() => setIsModalOpen(true)}
+          disabled={isLoadingBundle}
         >
           Create Bundle
         </Button>
@@ -154,9 +215,19 @@ export const BundlesPage: React.FC = () => {
                         ))}
                       </Stack>
                     )}
-                    <Typography variant="body2" color="text.secondary">
-                      {bundle.bundle_items?.length || 0} items in bundle
-                    </Typography>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Typography variant="body2" color="text.secondary">
+                        {bundle.bundle_items?.length || 0} items in bundle
+                      </Typography>
+                      <Button
+                        size="small"
+                        startIcon={<EditIcon />}
+                        onClick={() => handleManageBundle(bundle)}
+                        disabled={isLoadingBundle}
+                      >
+                        Manage
+                      </Button>
+                    </Box>
                   </CardContent>
                 </Card>
               </Grid>
@@ -167,9 +238,24 @@ export const BundlesPage: React.FC = () => {
 
       <BundleFormModal
         open={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onSuccess={handleCreateSuccess}
+        onClose={handleModalClose}
+        onSuccess={handleSuccess}
+        initialData={selectedBundle ? {
+          id: selectedBundle.id,
+          name: selectedBundle.name,
+          description: selectedBundle.description || '',
+          imageUrl: selectedBundle.image_url || '',
+          isPublic: selectedBundle.is_public,
+          items: (selectedBundle.bundle_items || []).map(item => ({
+            itemId: item.item_id,
+            nestedBundleId: item.nested_bundle_id,
+            quantity: item.quantity
+          })),
+          tags: selectedBundle.bundle_tags?.map(t => t.tag) || [],
+        } : undefined}
       />
     </Box>
   );
 };
+
+export default BundlesPage;

@@ -1,9 +1,10 @@
--- Create custom roles enum
-CREATE TYPE user_role AS ENUM ('admin', 'user');
-
--- Add role column to auth.users
-ALTER TABLE auth.users 
-ADD COLUMN IF NOT EXISTS role user_role DEFAULT 'user';
+-- Create custom roles enum if it doesn't exist
+DO $$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'user_role') THEN
+    CREATE TYPE user_role AS ENUM ('admin', 'user');
+  END IF;
+END $$;
 
 -- Function to check if user is admin
 CREATE OR REPLACE FUNCTION auth.is_admin()
@@ -17,6 +18,19 @@ BEGIN
   );
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- Create profiles table if it doesn't exist
+CREATE TABLE IF NOT EXISTS public.profiles (
+  id uuid PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+  email text,
+  full_name text,
+  avatar_url text,
+  created_at timestamptz DEFAULT timezone('utc'::text, now()) NOT NULL,
+  updated_at timestamptz DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
+-- Add indexes
+CREATE INDEX IF NOT EXISTS profiles_email_idx ON public.profiles(email);
 
 -- Function to handle new user creation
 CREATE OR REPLACE FUNCTION public.handle_new_user()
@@ -54,17 +68,6 @@ ON storage.objects FOR SELECT
 USING (
   bucket_id = 'event-layouts' 
   AND auth.role() = 'authenticated'
-  AND EXISTS (
-    SELECT 1 FROM event_layouts el
-    WHERE storage.filename(name) = el.background_image_url
-    AND (
-      EXISTS (
-        SELECT 1 FROM events e
-        WHERE e.id = el.event_id
-        AND (auth.is_admin() OR e.created_by = auth.uid())
-      )
-    )
-  )
 );
 
 CREATE POLICY "Allow users to upload event layout images"
@@ -95,11 +98,6 @@ ON storage.objects FOR SELECT
 USING (
   bucket_id = 'bundle-images'
   AND auth.role() = 'authenticated'
-  AND EXISTS (
-    SELECT 1 FROM inventory_bundles b
-    WHERE storage.filename(name) = b.image_url
-    AND (b.is_public OR b.created_by = auth.uid())
-  )
 );
 
 CREATE POLICY "Allow users to upload bundle images"
@@ -107,16 +105,6 @@ ON storage.objects FOR INSERT
 WITH CHECK (
   bucket_id = 'bundle-images'
   AND auth.role() = 'authenticated'
-);
-
--- Create profiles table if it doesn't exist
-CREATE TABLE IF NOT EXISTS public.profiles (
-  id uuid PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
-  email text,
-  full_name text,
-  avatar_url text,
-  created_at timestamptz DEFAULT timezone('utc'::text, now()) NOT NULL,
-  updated_at timestamptz DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
 -- Enable RLS on profiles
@@ -131,27 +119,18 @@ CREATE POLICY "Allow users to update own profile"
 ON public.profiles FOR UPDATE
 USING (auth.uid() = id);
 
+-- Create the set_updated_at function if it doesn't exist
+CREATE OR REPLACE FUNCTION public.set_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = timezone('utc'::text, now());
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
 -- Add updated_at trigger to profiles
+DROP TRIGGER IF EXISTS set_profiles_updated_at ON public.profiles;
 CREATE TRIGGER set_profiles_updated_at
   BEFORE UPDATE ON public.profiles
   FOR EACH ROW
   EXECUTE FUNCTION public.set_updated_at();
-
--- Add indexes
-CREATE INDEX IF NOT EXISTS profiles_email_idx ON public.profiles(email);
-
--- Configure auth settings
-SELECT auth.set_config(
-  'security_settings',
-  JSONB_BUILD_OBJECT(
-    'SECURITY_EMAIL_DOMAINS_ALLOWED', '{}',  -- Allow all email domains
-    'SECURITY_REFRESH_TOKEN_REUSE_INTERVAL', 10,  -- 10 seconds
-    'SECURITY_PASSWORD_MIN_LENGTH', 8,
-    'SECURITY_PASSWORD_REQUIRE_LOWERCASE', true,
-    'SECURITY_PASSWORD_REQUIRE_UPPERCASE', true,
-    'SECURITY_PASSWORD_REQUIRE_SPECIAL_CHARACTER', true,
-    'SECURITY_PASSWORD_REQUIRE_NUMBER', true,
-    'SECURITY_MANUAL_LINKING_ENABLED', false,
-    'SECURITY_EMAIL_CHANGE_CONFIRM', true
-  )
-);

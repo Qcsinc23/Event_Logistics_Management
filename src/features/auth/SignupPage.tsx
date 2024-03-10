@@ -1,133 +1,131 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, TextField, Box, Typography } from '@mui/material';
-import api from '../../services/api';
+import { supabase } from '../../utils/supabase/client';
 
-const SignupPage = () => {
+export default function SignupPage() {
+  const navigate = useNavigate();
+  const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
-    
+    setError(null);
+    setLoading(true);
+
     try {
-      console.log('Starting signup process...');
-      
-      try {
-        // Try to get the user's session first
-        const { data: sessionData } = await api.auth.getSession();
-        if (sessionData?.session) {
-          console.log('User already has a session');
-          throw new Error('User already registered');
-        }
-      } catch (sessionError) {
-        // Ignore session errors as we expect no session for new users
-        console.log('No existing session found');
-      }
-      
-      console.log('Proceeding with signup...');
-      const { data, error } = await api.auth.signUp({
+      // Sign up with Supabase
+      const { data: signupData, error: signupError } = await supabase.auth.signUp({
         email,
         password,
         options: {
-          emailRedirectTo: window.location.origin,
           data: {
-            email,
-            created_at: new Date().toISOString()
-          }
-        }
+            full_name: fullName,
+            email: email,
+          },
+        },
       });
-      
-      if (error) {
-        console.error('Signup error details:', {
-          message: error.message,
-          status: error.status,
-          name: error.name
-        });
-        throw error;
+
+      if (signupError) {
+        throw signupError;
       }
-      
-      if (!data.user) {
-        console.error('No user data in response');
-        throw new Error('Signup failed - no user data returned');
+
+      if (!signupData.user) {
+        throw new Error('No user data returned');
       }
-      
-      console.log('Signup successful:', {
-        id: data.user.id,
-        email: data.user.email,
-        created_at: data.user.created_at
-      });
-      if (data.user) navigate('/dashboard');
-    } catch (error) {
-      console.error('Signup error:', error);
-      if (error instanceof Error) {
-        if (error.message.includes('User already registered')) {
-          setError('This email is already registered. Please log in.');
-        } else if (error.message.includes('password')) {
-          setError('Password must be at least 6 characters');
-        } else if (error.message.includes('network')) {
-          setError('Network error. Please check your internet connection and try again.');
-        } else if (error.message.includes('database') || error.message.includes('db')) {
-          setError('Unable to create account at this time. Please try again in a few minutes.');
-        } else {
-          setError('Signup failed. Please try again or contact support if the problem persists.');
-        }
-      } else {
-        setError('An unexpected error occurred. Please try again.');
-      }
+
+      // Redirect to dashboard or confirmation page
+      navigate('/dashboard');
+    } catch (err) {
+      console.error('Signup error:', err);
+      setError(err instanceof Error ? err.message : 'An error occurred during signup');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <Box sx={{ maxWidth: 400, mx: 'auto', mt: 4 }}>
-      <Typography variant="h4" gutterBottom>
-        Sign Up
-      </Typography>
-      <form onSubmit={handleSignup}>
-        <TextField
-          fullWidth
-          margin="normal"
-          label="Email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <TextField
-          fullWidth
-          margin="normal"
-          label="Password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+    <div className="flex items-center justify-center min-h-screen bg-gray-50">
+      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
+        <h2 className="text-3xl font-bold text-center text-gray-900">Sign Up</h2>
+        
         {error && (
-          <Typography color="error" sx={{ mt: 2 }}>
+          <div className="p-3 text-sm text-red-600 bg-red-100 rounded">
             {error}
-          </Typography>
+          </div>
         )}
-        <Button
-          type="submit"
-          variant="contained"
-          fullWidth
-          sx={{ mt: 3 }}
-        >
-          Sign Up
-        </Button>
-        <Button
-          onClick={() => navigate('/login')}
-          fullWidth
-          sx={{ mt: 1 }}
-        >
-          Already have an account? Login
-        </Button>
-      </form>
-    </Box>
-  );
-};
 
-export default SignupPage;
+        <form onSubmit={handleSignup} className="space-y-4">
+          <div>
+            <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
+              Full Name *
+            </label>
+            <input
+              id="fullName"
+              type="text"
+              required
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Full Name"
+              disabled={loading}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              Email *
+            </label>
+            <input
+              id="email"
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Email"
+              disabled={loading}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              Password *
+            </label>
+            <input
+              id="password"
+              type="password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Password"
+              disabled={loading}
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className={`w-full px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+              loading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
+          >
+            {loading ? 'Signing up...' : 'SIGN UP'}
+          </button>
+        </form>
+
+        <div className="text-center">
+          <a
+            href="/login"
+            className="text-sm text-blue-600 hover:text-blue-800"
+          >
+            ALREADY HAVE AN ACCOUNT? LOGIN
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -11,7 +11,25 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
     persistSession: true,
     autoRefreshToken: true,
+    detectSessionInUrl: true,
+    flowType: 'pkce',
+    debug: true
   },
+  db: {
+    schema: 'public'
+  }
+});
+
+// Add auth state change listener
+supabase.auth.onAuthStateChange((event, session) => {
+  console.log('Auth event:', event);
+  if (event === 'SIGNED_IN') {
+    console.log('User signed in:', session?.user);
+  } else if (event === 'SIGNED_OUT') {
+    console.log('User signed out');
+  } else if (event === 'USER_UPDATED') {
+    console.log('User updated:', session?.user);
+  }
 });
 
 // Types for better type inference

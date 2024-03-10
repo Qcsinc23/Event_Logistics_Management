@@ -27,7 +27,7 @@
     "@zxing/library": "^0.21.0",
     "axios": "^1.6.2",
     "chart.js": "^4.4.7",
-    "date-fns": "^4.1.0",
+    "date-fns": "2.30.0",
     "framer-motion": "^10.18.0",
     "i18next": "^23.7.8",
     "idb": "^8.0.0",

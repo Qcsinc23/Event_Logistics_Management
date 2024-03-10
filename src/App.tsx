@@ -1,10 +1,15 @@
 import { Suspense, lazy } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Box, CircularProgress } from '@mui/material';
 import NavBar from './components/NavBar';
+import ProtectedRoute from './components/ProtectedRoute';
 import DashboardPage from './features/dashboard/DashboardPage';
 import EventsPage from './features/events/EventsPage';
 import NotFoundPage from './features/not-found/NotFoundPage';
+import LoginPage from './features/auth/LoginPage';
+
+// Auth Pages
+const SignupPage = lazy(() => import('./features/auth/SignupPage'));
 
 // Lazy load pages
 const NewEventPage = lazy(() => import('./features/events/NewEventPage'));
@@ -16,14 +21,7 @@ const NewVenuePage = lazy(() => import('./features/venues/NewVenuePage'));
 const CalendarPage = lazy(() => import('./features/calendar/CalendarPage'));
 
 // ERP Features
-const InventoryPage = lazy(() => import('./features/inventory/InventoryPage'));
-const NewInventoryItemPage = lazy(() => import('./features/inventory/NewInventoryItemPage'));
-const EquipmentMaintenancePage = lazy(() => import('./features/inventory/EquipmentMaintenancePage'));
-const SuppliersPage = lazy(() => import('./features/inventory/SuppliersPage'));
-const NewSupplierPage = lazy(() => import('./features/inventory/NewSupplierPage'));
-const ReservationPage = lazy(() => import('./features/inventory/ReservationPage'));
-const ReservationCartPage = lazy(() => import('./features/inventory/ReservationCartPage'));
-const NewMaintenancePage = lazy(() => import('./features/inventory/NewMaintenancePage'));
+const InventoryRoutes = lazy(() => import('./routes/inventory.routes'));
 const FinancePage = lazy(() => import('./features/finance/FinancePage'));
 const NewTransactionPage = lazy(() => import('./features/finance/NewTransactionPage'));
 const ReportsPage = lazy(() => import('./features/reports/ReportsPage'));
@@ -52,39 +50,38 @@ function App() {
             </Box>
           }>
             <Routes>
-              <Route path="/" element={<DashboardPage />} />
-              <Route path="/events" element={<EventsPage />} />
-              <Route path="/events/new" element={<NewEventPage />} />
-              <Route path="/events/:id" element={<EventDetailsPage />} />
-              <Route path="/attendees" element={<AttendeesPage />} />
-              <Route path="/attendees/new" element={<NewAttendeePage />} />
-              <Route path="/venues" element={<VenuesPage />} />
-              <Route path="/venues/new" element={<NewVenuePage />} />
-              <Route path="/calendar" element={<CalendarPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/signup" element={<SignupPage />} />
+              <Route path="/" element={<Navigate to="/dashboard" replace />} />
+              
+              {/* Protected Routes */}
+              <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
+              <Route path="/events" element={<ProtectedRoute><EventsPage /></ProtectedRoute>} />
+              <Route path="/events/new" element={<ProtectedRoute><NewEventPage /></ProtectedRoute>} />
+              <Route path="/events/:id" element={<ProtectedRoute><EventDetailsPage /></ProtectedRoute>} />
+              <Route path="/attendees" element={<ProtectedRoute><AttendeesPage /></ProtectedRoute>} />
+              <Route path="/attendees/new" element={<ProtectedRoute><NewAttendeePage /></ProtectedRoute>} />
+              <Route path="/venues" element={<ProtectedRoute><VenuesPage /></ProtectedRoute>} />
+              <Route path="/venues/new" element={<ProtectedRoute><NewVenuePage /></ProtectedRoute>} />
+              <Route path="/calendar" element={<ProtectedRoute><CalendarPage /></ProtectedRoute>} />
+              
               {/* Inventory Management */}
-              <Route path="/inventory" element={<InventoryPage />} />
-              <Route path="/inventory/new" element={<NewInventoryItemPage />} />
-              <Route path="/inventory/maintenance" element={<EquipmentMaintenancePage />} />
-              <Route path="/inventory/maintenance/new" element={<NewMaintenancePage />} />
-              <Route path="/inventory/suppliers" element={<SuppliersPage />} />
-              <Route path="/inventory/suppliers/new" element={<NewSupplierPage />} />
-              <Route path="/inventory/reserve" element={<ReservationPage />} />
-              <Route path="/inventory/cart" element={<ReservationCartPage />} />
+              <Route path="/inventory/*" element={<ProtectedRoute><InventoryRoutes /></ProtectedRoute>} />
               
               {/* Event Features */}
-              <Route path="/events/templates" element={<EventTemplatesPage />} />
-              <Route path="/events/templates/new" element={<NewEventTemplatePage />} />
-              <Route path="/events/templates/:id/edit" element={<EditEventTemplatePage />} />
-              <Route path="/events/:eventId/layout" element={<EventLayoutWrapper />} />
-              <Route path="/events/:eventId/layout/:layoutId" element={<EventLayoutWrapper />} />
+              <Route path="/events/templates" element={<ProtectedRoute><EventTemplatesPage /></ProtectedRoute>} />
+              <Route path="/events/templates/new" element={<ProtectedRoute><NewEventTemplatePage /></ProtectedRoute>} />
+              <Route path="/events/templates/:id/edit" element={<ProtectedRoute><EditEventTemplatePage /></ProtectedRoute>} />
+              <Route path="/events/:eventId/layout" element={<ProtectedRoute><EventLayoutWrapper /></ProtectedRoute>} />
+              <Route path="/events/:eventId/layout/:layoutId" element={<ProtectedRoute><EventLayoutWrapper /></ProtectedRoute>} />
 
               {/* Finance & Reports */}
-              <Route path="/finance" element={<FinancePage />} />
-              <Route path="/finance/new" element={<NewTransactionPage />} />
-              <Route path="/reports" element={<ReportsPage />} />
+              <Route path="/finance" element={<ProtectedRoute><FinancePage /></ProtectedRoute>} />
+              <Route path="/finance/new" element={<ProtectedRoute><NewTransactionPage /></ProtectedRoute>} />
+              <Route path="/reports" element={<ProtectedRoute><ReportsPage /></ProtectedRoute>} />
 
               {/* Warehouse Features */}
-              <Route path="/warehouse/scan" element={<ScanPage />} />
+              <Route path="/warehouse/scan" element={<ProtectedRoute><ScanPage /></ProtectedRoute>} />
 
               <Route path="*" element={<NotFoundPage />} />
             </Routes>

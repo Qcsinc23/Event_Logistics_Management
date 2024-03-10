@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { supabase } from '../../../utils/supabase/client';
 import {
   Dialog,
   DialogTitle,
@@ -31,7 +32,7 @@ interface BundleFormModalProps {
   open: boolean;
   onClose: () => void;
   onSuccess: () => void;
-  initialData?: Partial<CreateBundleInput>;
+  initialData?: Partial<CreateBundleInput> & { id?: string };
 }
 
 export const BundleFormModal: React.FC<BundleFormModalProps> = ({
@@ -41,20 +42,62 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
   initialData,
 }) => {
   const [formData, setFormData] = useState<CreateBundleInput>({
-    name: initialData?.name || '',
-    description: initialData?.description || '',
-    imageUrl: initialData?.imageUrl || '',
-    isPublic: initialData?.isPublic || false,
-    items: initialData?.items || [],
-    tags: initialData?.tags || [],
-    pricing: initialData?.pricing || undefined,
+    name: '',
+    description: '',
+    imageUrl: '',
+    isPublic: false,
+    items: [],
+    tags: [],
+    pricing: undefined,
   });
+
+  useEffect(() => {
+    if (initialData) {
+      setFormData({
+        name: initialData.name || '',
+        description: initialData.description || '',
+        imageUrl: initialData.imageUrl || '',
+        isPublic: initialData.isPublic || false,
+        items: initialData.items || [],
+        tags: initialData.tags || [],
+        pricing: initialData.pricing || undefined,
+      });
+    } else {
+      setFormData({
+        name: '',
+        description: '',
+        imageUrl: '',
+        isPublic: false,
+        items: [],
+        tags: [],
+        pricing: undefined,
+      });
+    }
+  }, [initialData]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [availableItems, setAvailableItems] = useState<InventoryItem[]>([]);
   const [selectedItemId, setSelectedItemId] = useState<string>('');
   const [selectedQuantity, setSelectedQuantity] = useState<number>(1);
+
+  // Reset form when modal is closed
+  useEffect(() => {
+    if (!open) {
+      setFormData({
+        name: '',
+        description: '',
+        imageUrl: '',
+        isPublic: false,
+        items: [],
+        tags: [],
+        pricing: undefined,
+      });
+      setError(null);
+      setSelectedItemId('');
+      setSelectedQuantity(1);
+    }
+  }, [open]);
 
   useEffect(() => {
     const loadItems = async () => {
@@ -80,14 +123,51 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
     try {
       setIsSubmitting(true);
       setError(null);
-      if (initialData?.name) {
-        await bundleService.updateBundle(initialData.name, formData);
+
+      // Check authentication first
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+      if (authError) throw authError;
+      if (!user) throw new Error('Please sign in to manage bundles');
+
+      // Validate required fields
+      if (!formData.name.trim()) {
+        throw new Error('Bundle name is required');
+      }
+
+      if (formData.items.length === 0) {
+        throw new Error('Bundle must contain at least one item');
+      }
+
+      // Validate items
+      const invalidItems = formData.items.filter(item => !item.itemId && !item.nestedBundleId);
+      if (invalidItems.length > 0) {
+        throw new Error('Each bundle item must be either an inventory item or a nested bundle');
+      }
+
+      if (initialData?.id) {
+        await bundleService.updateBundle(initialData.id, {
+          name: formData.name,
+          description: formData.description,
+          imageUrl: formData.imageUrl,
+          isPublic: formData.isPublic,
+          items: formData.items,
+          tags: formData.tags,
+          pricing: formData.pricing,
+        });
       } else {
         await bundleService.createBundle(formData);
       }
       onSuccess();
     } catch (error) {
-      setError(error instanceof Error ? error.message : 'Failed to save bundle');
+      let errorMessage = 'Failed to save bundle';
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      } else if (typeof error === 'object' && error !== null) {
+        // Handle Supabase error object
+        const supabaseError = error as { message?: string; details?: string; hint?: string };
+        errorMessage = supabaseError.message || supabaseError.details || supabaseError.hint || errorMessage;
+      }
+      setError(errorMessage);
       console.error('Error saving bundle:', error);
     } finally {
       setIsSubmitting(false);
@@ -96,16 +176,35 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
 
   const handleAddItem = () => {
     if (!selectedItemId) return;
-    setFormData(prev => ({
-      ...prev,
-      items: [
-        ...prev.items,
-        {
-          itemId: selectedItemId,
-          quantity: selectedQuantity,
-        },
-      ],
-    }));
+
+    // Check if item already exists in bundle
+    const existingItemIndex = formData.items.findIndex(item => item.itemId === selectedItemId);
+    
+    if (existingItemIndex !== -1) {
+      // Update quantity of existing item
+      setFormData(prev => ({
+        ...prev,
+        items: prev.items.map((item, index) => 
+          index === existingItemIndex
+            ? { ...item, quantity: item.quantity + selectedQuantity }
+            : item
+        ),
+      }));
+    } else {
+      // Add new item
+      setFormData(prev => ({
+        ...prev,
+        items: [
+          ...prev.items,
+          {
+            itemId: selectedItemId,
+            quantity: Math.max(1, Math.round(selectedQuantity)), // Ensure positive integer
+          },
+        ],
+      }));
+    }
+
+    // Reset selection
     setSelectedItemId('');
     setSelectedQuantity(1);
   };
@@ -239,8 +338,25 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
                 type="number"
                 label="Quantity"
                 value={selectedQuantity}
-                onChange={(e) => setSelectedQuantity(Number(e.target.value))}
-                inputProps={{ min: 1 }}
+                onChange={(e) => {
+                  const value = Number(e.target.value);
+                  if (!isNaN(value) && value >= 1) {
+                    setSelectedQuantity(Math.floor(value)); // Ensure integer
+                  }
+                }}
+                onBlur={() => {
+                  // Ensure minimum value on blur
+                  if (selectedQuantity < 1) {
+                    setSelectedQuantity(1);
+                  }
+                }}
+                error={selectedQuantity < 1}
+                helperText={selectedQuantity < 1 ? "Quantity must be at least 1" : ""}
+                inputProps={{ 
+                  min: 1,
+                  step: 1,
+                  pattern: "\\d*" // Only allow digits
+                }}
                 sx={{ width: 100 }}
               />
               <Button

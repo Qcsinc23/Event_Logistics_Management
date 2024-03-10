@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { 
   AppBar, 
   Toolbar, 
@@ -50,6 +50,7 @@ const navItems = [
     icon: <InventoryIcon />,
     subItems: [
       { text: 'All Items', path: '/inventory' },
+      { text: 'Bundles', path: '/inventory/bundles' },
       { text: 'Scan Items', path: '/warehouse/scan', icon: <QrCodeScannerIcon /> },
       { text: 'Maintenance', path: '/inventory/maintenance' },
       { text: 'Suppliers', path: '/inventory/suppliers' }
@@ -98,34 +99,69 @@ function NavBar() {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item.text} disablePadding>
-            <ListItemButton
-              component={Link}
-              to={item.path}
-              selected={isActive(item.path)}
-              sx={{
-                '&.Mui-selected': {
-                  backgroundColor: 'primary.light',
-                  '&:hover': {
+          <React.Fragment key={item.text}>
+            <ListItem disablePadding>
+              <ListItemButton
+                component={Link}
+                to={item.path}
+                selected={isActive(item.path)}
+                sx={{
+                  '&.Mui-selected': {
                     backgroundColor: 'primary.light',
+                    '&:hover': {
+                      backgroundColor: 'primary.light',
+                    },
                   },
-                },
-              }}
-            >
-              <ListItemIcon sx={{ color: isActive(item.path) ? 'primary.main' : 'inherit' }}>
-                {item.icon}
-              </ListItemIcon>
-              <ListItemText 
-                primary={item.text}
-                sx={{ 
-                  color: isActive(item.path) ? 'primary.main' : 'inherit',
-                  '& .MuiTypography-root': {
-                    fontWeight: isActive(item.path) ? 600 : 400,
-                  }
                 }}
-              />
-            </ListItemButton>
-          </ListItem>
+              >
+                <ListItemIcon sx={{ color: isActive(item.path) ? 'primary.main' : 'inherit' }}>
+                  {item.icon}
+                </ListItemIcon>
+                <ListItemText 
+                  primary={item.text}
+                  sx={{ 
+                    color: isActive(item.path) ? 'primary.main' : 'inherit',
+                    '& .MuiTypography-root': {
+                      fontWeight: isActive(item.path) ? 600 : 400,
+                    }
+                  }}
+                />
+              </ListItemButton>
+            </ListItem>
+            {item.subItems && isActive(item.path) && item.subItems.map(subItem => (
+              <ListItem key={subItem.text} disablePadding>
+                <ListItemButton
+                  component={Link}
+                  to={subItem.path}
+                  selected={location.pathname === subItem.path}
+                  sx={{
+                    pl: 4,
+                    '&.Mui-selected': {
+                      backgroundColor: 'primary.light',
+                      '&:hover': {
+                        backgroundColor: 'primary.light',
+                      },
+                    },
+                  }}
+                >
+                  {subItem.icon && (
+                    <ListItemIcon sx={{ color: location.pathname === subItem.path ? 'primary.main' : 'inherit' }}>
+                      {subItem.icon}
+                    </ListItemIcon>
+                  )}
+                  <ListItemText 
+                    primary={subItem.text}
+                    sx={{ 
+                      color: location.pathname === subItem.path ? 'primary.main' : 'inherit',
+                      '& .MuiTypography-root': {
+                        fontWeight: location.pathname === subItem.path ? 600 : 400,
+                      }
+                    }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </React.Fragment>
         ))}
       </List>
     </Box>
