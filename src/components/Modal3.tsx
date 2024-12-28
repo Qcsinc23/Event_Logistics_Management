@@ -103,7 +103,7 @@ const Modal3: FunctionComponent<Modal3Type> = ({ className = "" }) => {
             className={styles.maskGroupIcon}
             loading="lazy"
             alt=""
-            src="/mask-group3.svg"
+            src="/mask-group31.svg"
           />
           <Button
             className={styles.button1}

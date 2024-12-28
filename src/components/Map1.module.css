@@ -73,7 +73,7 @@
 }
 .sauerLock {
   position: relative;
-  font-size: var(--font-size-xs);
+  font-size: var(--body-size);
   letter-spacing: -0.02em;
   line-height: 120%;
   color: var(--color-darkslategray-300);
@@ -191,7 +191,7 @@
 .dropoffLabel {
   align-self: stretch;
   flex-direction: row;
-  font-size: var(--font-size-xs);
+  font-size: var(--body-size);
   color: var(--color-darkslategray-300);
 }
 .dropoffIconContainer {
@@ -344,7 +344,7 @@
   position: relative;
   gap: var(--gap-xl);
   text-align: left;
-  font-size: var(--font-size-sm);
+  font-size: var(--name-size);
   color: var(--color-darkslategray-100);
   font-family: var(--font-poppins);
 }

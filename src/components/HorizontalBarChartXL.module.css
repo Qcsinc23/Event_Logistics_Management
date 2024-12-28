@@ -1,0 +1,287 @@
+.barChart {
+  position: absolute;
+  width: 8.6%;
+  top: 144px;
+  right: 6.64%;
+  left: 84.75%;
+  height: 26.9px;
+}
+.frameChild,
+.frameInner,
+.frameItem,
+.verticalAxisIcon {
+  position: absolute;
+  width: 0.07%;
+  top: 44.6px;
+  right: 86.31%;
+  left: 13.62%;
+  max-width: 100%;
+  overflow: hidden;
+  height: 233.5px;
+}
+.frameChild,
+.frameInner,
+.frameItem {
+  right: 80.05%;
+  left: 19.88%;
+}
+.frameInner,
+.frameItem {
+  right: 73.8%;
+  left: 26.13%;
+}
+.frameInner {
+  right: 67.56%;
+  left: 32.37%;
+}
+.frameChild1,
+.frameChild2,
+.frameChild3,
+.frameChild4,
+.frameChild5,
+.frameChild6,
+.vectorIcon {
+  position: absolute;
+  width: 0.07%;
+  top: 44.6px;
+  right: 61.31%;
+  left: 38.62%;
+  max-width: 100%;
+  overflow: hidden;
+  height: 233.5px;
+}
+.frameChild1,
+.frameChild2,
+.frameChild3,
+.frameChild4,
+.frameChild5,
+.frameChild6 {
+  right: 55.05%;
+  left: 44.88%;
+}
+.frameChild2,
+.frameChild3,
+.frameChild4,
+.frameChild5,
+.frameChild6 {
+  right: 48.8%;
+  left: 51.13%;
+}
+.frameChild3,
+.frameChild4,
+.frameChild5,
+.frameChild6 {
+  right: 42.56%;
+  left: 57.37%;
+}
+.frameChild4,
+.frameChild5,
+.frameChild6 {
+  right: 36.31%;
+  left: 63.62%;
+}
+.frameChild5,
+.frameChild6 {
+  right: 30.05%;
+  left: 69.88%;
+}
+.frameChild6 {
+  right: 23.8%;
+  left: 76.13%;
+}
+.frameChild10,
+.frameChild11,
+.frameChild12,
+.frameChild13,
+.frameChild14,
+.frameChild7,
+.frameChild8,
+.frameChild9 {
+  position: absolute;
+  width: 64.38%;
+  top: 267.4px;
+  right: 23.87%;
+  left: 11.75%;
+  max-width: 100%;
+  overflow: hidden;
+  height: 0.4px;
+}
+.frameChild10,
+.frameChild11,
+.frameChild12,
+.frameChild13,
+.frameChild14,
+.frameChild8,
+.frameChild9 {
+  top: 235.6px;
+}
+.frameChild10,
+.frameChild11,
+.frameChild12,
+.frameChild13,
+.frameChild14,
+.frameChild9 {
+  top: 203.8px;
+}
+.frameChild10,
+.frameChild11,
+.frameChild12,
+.frameChild13,
+.frameChild14 {
+  top: 171.9px;
+}
+.frameChild11,
+.frameChild12,
+.frameChild13,
+.frameChild14 {
+  top: 140.1px;
+}
+.frameChild12,
+.frameChild13,
+.frameChild14 {
+  top: 108.2px;
+}
+.frameChild13,
+.frameChild14 {
+  top: 76.4px;
+}
+.frameChild14 {
+  top: 44.6px;
+}
+.barIcon,
+.barIcon1,
+.barIcon2,
+.barIcon3,
+.barIcon4 {
+  position: absolute;
+  width: 23.69%;
+  top: 48.1px;
+  right: 55.12%;
+  left: 21.18%;
+  max-width: 100%;
+  overflow: hidden;
+  height: 10.6px;
+  object-fit: contain;
+}
+.barIcon1,
+.barIcon2,
+.barIcon3,
+.barIcon4 {
+  top: 62.3px;
+  right: 31.43%;
+  left: 44.88%;
+}
+.barIcon2,
+.barIcon3,
+.barIcon4 {
+  width: 18%;
+  top: 79.9px;
+  right: 55.12%;
+  left: 26.87%;
+}
+.barIcon3,
+.barIcon4 {
+  width: 27.93%;
+  top: 94.1px;
+  left: 16.94%;
+}
+.barIcon4 {
+  width: 12%;
+  top: 175.5px;
+  left: 32.88%;
+}
+.barIcon10,
+.barIcon11,
+.barIcon12,
+.barIcon5,
+.barIcon6,
+.barIcon7,
+.barIcon8,
+.barIcon9 {
+  position: absolute;
+  width: 12.49%;
+  top: 189.6px;
+  right: 42.63%;
+  left: 44.88%;
+  max-width: 100%;
+  overflow: hidden;
+  height: 10.6px;
+  object-fit: contain;
+}
+.barIcon10,
+.barIcon11,
+.barIcon12,
+.barIcon6,
+.barIcon7,
+.barIcon8,
+.barIcon9 {
+  width: 18%;
+  top: 207.3px;
+  right: 55.12%;
+  left: 26.87%;
+}
+.barIcon10,
+.barIcon11,
+.barIcon12,
+.barIcon7,
+.barIcon8,
+.barIcon9 {
+  width: 8.69%;
+  top: 221.4px;
+  right: 46.43%;
+  left: 44.88%;
+}
+.barIcon10,
+.barIcon11,
+.barIcon12,
+.barIcon8,
+.barIcon9 {
+  width: 9.75%;
+  top: 111.8px;
+  right: 45.37%;
+}
+.barIcon10,
+.barIcon11,
+.barIcon12,
+.barIcon9 {
+  width: 11.06%;
+  top: 125.9px;
+  right: 44.06%;
+}
+.barIcon10,
+.barIcon11,
+.barIcon12 {
+  width: 28.18%;
+  top: 143.6px;
+  right: 26.94%;
+}
+.barIcon11,
+.barIcon12 {
+  width: 7.12%;
+  top: 157.8px;
+  right: 48%;
+}
+.barIcon12 {
+  width: 14.93%;
+  top: 239.1px;
+  right: 40.19%;
+}
+.barChartParent,
+.horizontalBarChartXl {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+}
+.barChartParent {
+  width: 100%;
+  bottom: -0.4px;
+  left: 0;
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+.horizontalBarChartXl {
+  width: calc(100% + 565.6px);
+  bottom: 0;
+  left: -565.6px;
+}

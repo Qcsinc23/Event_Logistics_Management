@@ -60,7 +60,7 @@ const TableColumns: FunctionComponent<TableColumnsType> = ({
         className={styles.imageIcon}
         loading="lazy"
         alt=""
-        src="/image1@2x.png"
+        src="/image11@2x.png"
       />
       <div className={styles.itemNameHere}>Item name here</div>
       <div className={styles.groupParent}>

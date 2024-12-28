@@ -1,0 +1,106 @@
+.resourceUtilization1 {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: inherit;
+  letter-spacing: -0.03em;
+  line-height: 120%;
+  font-weight: 600;
+  font-family: inherit;
+}
+.horizontal,
+.horizontal1,
+.utilizationBackground {
+  position: absolute;
+  background-color: var(--color-white);
+}
+.utilizationBackground {
+  top: 50px;
+  left: 0;
+  border-radius: var(--br-xl);
+  width: 422px;
+  height: 300px;
+}
+.horizontal,
+.horizontal1 {
+  height: 100%;
+  top: 0;
+  bottom: 0;
+}
+.horizontal {
+  width: 100%;
+  right: 0;
+  left: 0;
+}
+.horizontal1 {
+  width: calc(100% - 182px);
+  right: -0.1px;
+  left: 182.1px;
+}
+.horizontal2,
+.horizontal3 {
+  height: 100%;
+  right: 0;
+  bottom: 0;
+}
+.horizontal2 {
+  position: absolute;
+  width: calc(100% - 291.5px);
+  top: 0;
+  left: 291.5px;
+  background-color: var(--color-white);
+}
+.horizontal3 {
+  width: calc(100% - 388.7px);
+  left: 388.7px;
+}
+.horizontal3,
+.horizontal4,
+.resize,
+.vertical {
+  position: absolute;
+  top: 0;
+  background-color: var(--color-white);
+}
+.horizontal4 {
+  height: 100%;
+  width: calc(100% - 486px);
+  right: 0;
+  bottom: 0;
+  left: 486px;
+}
+.resize,
+.vertical {
+  height: calc(100% + 18.8px);
+  width: calc(100% + 171.3px);
+  right: -81.8px;
+  bottom: -18.8px;
+  left: -89.5px;
+}
+.resize {
+  height: calc(100% - 77px);
+  width: calc(100% - 107px);
+  top: 61px;
+  right: 53px;
+  bottom: 16px;
+  left: 54px;
+  overflow: hidden;
+}
+.resourceUtilization {
+  position: absolute;
+  top: 561px;
+  left: 1450px;
+  width: 422px;
+  height: 350px;
+  text-align: left;
+  font-size: var(--font-size-7xl);
+  color: var(--color-darkslategray-100);
+  font-family: var(--font-poppins);
+}
+@media screen and (max-width: 450px) {
+  .resourceUtilization1 {
+    font-size: var(--font-size-2xl);
+    line-height: 25px;
+  }
+}

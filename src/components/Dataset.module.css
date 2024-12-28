@@ -1,0 +1,30 @@
+.xSDatasetBar {
+  height: 10.6px;
+  width: 24.8px;
+  position: relative;
+  background-color: var(--color-darkslategray-200);
+}
+.dataset1 {
+  width: 19px;
+  position: relative;
+  display: inline-block;
+}
+.dataset {
+  position: absolute;
+  height: 39.41%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 60.59%;
+  left: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-8xs);
+  text-align: left;
+  font-size: var(--body-size);
+  color: var(--text-grey);
+  font-family: var(--body);
+}

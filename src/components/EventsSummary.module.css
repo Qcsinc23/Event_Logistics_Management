@@ -1,0 +1,128 @@
+.summaryBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-lgi-9);
+  background-color: var(--color-white);
+  width: 100%;
+  height: 100%;
+}
+.eventsSummary1 {
+  margin: 0;
+  position: absolute;
+  top: 25px;
+  left: 34px;
+  font-size: var(--font-size-3xl);
+  letter-spacing: -0.03em;
+  line-height: 120%;
+  font-weight: 600;
+  font-family: inherit;
+}
+.summarySeparator {
+  position: absolute;
+  top: 71.5px;
+  left: 33.5px;
+  border-top: 1px solid var(--color-lightgray);
+  box-sizing: border-box;
+  width: 281px;
+  height: 1px;
+}
+.inProgress {
+  top: 145px;
+  left: 34px;
+  display: inline-block;
+  min-width: 85px;
+}
+.eventCounts,
+.eventCounts1,
+.inProgress,
+.upcoming {
+  position: absolute;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+}
+.upcoming {
+  top: 145px;
+  left: 190px;
+  display: inline-block;
+  min-width: 81px;
+}
+.eventCounts,
+.eventCounts1 {
+  top: 87px;
+  left: 34px;
+  font-size: var(--font-size-21xl);
+  font-weight: 600;
+  color: var(--color-darkslategray-200);
+  display: flex;
+  align-items: center;
+}
+.eventCounts1 {
+  left: 190px;
+}
+.past {
+  top: 240px;
+  left: 34px;
+  display: inline-block;
+  min-width: 34px;
+}
+.eventCounts2,
+.eventCounts3,
+.past,
+.totalEvents {
+  position: absolute;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+}
+.totalEvents {
+  top: 240px;
+  left: 190px;
+  display: inline-block;
+  min-width: 92px;
+}
+.eventCounts2,
+.eventCounts3 {
+  top: 182px;
+  left: 34px;
+  font-size: var(--font-size-21xl);
+  font-weight: 600;
+  color: var(--color-darkslategray-200);
+  display: flex;
+  align-items: center;
+}
+.eventCounts3 {
+  left: 190px;
+}
+.eventsSummary {
+  position: absolute;
+  top: 221px;
+  left: 390px;
+  width: 347.6px;
+  height: 300px;
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--color-darkslategray-100);
+  font-family: var(--font-poppins);
+}
+@media screen and (max-width: 767px) {
+  .eventCounts,
+  .eventCounts1,
+  .eventCounts2,
+  .eventCounts3 {
+    font-size: var(--font-size-13xl);
+    line-height: 45px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .eventsSummary1 {
+    font-size: var(--font-size-lg);
+    line-height: 21px;
+  }
+  .eventCounts,
+  .eventCounts1,
+  .eventCounts2,
+  .eventCounts3 {
+    font-size: var(--font-size-5xl);
+    line-height: 34px;
+  }
+}

@@ -1,14 +1,38 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useMemo, type CSSProperties } from "react";
 import { Box } from "@mui/material";
 import styles from "./Map1.module.css";
 
 export type Map1Type = {
   className?: string;
+
+  /** Style props */
+  mapAlignSelf?: CSSProperties["alignSelf"];
+  mapPosition?: CSSProperties["position"];
+  mapTop?: CSSProperties["top"];
+  mapLeft?: CSSProperties["left"];
+  mapWidth?: CSSProperties["width"];
 };
 
-const Map1: FunctionComponent<Map1Type> = ({ className = "" }) => {
+const Map1: FunctionComponent<Map1Type> = ({
+  className = "",
+  mapAlignSelf,
+  mapPosition,
+  mapTop,
+  mapLeft,
+  mapWidth,
+}) => {
+  const mapStyle: CSSProperties = useMemo(() => {
+    return {
+      alignSelf: mapAlignSelf,
+      position: mapPosition,
+      top: mapTop,
+      left: mapLeft,
+      width: mapWidth,
+    };
+  }, [mapAlignSelf, mapPosition, mapTop, mapLeft, mapWidth]);
+
   return (
-    <div className={[styles.map, className].join(" ")}>
+    <div className={[styles.map, className].join(" ")} style={mapStyle}>
       <img className={styles.maskGroupIcon} alt="" src="/mask-group3@2x.png" />
       <div className={styles.mapElements}>
         <img

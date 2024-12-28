@@ -39,7 +39,7 @@
   font-size: var(--font-size-lg);
 }
 .iHaveReviewed {
-  font-size: var(--font-size-sm);
+  font-size: var(--name-size);
 }
 .iHaveReviewedTheBelowLink {
   color: var(--color-darkslategray-100);
