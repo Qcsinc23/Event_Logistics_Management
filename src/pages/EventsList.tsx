@@ -549,7 +549,7 @@ const EventsList: FunctionComponent = () => {
                       className={styles.groupIcon}
                       loading="lazy"
                       alt=""
-                      src="/group-139.svg"
+                      src="/group-1391.svg"
                     />
                   </div>
                 </div>
@@ -603,7 +603,7 @@ const EventsList: FunctionComponent = () => {
                     <img
                       className={styles.groupIcon}
                       alt=""
-                      src="/group-139.svg"
+                      src="/group-1391.svg"
                     />
                   </div>
                 </div>
@@ -657,7 +657,7 @@ const EventsList: FunctionComponent = () => {
                     <img
                       className={styles.groupIcon}
                       alt=""
-                      src="/group-139.svg"
+                      src="/group-1391.svg"
                     />
                   </div>
                 </div>
@@ -712,7 +712,7 @@ const EventsList: FunctionComponent = () => {
                     <img
                       className={styles.groupIcon}
                       alt=""
-                      src="/group-139.svg"
+                      src="/group-1391.svg"
                     />
                   </div>
                 </div>
@@ -765,7 +765,7 @@ const EventsList: FunctionComponent = () => {
                     <img
                       className={styles.groupIcon}
                       alt=""
-                      src="/group-139.svg"
+                      src="/group-1391.svg"
                     />
                   </div>
                 </div>
@@ -820,7 +820,7 @@ const EventsList: FunctionComponent = () => {
                       className={styles.groupIcon}
                       loading="lazy"
                       alt=""
-                      src="/group-139.svg"
+                      src="/group-1391.svg"
                     />
                   </div>
                 </div>
@@ -872,7 +872,7 @@ const EventsList: FunctionComponent = () => {
                     <img
                       className={styles.groupIcon}
                       alt=""
-                      src="/group-139.svg"
+                      src="/group-1391.svg"
                     />
                   </div>
                 </div>
@@ -924,7 +924,7 @@ const EventsList: FunctionComponent = () => {
                     <img
                       className={styles.groupIcon}
                       alt=""
-                      src="/group-139.svg"
+                      src="/group-1391.svg"
                     />
                   </div>
                 </div>

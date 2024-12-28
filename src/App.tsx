@@ -5,11 +5,11 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
+import EventsList from "./pages/EventsList";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 import EventsDetails from "./pages/EventsDetails";
 import CreateNewEvent from "./pages/CreateNewEvent";
-import EventsList from "./pages/EventsList";
 
 function App() {
   const action = useNavigationType();
@@ -31,6 +31,10 @@ function App() {
         title = "";
         metaDescription = "";
         break;
+      case "/sign-up":
+        title = "";
+        metaDescription = "";
+        break;
       case "/dashboard":
         title = "";
         metaDescription = "";
@@ -40,10 +44,6 @@ function App() {
         metaDescription = "";
         break;
       case "/create-new-event":
-        title = "";
-        metaDescription = "";
-        break;
-      case "/events-list":
         title = "";
         metaDescription = "";
         break;
@@ -65,11 +65,11 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<SignUp />} />
+      <Route path="/" element={<EventsList />} />
+      <Route path="/sign-up" element={<SignUp />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/events-details" element={<EventsDetails />} />
       <Route path="/create-new-event" element={<CreateNewEvent />} />
-      <Route path="/events-list" element={<EventsList />} />
     </Routes>
   );
 }
