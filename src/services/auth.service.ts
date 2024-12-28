@@ -4,8 +4,14 @@ import { account } from '../config/appwrite';
 export class AuthService {
     async createAccount(email: string, password: string, name: string) {
         try {
+            // Create a valid user ID from email (remove special chars and limit length)
+            const userId = email
+                .split('@')[0] // Take part before @
+                .replace(/[^a-zA-Z0-9]/g, '_') // Replace special chars with underscore
+                .slice(0, 36); // Limit to 36 chars
+
             const user = await account.create(
-                ID.unique(),
+                userId,
                 email,
                 password,
                 name

@@ -1,17 +1,15 @@
 import { Client, Account, Databases, Storage, Teams } from 'appwrite';
-import dotenv from 'dotenv';
 
-// Load environment variables
-dotenv.config();
+declare const __APPWRITE_ENDPOINT__: string;
+declare const __APPWRITE_PROJECT_ID__: string;
 
-if (!process.env.APPWRITE_ENDPOINT || !process.env.APPWRITE_PROJECT_ID || !process.env.APPWRITE_API_KEY) {
+if (!__APPWRITE_ENDPOINT__ || !__APPWRITE_PROJECT_ID__) {
     throw new Error('Missing required environment variables for Appwrite configuration');
 }
 
 export const client = new Client()
-    .setEndpoint(process.env.APPWRITE_ENDPOINT)
-    .setProject(process.env.APPWRITE_PROJECT_ID)
-    .setKey(process.env.APPWRITE_API_KEY);
+    .setEndpoint(__APPWRITE_ENDPOINT__)
+    .setProject(__APPWRITE_PROJECT_ID__);
 
 export const account = new Account(client);
 export const databases = new Databases(client);

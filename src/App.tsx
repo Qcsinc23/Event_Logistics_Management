@@ -65,8 +65,8 @@ const App: React.FC = () => {
                     </ProtectedRoute>
                 } />
 
-                {/* Redirect root to dashboard if authenticated, otherwise to login */}
-                <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                {/* Redirect root to register page */}
+                <Route path="/" element={<Navigate to="/register" replace />} />
                 </Routes>
             </Layout>
         </Router>

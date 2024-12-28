@@ -1,4 +1,5 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   TextField,
   InputAdornment,
@@ -18,16 +19,56 @@ export type InputFieldsType = {
   className?: string;
 };
 
-const InputFields: FunctionComponent<InputFieldsType> = ({
-  className = "",
-}) => {
+const InputFields: FunctionComponent<InputFieldsType> = ({ className = "" }) => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    organization: "",
+    location: "",
+    email: "",
+    password: "",
+    passwordConfirm: "",
+    expectedDeliveries: "",
+    agreedToTerms: false
+  });
+  const navigate = useNavigate();
+
+  const handleChange = (e: any) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Add validation here
+    if (formData.password !== formData.passwordConfirm) {
+      alert("Passwords do not match!");
+      return;
+    }
+    if (!formData.agreedToTerms) {
+      alert("Please agree to the terms and conditions");
+      return;
+    }
+    // Here you would typically make an API call to create the account
+    console.log("Form submitted:", formData);
+    navigate("/dashboard"); // Redirect to dashboard after successful signup
+  };
+
   return (
-    <form className={[styles.inputFields, className].join(" ")}>
+    <form className={[styles.inputFields, className].join(" ")} onSubmit={handleSubmit}>
       <div className={styles.namePhoneInputs}>
         <TextField
           className={styles.namePhoneInputsChild}
-          placeholder="* First Name"
+          name="firstName"
+          value={formData.firstName}
+          onChange={handleChange}
+          placeholder="* First Name"
           variant="outlined"
+          required
           sx={{
             "& fieldset": { borderColor: "#9e9e9e" },
             "& .MuiInputBase-root": {
@@ -40,8 +81,12 @@ const InputFields: FunctionComponent<InputFieldsType> = ({
         />
         <TextField
           className={styles.namePhoneInputsChild}
-          placeholder="* Last Name"
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
+          placeholder="* Last Name"
           variant="outlined"
+          required
           sx={{
             "& fieldset": { borderColor: "#9e9e9e" },
             "& .MuiInputBase-root": {
@@ -56,8 +101,12 @@ const InputFields: FunctionComponent<InputFieldsType> = ({
       <div className={styles.namePhoneInputs}>
         <TextField
           className={styles.namePhoneInputsChild}
-          placeholder="* Phone number"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+          placeholder="* Phone number"
           variant="outlined"
+          required
           sx={{
             "& fieldset": { borderColor: "#9e9e9e" },
             "& .MuiInputBase-root": {
@@ -70,38 +119,12 @@ const InputFields: FunctionComponent<InputFieldsType> = ({
         />
         <TextField
           className={styles.namePhoneInputsChild}
-          placeholder="* Organization name"
+          name="organization"
+          value={formData.organization}
+          onChange={handleChange}
+          placeholder="* Organization name"
           variant="outlined"
-          sx={{
-            "& fieldset": { borderColor: "#9e9e9e" },
-            "& .MuiInputBase-root": {
-              height: "60px",
-              backgroundColor: "#fff",
-              borderRadius: "10px",
-              fontSize: "18px",
-            },
-          }}
-        />
-      </div>
-      <div className={styles.namePhoneInputs}>
-        <TextField
-          className={styles.namePhoneInputsChild}
-          placeholder="* Location"
-          variant="outlined"
-          sx={{
-            "& fieldset": { borderColor: "#9e9e9e" },
-            "& .MuiInputBase-root": {
-              height: "60px",
-              backgroundColor: "#fff",
-              borderRadius: "10px",
-              fontSize: "18px",
-            },
-          }}
-        />
-        <TextField
-          className={styles.namePhoneInputsChild}
-          placeholder="* Email"
-          variant="outlined"
+          required
           sx={{
             "& fieldset": { borderColor: "#9e9e9e" },
             "& .MuiInputBase-root": {
@@ -116,8 +139,12 @@ const InputFields: FunctionComponent<InputFieldsType> = ({
       <div className={styles.namePhoneInputs}>
         <TextField
           className={styles.namePhoneInputsChild}
-          placeholder="* Password"
+          name="location"
+          value={formData.location}
+          onChange={handleChange}
+          placeholder="* Location"
           variant="outlined"
+          required
           sx={{
             "& fieldset": { borderColor: "#9e9e9e" },
             "& .MuiInputBase-root": {
@@ -130,8 +157,53 @@ const InputFields: FunctionComponent<InputFieldsType> = ({
         />
         <TextField
           className={styles.namePhoneInputsChild}
-          placeholder="* Password confirmation"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="* Email"
+          type="email"
           variant="outlined"
+          required
+          sx={{
+            "& fieldset": { borderColor: "#9e9e9e" },
+            "& .MuiInputBase-root": {
+              height: "60px",
+              backgroundColor: "#fff",
+              borderRadius: "10px",
+              fontSize: "18px",
+            },
+          }}
+        />
+      </div>
+      <div className={styles.namePhoneInputs}>
+        <TextField
+          className={styles.namePhoneInputsChild}
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          placeholder="* Password"
+          type="password"
+          variant="outlined"
+          required
+          sx={{
+            "& fieldset": { borderColor: "#9e9e9e" },
+            "& .MuiInputBase-root": {
+              height: "60px",
+              backgroundColor: "#fff",
+              borderRadius: "10px",
+              fontSize: "18px",
+            },
+          }}
+        />
+        <TextField
+          className={styles.namePhoneInputsChild}
+          name="passwordConfirm"
+          value={formData.passwordConfirm}
+          onChange={handleChange}
+          placeholder="* Password confirmation"
+          type="password"
+          variant="outlined"
+          required
           sx={{
             "& fieldset": { borderColor: "#9e9e9e" },
             "& .MuiInputBase-root": {
@@ -145,7 +217,8 @@ const InputFields: FunctionComponent<InputFieldsType> = ({
       </div>
       <FormControl
         className={styles.parent}
-        variant="standard"
+        variant="outlined"
+        required
         sx={{
           borderColor: "#9e9e9e",
           borderStyle: "SOLID",
@@ -196,26 +269,35 @@ const InputFields: FunctionComponent<InputFieldsType> = ({
           },
         }}
       >
-        <InputLabel color="secondary" />
+        <InputLabel>Expected number of deliveries per week</InputLabel>
         <Select
-          color="secondary"
-          disableUnderline
-          displayEmpty
-          IconComponent="null"
+          name="expectedDeliveries"
+          value={formData.expectedDeliveries}
+          onChange={handleChange}
+          label="Expected number of deliveries per week"
         >
-          <MenuItem>* Expected number of deliveries per week?</MenuItem>
+          <MenuItem value="1-5">1-5 deliveries</MenuItem>
+          <MenuItem value="6-10">6-10 deliveries</MenuItem>
+          <MenuItem value="11-20">11-20 deliveries</MenuItem>
+          <MenuItem value="21+">21+ deliveries</MenuItem>
         </Select>
-        <FormHelperText />
       </FormControl>
       <div className={styles.rectangleParent}>
-        <input className={styles.rectangleInput} type="checkbox" />
+        <input 
+          className={styles.rectangleInput} 
+          type="checkbox"
+          name="agreedToTerms"
+          checked={formData.agreedToTerms}
+          onChange={handleChange}
+          required
+        />
         <div className={styles.iHaveReviewedTheBelowLinkWrapper}>
           <div className={styles.iHaveReviewedContainer}>
             <span className={styles.span}>
               <span className={styles.span1}>*</span>
             </span>
             <span className={styles.iHaveReviewedTheBelowLink}>
-              <span className={styles.span}> </span>
+              <span className={styles.span}> </span>
               <span className={styles.iHaveReviewed}>
                 I have reviewed the below linked documents, and agree to the
                 terms and conditions set forth herein.
@@ -227,6 +309,7 @@ const InputFields: FunctionComponent<InputFieldsType> = ({
       <Button
         className={styles.button}
         variant="contained"
+        type="submit"
         sx={{
           textTransform: "none",
           color: "#fff",
@@ -245,9 +328,13 @@ const InputFields: FunctionComponent<InputFieldsType> = ({
           <span className={styles.alreadyAQuiet}>
             Already a Quiet Craft Solutions Inc customer?
           </span>
-          <span className={styles.signIn}> </span>
+          <span className={styles.signIn}> </span>
         </span>
-        <span className={styles.signIn}>
+        <span 
+          className={styles.signIn}
+          onClick={() => navigate('/login')}
+          style={{ cursor: 'pointer', textDecoration: 'underline' }}
+        >
           <span className={styles.span1}>Sign in.</span>
         </span>
       </div>

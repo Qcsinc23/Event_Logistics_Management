@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import {
   Routes,
   Route,
@@ -150,7 +151,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<ProofDetailsModal />} />
+      <Route path="/" element={<Navigate to="/sign-up" replace />} />
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/events-details" element={<EventsDetails />} />
