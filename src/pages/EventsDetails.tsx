@@ -15,7 +15,22 @@ const EventsDetails: FunctionComponent = () => {
           <BreadcrumbBar />
           <div className={styles.sidebar}>
             <div className={styles.sidebarTop}>
-              <UserContainer />
+              <UserContainer
+                userContainerWidth="289px"
+                userContainerAlignSelf="unset"
+                userContainerHeight="unset"
+                userIconHeight="unset"
+                userIconWidth="unset"
+                profilePicture="/vector-1.svg"
+                userFlex="1"
+                userHeight="unset"
+                userWidth="unset"
+                userNameHeight="unset"
+                userNameWidth="unset"
+                sherwynGrahamWidth="unset"
+                sherwynGrahamHeight="unset"
+                sherwynGrahamDisplay="unset"
+              />
               <div className={styles.summary}>
                 <div className={styles.summaryChild} />
                 <h2 className={styles.eventSummary}>Event Summary</h2>

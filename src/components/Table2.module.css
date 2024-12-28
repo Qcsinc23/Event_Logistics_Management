@@ -1,0 +1,267 @@
+.headerChild,
+.tableChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  width: 100%;
+  height: 100%;
+}
+.headerChild {
+  border-radius: var(--br-xl) var(--br-xl) 0 0;
+  background-color: var(--color-darkslategray-200);
+}
+.rectangleInput {
+  margin: 0;
+  position: absolute;
+  top: 20px;
+  left: 26px;
+  border-radius: var(--br-10xs);
+  border: 1px solid var(--color-white);
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+}
+.availQty,
+.category,
+.itemName,
+.resQty,
+.sku {
+  position: absolute;
+  top: 14px;
+  left: 71px;
+  letter-spacing: -0.03em;
+  line-height: 160%;
+  font-weight: 600;
+  display: inline-block;
+  min-width: 109px;
+}
+.availQty,
+.category,
+.resQty,
+.sku {
+  left: 340px;
+  min-width: 39px;
+}
+.availQty,
+.category,
+.resQty {
+  left: 534px;
+  min-width: 92px;
+}
+.availQty,
+.resQty {
+  left: 709px;
+  min-width: 86px;
+}
+.resQty {
+  left: 845px;
+  width: 76px;
+  min-width: 76px;
+}
+.location {
+  left: 961px;
+  width: 85px;
+  min-width: 85px;
+}
+.actions,
+.location,
+.status {
+  position: absolute;
+  top: 14px;
+  letter-spacing: -0.03em;
+  line-height: 160%;
+  font-weight: 600;
+  display: inline-block;
+}
+.status {
+  left: 1141px;
+  width: 93px;
+}
+.actions {
+  left: 1309px;
+  min-width: 73px;
+}
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+}
+.rowItems,
+.sectionName {
+  position: absolute;
+  top: 18px;
+  left: 819px;
+  letter-spacing: -0.03em;
+  line-height: 140%;
+  font-weight: 500;
+  display: inline-block;
+  width: 76px;
+}
+.sectionName {
+  left: 935px;
+  width: 120px;
+  min-width: 120px;
+}
+.rectangleInput1 {
+  margin: 0;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  border-radius: var(--br-10xs);
+  border: 1px solid var(--color-gainsboro);
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+}
+.categoryHere {
+  left: 508px;
+  display: inline-block;
+  min-width: 125px;
+}
+.abc12345SBl,
+.categoryHere,
+.rowItems1 {
+  position: absolute;
+  top: 18px;
+  letter-spacing: -0.03em;
+  line-height: 140%;
+  font-weight: 500;
+}
+.rowItems1 {
+  left: 683px;
+  display: inline-block;
+  min-width: 45px;
+}
+.abc12345SBl {
+  left: 314px;
+}
+.imageIcon {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 45px;
+  border-radius: var(--br-3xs);
+  max-height: 100%;
+  width: 60px;
+  object-fit: cover;
+}
+.itemNameHere {
+  position: absolute;
+  top: 18px;
+  left: 120px;
+  letter-spacing: -0.03em;
+  line-height: 140%;
+  font-weight: 500;
+}
+.groupChild,
+.groupInner,
+.groupItem {
+  position: absolute;
+  height: 100%;
+  width: 24.75%;
+  top: 0;
+  right: 75.25%;
+  bottom: 0;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.groupInner,
+.groupItem {
+  height: 99.23%;
+  width: 19.65%;
+  right: 36.56%;
+  bottom: 0.77%;
+  left: 43.79%;
+}
+.groupInner {
+  height: 98.46%;
+  width: 17.59%;
+  right: -0.08%;
+  bottom: 1.54%;
+  left: 82.48%;
+}
+.groupParent {
+  position: absolute;
+  height: 43.33%;
+  width: 9.28%;
+  top: 28.33%;
+  right: 0;
+  bottom: 28.33%;
+  left: 90.72%;
+}
+.outOfStock {
+  position: absolute;
+  top: 0;
+  left: 24px;
+  letter-spacing: -0.03em;
+  line-height: 160%;
+  font-weight: 500;
+  display: inline-block;
+  min-width: 104px;
+}
+.ellipseDiv {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  border-radius: 50%;
+  background-color: var(--color-orangered);
+  width: 14px;
+  height: 14px;
+}
+.outOfStockParent,
+.rowChild {
+  position: absolute;
+  top: 16px;
+  left: 1115px;
+  width: 128px;
+  height: 29px;
+}
+.rowChild {
+  top: 85px;
+  left: -1px;
+  border-top: 1px solid var(--color-lightgray);
+  box-sizing: border-box;
+  width: 1431px;
+  height: 1px;
+  display: none;
+}
+.row,
+.table {
+  position: absolute;
+  top: 745px;
+  left: 26px;
+  width: 1414.3px;
+  height: 60px;
+}
+.table {
+  top: 431px;
+  left: 390px;
+  width: 1480px;
+  height: 830px;
+  text-align: left;
+  font-size: var(--font-size-lg);
+  color: var(--color-darkslategray-100);
+  font-family: var(--font-poppins);
+}
+@media screen and (max-width: 450px) {
+  .actions,
+  .availQty,
+  .category,
+  .itemName,
+  .location,
+  .resQty,
+  .sku,
+  .status {
+    font-size: var(--font-size-base);
+    line-height: 26px;
+  }
+}

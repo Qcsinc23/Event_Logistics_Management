@@ -1,8 +1,8 @@
 import { FunctionComponent } from "react";
 import {
-  Box,
   Typography,
   Button,
+  Box,
   TextField,
   InputAdornment,
   Icon,
@@ -13,7 +13,9 @@ import {
   FormHelperText,
   FormControl,
 } from "@mui/material";
-import TableColumns from "./TableColumns";
+import LeftMenu5 from "./LeftMenu5";
+import TopNav from "./TopNav";
+import Table2 from "./Table2";
 import styles from "./InventoryList.module.css";
 
 export type InventoryListType = {
@@ -25,135 +27,8 @@ const InventoryList: FunctionComponent<InventoryListType> = ({
 }) => {
   return (
     <form className={[styles.inventoryList, className].join(" ")}>
-      <div className={styles.leftMenu}>
-        <div className={styles.leftMenuChild} />
-        <img
-          className={styles.logoIcon}
-          loading="lazy"
-          alt=""
-          src="/logo1.svg"
-        />
-        <div className={styles.links}>
-          <div className={styles.dashboard}>
-            <img
-              className={styles.layer1Icon}
-              loading="lazy"
-              alt=""
-              src="/layer-11.svg"
-            />
-            <div className={styles.dashboard1}>Dashboard</div>
-          </div>
-          <div className={styles.events}>
-            <img
-              className={styles.layer1Icon}
-              loading="lazy"
-              alt=""
-              src="/layer-1-13.svg"
-            />
-            <div className={styles.events1}>Events</div>
-            <img
-              className={styles.eventsChild}
-              loading="lazy"
-              alt=""
-              src="/frame-2@2x.png"
-            />
-          </div>
-          <div className={styles.logistics}>
-            <div className={styles.logistics1}>Logistics</div>
-            <img
-              className={styles.logisticsChild}
-              loading="lazy"
-              alt=""
-              src="/group-107.svg"
-            />
-            <div className={styles.rectangleParent}>
-              <div className={styles.frameChild} />
-              <img className={styles.frameItem} alt="" src="/arrow-4.svg" />
-            </div>
-          </div>
-          <div className={styles.inventory}>
-            <div className={styles.rectangleGroup}>
-              <div className={styles.frameChild} />
-              <img className={styles.arrowIcon} alt="" src="/arrow-4.svg" />
-            </div>
-            <div className={styles.inventory1}>Inventory</div>
-            <img
-              className={styles.inventoryChild}
-              loading="lazy"
-              alt=""
-              src="/group-1112.svg"
-            />
-            <div className={styles.layer1} />
-            <div className={styles.inventoryList1}>Inventory List</div>
-            <div
-              className={styles.alertsNotifications}
-            >{`Alerts & Notifications`}</div>
-          </div>
-          <div className={styles.deliveries}>
-            <div className={styles.rectangleParent}>
-              <div className={styles.frameChild} />
-              <img className={styles.frameItem} alt="" src="/arrow-4.svg" />
-            </div>
-            <div className={styles.deliveries1}>Deliveries</div>
-            <img
-              className={styles.logisticsChild}
-              loading="lazy"
-              alt=""
-              src="/group-113.svg"
-            />
-          </div>
-          <div className={styles.reports}>
-            <div className={styles.reports1}>Reports</div>
-            <img
-              className={styles.reportsChild}
-              loading="lazy"
-              alt=""
-              src="/group-114.svg"
-            />
-          </div>
-          <div className={styles.users}>
-            <div className={styles.users1}>Users</div>
-            <img
-              className={styles.vectorIcon}
-              loading="lazy"
-              alt=""
-              src="/vector.svg"
-            />
-          </div>
-          <div className={styles.settings}>
-            <div className={styles.settings1}>Settings</div>
-            <img
-              className={styles.layer1Icon2}
-              loading="lazy"
-              alt=""
-              src="/layer-1-2.svg"
-            />
-          </div>
-        </div>
-      </div>
-      <div className={styles.topNav}>
-        <div className={styles.breadcrumbs}>
-          <div
-            className={styles.dashboardInventory}
-          >{`Dashboard > Inventory > Inventory List`}</div>
-        </div>
-        <div className={styles.user}>
-          <div className={styles.userChild} />
-          <img
-            className={styles.userItem}
-            loading="lazy"
-            alt=""
-            src="/rectangle-2@2x.png"
-          />
-          <div className={styles.sherwynGraham}>{`Sherwyn Graham `}</div>
-        </div>
-        <img
-          className={styles.vectorIcon1}
-          loading="lazy"
-          alt=""
-          src="/vector-1.svg"
-        />
-      </div>
+      <LeftMenu5 />
+      <TopNav />
       <div className={styles.actions}>
         <h2 className={styles.inventoryManagement}>Inventory Management</h2>
         <Button
@@ -530,7 +405,7 @@ const InventoryList: FunctionComponent<InventoryListType> = ({
           Search
         </Button>
       </section>
-      <h2 className={styles.inventoryList2}>Inventory List</h2>
+      <h2 className={styles.inventoryList1}>Inventory List</h2>
       <div className={styles.sortFilter}>
         <div className={styles.sortBy}>Sort by:</div>
         <FormControl
@@ -598,97 +473,7 @@ const InventoryList: FunctionComponent<InventoryListType> = ({
           <FormHelperText />
         </FormControl>
       </div>
-      <section className={styles.table}>
-        <div className={styles.tableChild} />
-        <div className={styles.header}>
-          <div className={styles.headerChild} />
-          <input className={styles.rectangleInput} type="checkbox" />
-          <div className={styles.itemName}>Item Name</div>
-          <div className={styles.sku}>SKU</div>
-          <div className={styles.category1}>Category</div>
-          <div className={styles.availQty}>{`Avail Qty `}</div>
-          <div className={styles.resQty}>Res Qty</div>
-          <div className={styles.location1}>Location</div>
-          <div className={styles.status1}>Status</div>
-          <div className={styles.actions1}>Actions</div>
-        </div>
-        <TableColumns available="Available" />
-        <TableColumns
-          tableColumnsTop="195px"
-          groupBoxWidth="105px"
-          available="Reserved"
-          availableMinWidth="81px"
-          ellipseBoxBackgroundColor="#ffeb3b"
-        />
-        <TableColumns
-          tableColumnsTop="305px"
-          groupBoxWidth="128px"
-          available="Out of Stock"
-          availableMinWidth="104px"
-          ellipseBoxBackgroundColor="#ed3006"
-        />
-        <TableColumns
-          tableColumnsTop="415px"
-          groupBoxWidth="105px"
-          available="Available"
-          availableMinWidth="81px"
-          ellipseBoxBackgroundColor="#4caf50"
-        />
-        <TableColumns
-          tableColumnsTop="525px"
-          groupBoxWidth="105px"
-          available="Available"
-          availableMinWidth="81px"
-          ellipseBoxBackgroundColor="#4caf50"
-        />
-        <TableColumns
-          tableColumnsTop="635px"
-          groupBoxWidth="105px"
-          available="Reserved"
-          availableMinWidth="81px"
-          ellipseBoxBackgroundColor="#ffeb3b"
-        />
-        <div className={styles.row}>
-          <div className={styles.rowItems}>578</div>
-          <div className={styles.sectionName}>Section name</div>
-          <input className={styles.rectangleInput1} type="checkbox" />
-          <div className={styles.categoryHere}>Category here</div>
-          <div className={styles.rowItems1}>2,257</div>
-          <div className={styles.abc12345SBl}>ABC-12345-S-BL</div>
-          <img
-            className={styles.imageIcon}
-            loading="lazy"
-            alt=""
-            src="/image1@2x.png"
-          />
-          <div className={styles.itemNameHere}>Item name here</div>
-          <div className={styles.groupParent}>
-            <img
-              className={styles.groupChild}
-              loading="lazy"
-              alt=""
-              src="/group-140.svg"
-            />
-            <img
-              className={styles.groupItem}
-              loading="lazy"
-              alt=""
-              src="/group-1371.svg"
-            />
-            <img
-              className={styles.groupInner}
-              loading="lazy"
-              alt=""
-              src="/group-1393.svg"
-            />
-          </div>
-          <div className={styles.outOfStockParent}>
-            <div className={styles.outOfStock}>Out of Stock</div>
-            <div className={styles.ellipseDiv} />
-          </div>
-          <div className={styles.rowChild} />
-        </div>
-      </section>
+      <Table2 />
       <footer className={styles.pagination}>
         <div className={styles.result1Container}>
           <span className={styles.result}>{`Result: `}</span>

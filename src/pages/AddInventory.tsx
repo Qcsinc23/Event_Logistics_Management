@@ -35,7 +35,22 @@ const AddInventory: FunctionComponent = () => {
                 className={styles.dashboardInventory}
               >{`Dashboard > Inventory > Add Inventory`}</div>
             </div>
-            <UserContainer />
+            <UserContainer
+              userContainerWidth="289px"
+              userContainerAlignSelf="unset"
+              userContainerHeight="unset"
+              userIconHeight="unset"
+              userIconWidth="unset"
+              profilePicture="/vector-1.svg"
+              userFlex="1"
+              userHeight="unset"
+              userWidth="unset"
+              userNameHeight="unset"
+              userNameWidth="unset"
+              sherwynGrahamWidth="unset"
+              sherwynGrahamHeight="unset"
+              sherwynGrahamDisplay="unset"
+            />
           </header>
           <h2 className={styles.addNewInventory}>Add New Inventory Item</h2>
           <div className={styles.form}>

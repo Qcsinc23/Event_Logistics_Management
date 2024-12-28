@@ -1,0 +1,317 @@
+.leftMenuChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 12px 20px 50px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-white);
+  width: 100%;
+  height: 100%;
+}
+.layer1Icon,
+.logoIcon {
+  position: absolute;
+  top: 41px;
+  left: 50px;
+  width: 216px;
+  height: 60px;
+  overflow: hidden;
+}
+.layer1Icon {
+  top: 0;
+  left: 0;
+  width: 31px;
+  height: 31px;
+}
+.dashboard1 {
+  position: absolute;
+  top: 2px;
+  left: 46px;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  display: inline-block;
+  min-width: 109px;
+}
+.dashboard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 155px;
+  height: 31px;
+}
+.events1 {
+  position: absolute;
+  top: 2px;
+  left: 46px;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  display: inline-block;
+  min-width: 63px;
+}
+.eventsChild {
+  position: absolute;
+  top: 11px;
+  left: 244px;
+  width: 12px;
+  height: 9px;
+  object-fit: contain;
+}
+.events {
+  position: absolute;
+  top: 66px;
+  left: 0;
+  width: 100%;
+  height: 31px;
+}
+.logistics1 {
+  position: absolute;
+  top: 1px;
+  left: 46px;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  display: inline-block;
+  min-width: 82px;
+}
+.frameChild,
+.logisticsChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+.logisticsChild {
+  width: 12.11%;
+  right: 87.89%;
+  bottom: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.frameChild {
+  background-color: var(--color-gainsboro);
+  width: 100%;
+  display: none;
+}
+.frameItem {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 0;
+  height: 1px;
+  object-fit: contain;
+}
+.rectangleParent {
+  position: absolute;
+  top: 11px;
+  left: 244px;
+  width: 12px;
+  height: 9px;
+}
+.arrowIcon,
+.logistics {
+  position: absolute;
+  top: 132px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+}
+.arrowIcon {
+  top: -7px;
+  left: 6px;
+  width: 0;
+  height: 1px;
+  object-fit: contain;
+}
+.rectangleGroup {
+  position: absolute;
+  top: 12px;
+  left: 244px;
+  width: 12px;
+  height: 9px;
+}
+.inventory1 {
+  position: absolute;
+  top: 3px;
+  left: 46px;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 600;
+  display: inline-block;
+  min-width: 94px;
+}
+.inventoryChild,
+.layer1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.inventoryChild {
+  height: 27.05%;
+  width: 12.11%;
+  right: 87.89%;
+  bottom: 72.95%;
+  max-width: 100%;
+  max-height: 100%;
+}
+.layer1 {
+  width: 31px;
+  height: 33px;
+}
+.alertsNotifications,
+.inventoryList {
+  position: absolute;
+  left: 46px;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  display: inline-block;
+  width: 210px;
+}
+.inventoryList {
+  top: 51px;
+  font-weight: 600;
+  color: var(--color-tomato-100);
+}
+.alertsNotifications {
+  top: 94px;
+  color: var(--color-darkslategray-100);
+}
+.inventory {
+  position: absolute;
+  top: 197px;
+  left: 0;
+  width: 100%;
+  height: 122px;
+  color: var(--color-darkslategray-200);
+}
+.deliveries1 {
+  position: absolute;
+  top: 1px;
+  left: 46px;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  display: inline-block;
+  min-width: 92px;
+}
+.deliveries {
+  position: absolute;
+  top: 354px;
+  left: 0;
+  width: 100%;
+  height: 31px;
+}
+.reports1 {
+  position: absolute;
+  top: 1px;
+  left: 46px;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  display: inline-block;
+  min-width: 74px;
+}
+.reports,
+.reportsChild {
+  position: absolute;
+  left: 0;
+}
+.reportsChild {
+  height: 100%;
+  width: 25.83%;
+  top: 0;
+  right: 74.17%;
+  bottom: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.reports {
+  top: 420px;
+  width: 120px;
+  height: 31px;
+}
+.users1 {
+  position: absolute;
+  top: 0;
+  left: 46px;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  display: inline-block;
+  min-width: 53px;
+}
+.users,
+.vectorIcon {
+  position: absolute;
+  left: 0;
+}
+.vectorIcon {
+  height: 85.71%;
+  width: 31.31%;
+  top: 7.14%;
+  right: 68.69%;
+  bottom: 7.14%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.users {
+  top: 486px;
+  width: 99px;
+  height: 28px;
+}
+.settings1 {
+  position: absolute;
+  top: 1px;
+  left: 46px;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  display: inline-block;
+  min-width: 78px;
+}
+.layer1Icon2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 31px;
+  height: 29px;
+  overflow: hidden;
+}
+.leftMenu,
+.links,
+.settings {
+  position: absolute;
+  top: 549px;
+  left: 0;
+  width: 124px;
+  height: 29px;
+}
+.leftMenu,
+.links {
+  top: 151px;
+  left: 50px;
+  width: 256px;
+  height: 578px;
+}
+.leftMenu {
+  top: 0;
+  left: 0;
+  width: 340px;
+  height: 1080px;
+  text-align: left;
+  font-size: var(--font-size-xl);
+  color: var(--color-darkslategray-100);
+  font-family: var(--font-poppins);
+}
+@media screen and (max-width: 450px) {
+  .alertsNotifications,
+  .dashboard1,
+  .deliveries1,
+  .events1,
+  .inventory1,
+  .inventoryList,
+  .logistics1,
+  .reports1,
+  .settings1,
+  .users1 {
+    font-size: var(--font-size-base);
+    line-height: 22px;
+  }
+}

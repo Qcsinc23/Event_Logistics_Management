@@ -69,7 +69,22 @@ const InventoryDetails: FunctionComponent = () => {
                   </div>
                 </div>
                 <div className={styles.userActions}>
-                  <UserContainer />
+                  <UserContainer
+                    userContainerWidth="unset"
+                    userContainerAlignSelf="stretch"
+                    userContainerHeight="unset"
+                    userIconHeight="unset"
+                    userIconWidth="unset"
+                    profilePicture="/vector-1.svg"
+                    userFlex="1"
+                    userHeight="unset"
+                    userWidth="unset"
+                    userNameHeight="unset"
+                    userNameWidth="unset"
+                    sherwynGrahamWidth="unset"
+                    sherwynGrahamHeight="unset"
+                    sherwynGrahamDisplay="unset"
+                  />
                   <div className={styles.actions}>
                     <Button
                       className={styles.button}
