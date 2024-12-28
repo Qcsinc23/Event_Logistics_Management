@@ -1,0 +1,138 @@
+.span {
+  font-weight: 500;
+  font-family: var(--font-poppins);
+}
+.assignedATask {
+  color: var(--color-tomato-100);
+}
+.to {
+  font-family: var(--font-poppins);
+}
+.robertSteve {
+  font-weight: 600;
+}
+.sherwynGrahamAssignedContainer {
+  margin: 0;
+  align-self: stretch;
+  height: 28px;
+  position: relative;
+  font-size: inherit;
+  letter-spacing: -0.02em;
+  line-height: 200%;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  z-index: 1;
+  font-family: inherit;
+}
+.loremIpsumDolor {
+  width: 541px;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  display: inline-block;
+  flex-shrink: 0;
+  max-width: 100%;
+}
+.adobedbcpng,
+.justNow,
+.loremIpsumDolor {
+  position: relative;
+  z-index: 1;
+}
+.justNow {
+  flex: 1;
+  letter-spacing: -0.02em;
+  line-height: 180%;
+  font-weight: 500;
+  display: inline-block;
+  min-width: 72px;
+}
+.adobedbcpng {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-forestgreen);
+}
+.feedItemIcon {
+  flex-direction: column;
+  padding: var(--padding-7xs) 0 0;
+}
+.feedItemIcon,
+.time,
+.timeWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.time {
+  align-self: stretch;
+  flex-direction: row;
+  gap: var(--gap-3xs);
+}
+.timeWrapper {
+  height: 26px;
+  flex-direction: column;
+  padding: var(--padding-9xs) 0 0;
+  box-sizing: border-box;
+  text-align: right;
+}
+.activityDetails,
+.activityItems {
+  align-self: stretch;
+  display: flex;
+  align-items: flex-start;
+  max-width: 100%;
+}
+.activityDetails {
+  flex-direction: row;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+  font-size: var(--font-size-base);
+}
+.activityItems {
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--gap-xs);
+}
+.activityList,
+.uberbcbapng {
+  align-self: stretch;
+  box-sizing: border-box;
+}
+.uberbcbapng {
+  height: 1px;
+  position: relative;
+  border-top: 1px dashed var(--color-lightgray);
+  z-index: 1;
+}
+.activityList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 0 var(--padding-7xs);
+  gap: var(--gap-mid);
+  flex-shrink: 0;
+  max-width: 100%;
+  text-align: left;
+  font-size: var(--font-size-3xl);
+  color: var(--color-darkslategray-100);
+  font-family: var(--font-poppins);
+}
+@media screen and (max-width: 1350px) {
+  .sherwynGrahamAssignedContainer {
+    font-size: var(--font-size-lg);
+    line-height: 35px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .activityDetails {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 450px) {
+  .sherwynGrahamAssignedContainer {
+    font-size: var(--font-size-lg);
+    line-height: 35px;
+  }
+}

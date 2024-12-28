@@ -649,13 +649,7 @@
   color: var(--color-darkslategray-100);
   font-family: var(--font-poppins);
 }
-@media screen and (max-width: 1600px) {
-  .frameParent17,
-  .rowSeparator {
-    flex-wrap: wrap;
-  }
-}
-@media screen and (max-width: 1275px) {
+@media screen and (max-width: 1800px) {
   .actions,
   .assignee,
   .dueDate,
@@ -681,6 +675,17 @@
     gap: var(--gap-4xl);
     flex-wrap: wrap;
   }
+  .frameParent17,
+  .rowSeparator {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 1350px) {
+  .frameContainer,
+  .frameParent5,
+  .header {
+    flex-wrap: wrap;
+  }
 }
 @media screen and (max-width: 900px) {
   .frameParent20,
@@ -699,6 +704,31 @@
   .frameContainer,
   .frameParent5,
   .header {
+    flex-wrap: wrap;
+  }
+  .actions,
+  .assignee,
+  .dueDate,
+  .priorityLevel,
+  .relatedEvent,
+  .status,
+  .taskName {
+    font-size: var(--font-size-base);
+    line-height: 26px;
+  }
+  .frameParent,
+  .frankShawParent {
+    flex-wrap: wrap;
+  }
+  .statusRowParent {
+    gap: var(--gap-8xl);
+    flex-wrap: wrap;
+  }
+  .frameParent17 {
+    gap: var(--gap-xl);
+  }
+  .frameParent26 {
+    gap: var(--gap-4xl);
     flex-wrap: wrap;
   }
 }

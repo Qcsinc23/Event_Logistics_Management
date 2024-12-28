@@ -33,7 +33,7 @@ const EventTime: FunctionComponent<EventTimeType> = ({
     };
   }, [boxWidth]);
 
-  const groupDivStyle: CSSProperties = useMemo(() => {
+  const groupDiv1Style: CSSProperties = useMemo(() => {
     return {
       backgroundColor: groupBoxBackgroundColor,
     };
@@ -52,7 +52,7 @@ const EventTime: FunctionComponent<EventTimeType> = ({
           {prop}
         </div>
       </div>
-      <div className={styles.rectangleParent} style={groupDivStyle}>
+      <div className={styles.rectangleParent} style={groupDiv1Style}>
         <div className={styles.frameChild} style={rectangleDivStyle} />
         <div className={styles.eventName000000Container}>
           <p className={styles.eventName}>Event name</p>

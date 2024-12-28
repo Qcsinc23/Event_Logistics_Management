@@ -27,7 +27,7 @@ const FrameComponent: FunctionComponent<FrameComponentType> = ({
   group196,
   groupIconWidth,
 }) => {
-  const frameDivStyle: CSSProperties = useMemo(() => {
+  const frameDiv1Style: CSSProperties = useMemo(() => {
     return {
       alignSelf: frameBoxAlignSelf,
       justifyContent: frameBoxJustifyContent,
@@ -50,7 +50,7 @@ const FrameComponent: FunctionComponent<FrameComponentType> = ({
   return (
     <div
       className={[styles.depotContainerWrapper, className].join(" ")}
-      style={frameDivStyle}
+      style={frameDiv1Style}
     >
       <div className={styles.depotContainer} style={depotContainerStyle}>
         <div className={styles.depotDetails}>

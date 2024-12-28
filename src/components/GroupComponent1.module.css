@@ -1,0 +1,71 @@
+.frameChild {
+  width: 280px;
+  height: 180px;
+  position: relative;
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.05);
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  display: none;
+}
+.metricPlaceholder,
+.tasksDueToday {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  z-index: 1;
+}
+.metricPlaceholder {
+  width: 125px;
+  height: 63px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.tasksDueToday {
+  font-size: var(--font-size-xl);
+  color: var(--color-darkslategray-100);
+}
+.rectangleParent {
+  flex: 1;
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.05);
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-19xl) var(--padding-xl) var(--padding-18xl)
+    var(--padding-21xl);
+  gap: var(--gap-sm);
+  text-align: left;
+  font-size: var(--font-size-61xl);
+  color: var(--color-darkslategray-200);
+  font-family: var(--font-poppins);
+}
+@media screen and (max-width: 1800px) {
+  .metricPlaceholder {
+    font-size: var(--font-size-5xl);
+    line-height: 45px;
+  }
+  .tasksDueToday {
+    font-size: var(--font-size-base);
+    line-height: 22px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .metricPlaceholder {
+    font-size: var(--font-size-21xl);
+    line-height: 67px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .metricPlaceholder {
+    font-size: var(--font-size-5xl);
+    line-height: 45px;
+  }
+  .tasksDueToday {
+    font-size: var(--font-size-base);
+    line-height: 22px;
+  }
+}

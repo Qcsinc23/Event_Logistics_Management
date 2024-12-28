@@ -1,0 +1,112 @@
+.frameChild {
+  height: 140px;
+  width: 430px;
+  position: relative;
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  display: none;
+  max-width: 100%;
+}
+.ddMmYyyy,
+.eventName {
+  position: relative;
+  z-index: 1;
+}
+.eventName {
+  height: 22px;
+  letter-spacing: -0.02em;
+  line-height: 200%;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.ddMmYyyy {
+  font-size: var(--font-size-lg);
+  letter-spacing: -0.03em;
+  line-height: 140%;
+  font-weight: 500;
+  display: inline-block;
+  min-width: 121px;
+}
+.eventDetails,
+.eventTime {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.eventTime {
+  align-self: stretch;
+  justify-content: flex-start;
+  gap: var(--gap-mini);
+}
+.eventDetails {
+  justify-content: flex-end;
+  padding: 0 0 var(--padding-7xs);
+}
+.souscatgorie {
+  width: 14px;
+  height: 14px;
+  position: relative;
+  border-radius: 50%;
+  background-color: var(--color-tomato-100);
+  z-index: 1;
+}
+.statusIconContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-2xs) 0 0;
+}
+.ongoing {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 200%;
+  display: inline-block;
+  min-width: 77px;
+  z-index: 1;
+}
+.eventStatus,
+.rectangleParent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-3xs);
+  font-size: var(--font-size-lg);
+  color: var(--color-black);
+}
+.rectangleParent {
+  align-self: stretch;
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: var(--padding-21xl) var(--padding-21xl) var(--padding-13xl);
+  box-sizing: border-box;
+  max-width: 100%;
+  gap: var(--gap-xl);
+  text-align: left;
+  font-size: var(--font-size-5xl);
+  color: var(--color-darkslategray-100);
+  font-family: var(--font-poppins);
+}
+@media screen and (max-width: 900px) {
+  .eventName {
+    font-size: var(--font-size-lgi);
+    line-height: 38px;
+  }
+  .rectangleParent {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 450px) {
+  .eventName {
+    font-size: var(--font-size-lgi);
+    line-height: 38px;
+  }
+  .rectangleParent {
+    flex-wrap: wrap;
+  }
+}

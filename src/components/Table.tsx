@@ -63,10 +63,30 @@ const Table: FunctionComponent<TableType> = ({ className = "" }) => {
             </div>
             <div className={styles.frameWrapper}>
               <div className={styles.frameGroup}>
-                <img className={styles.frameChild} loading="lazy" alt="" />
-                <img className={styles.frameItem} loading="lazy" alt="" />
-                <img className={styles.frameInner} loading="lazy" alt="" />
-                <img className={styles.groupIcon} loading="lazy" alt="" />
+                <img
+                  className={styles.frameChild}
+                  loading="lazy"
+                  alt=""
+                  src="/group-140.svg"
+                />
+                <img
+                  className={styles.frameItem}
+                  loading="lazy"
+                  alt=""
+                  src="/group-1371.svg"
+                />
+                <img
+                  className={styles.frameInner}
+                  loading="lazy"
+                  alt=""
+                  src="/group-1381.svg"
+                />
+                <img
+                  className={styles.groupIcon}
+                  loading="lazy"
+                  alt=""
+                  src="/group-1391.svg"
+                />
               </div>
             </div>
           </div>
@@ -106,10 +126,20 @@ const Table: FunctionComponent<TableType> = ({ className = "" }) => {
           </div>
           <div className={styles.frameWrapper1}>
             <div className={styles.frameGroup}>
-              <img className={styles.frameChild} loading="lazy" alt="" />
-              <img className={styles.frameItem} loading="lazy" alt="" />
-              <img className={styles.frameInner} alt="" />
-              <img className={styles.groupIcon} alt="" />
+              <img
+                className={styles.frameChild}
+                loading="lazy"
+                alt=""
+                src="/group-140.svg"
+              />
+              <img
+                className={styles.frameItem}
+                loading="lazy"
+                alt=""
+                src="/group-1371.svg"
+              />
+              <img className={styles.frameInner} alt="" src="/group-1381.svg" />
+              <img className={styles.groupIcon} alt="" src="/group-1391.svg" />
             </div>
           </div>
         </div>
@@ -148,14 +178,28 @@ const Table: FunctionComponent<TableType> = ({ className = "" }) => {
           </div>
           <div className={styles.frameWrapper3}>
             <div className={styles.frameGroup}>
-              <img className={styles.frameChild7} loading="lazy" alt="" />
-              <img className={styles.frameChild8} loading="lazy" alt="" />
+              <img
+                className={styles.frameChild7}
+                loading="lazy"
+                alt=""
+                src="/group-140-2.svg"
+              />
+              <img
+                className={styles.frameChild8}
+                loading="lazy"
+                alt=""
+                src="/group-137-2.svg"
+              />
             </div>
           </div>
           <div className={styles.frameWrapper4}>
             <div className={styles.frameGroup}>
-              <img className={styles.frameInner} alt="" />
-              <img className={styles.groupIcon} alt="" />
+              <img
+                className={styles.frameInner}
+                alt=""
+                src="/group-138-2.svg"
+              />
+              <img className={styles.groupIcon} alt="" src="/group-139-2.svg" />
             </div>
           </div>
         </div>
@@ -194,14 +238,28 @@ const Table: FunctionComponent<TableType> = ({ className = "" }) => {
           </div>
           <div className={styles.frameWrapper3}>
             <div className={styles.frameGroup}>
-              <img className={styles.frameChild7} loading="lazy" alt="" />
-              <img className={styles.frameChild8} loading="lazy" alt="" />
+              <img
+                className={styles.frameChild7}
+                loading="lazy"
+                alt=""
+                src="/group-140-2.svg"
+              />
+              <img
+                className={styles.frameChild8}
+                loading="lazy"
+                alt=""
+                src="/group-137-2.svg"
+              />
             </div>
           </div>
           <div className={styles.frameWrapper4}>
             <div className={styles.frameGroup}>
-              <img className={styles.frameInner} alt="" />
-              <img className={styles.groupIcon} alt="" />
+              <img
+                className={styles.frameInner}
+                alt=""
+                src="/group-138-2.svg"
+              />
+              <img className={styles.groupIcon} alt="" src="/group-139-2.svg" />
             </div>
           </div>
         </div>
@@ -242,10 +300,30 @@ const Table: FunctionComponent<TableType> = ({ className = "" }) => {
               </div>
               <div className={styles.progressRow}>
                 <div className={styles.frameGroup}>
-                  <img className={styles.frameChild} loading="lazy" alt="" />
-                  <img className={styles.frameItem} loading="lazy" alt="" />
-                  <img className={styles.frameInner} loading="lazy" alt="" />
-                  <img className={styles.groupIcon} loading="lazy" alt="" />
+                  <img
+                    className={styles.frameChild}
+                    loading="lazy"
+                    alt=""
+                    src="/group-140-2.svg"
+                  />
+                  <img
+                    className={styles.frameItem}
+                    loading="lazy"
+                    alt=""
+                    src="/group-137-2.svg"
+                  />
+                  <img
+                    className={styles.frameInner}
+                    loading="lazy"
+                    alt=""
+                    src="/group-138-2.svg"
+                  />
+                  <img
+                    className={styles.groupIcon}
+                    loading="lazy"
+                    alt=""
+                    src="/group-139-2.svg"
+                  />
                 </div>
               </div>
             </div>
@@ -288,10 +366,29 @@ const Table: FunctionComponent<TableType> = ({ className = "" }) => {
               </div>
               <div className={styles.progressRow}>
                 <div className={styles.frameGroup}>
-                  <img className={styles.frameChild} loading="lazy" alt="" />
-                  <img className={styles.frameItem} loading="lazy" alt="" />
-                  <img className={styles.frameInner} loading="lazy" alt="" />
-                  <img className={styles.groupIcon} alt="" />
+                  <img
+                    className={styles.frameChild}
+                    loading="lazy"
+                    alt=""
+                    src="/group-140.svg"
+                  />
+                  <img
+                    className={styles.frameItem}
+                    loading="lazy"
+                    alt=""
+                    src="/group-1371.svg"
+                  />
+                  <img
+                    className={styles.frameInner}
+                    loading="lazy"
+                    alt=""
+                    src="/group-1381.svg"
+                  />
+                  <img
+                    className={styles.groupIcon}
+                    alt=""
+                    src="/group-1391.svg"
+                  />
                 </div>
               </div>
             </div>
@@ -334,10 +431,29 @@ const Table: FunctionComponent<TableType> = ({ className = "" }) => {
               </div>
               <div className={styles.progressRow}>
                 <div className={styles.frameGroup}>
-                  <img className={styles.frameChild} loading="lazy" alt="" />
-                  <img className={styles.frameItem} loading="lazy" alt="" />
-                  <img className={styles.frameInner} loading="lazy" alt="" />
-                  <img className={styles.groupIcon} alt="" />
+                  <img
+                    className={styles.frameChild}
+                    loading="lazy"
+                    alt=""
+                    src="/group-140.svg"
+                  />
+                  <img
+                    className={styles.frameItem}
+                    loading="lazy"
+                    alt=""
+                    src="/group-1371.svg"
+                  />
+                  <img
+                    className={styles.frameInner}
+                    loading="lazy"
+                    alt=""
+                    src="/group-1381.svg"
+                  />
+                  <img
+                    className={styles.groupIcon}
+                    alt=""
+                    src="/group-1391.svg"
+                  />
                 </div>
               </div>
             </div>

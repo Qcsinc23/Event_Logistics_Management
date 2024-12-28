@@ -273,13 +273,7 @@
   padding: var(--padding-31xl) var(--padding-31xl) var(--padding-32xl);
   box-sizing: border-box;
 }
-@media screen and (max-width: 1600px) {
-  .assigneeField,
-  .priorityFields {
-    flex-wrap: wrap;
-  }
-}
-@media screen and (max-width: 1275px) {
+@media screen and (max-width: 1800px) {
   .checkboxParent {
     flex-wrap: wrap;
   }
@@ -294,6 +288,23 @@
   .modal {
     padding-top: var(--padding-2xl);
     padding-bottom: var(--padding-2xl);
+    box-sizing: border-box;
+  }
+  .assigneeField,
+  .priorityFields {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 1350px) {
+  .assigneeField,
+  .modalHeader,
+  .priorityFields,
+  .reminderFields {
+    flex-wrap: wrap;
+  }
+  .modal {
+    padding-left: var(--padding-6xl);
+    padding-right: var(--padding-6xl);
     box-sizing: border-box;
   }
 }
@@ -322,6 +333,21 @@
   .modal {
     padding-left: var(--padding-6xl);
     padding-right: var(--padding-6xl);
+  }
+  .checkboxParent {
+    flex-wrap: wrap;
+  }
+  .addSubTask {
+    font-size: var(--font-size-lg);
+    line-height: 21px;
+  }
+  .setReminder {
+    font-size: var(--font-size-2xl);
+    line-height: 25px;
+  }
+  .modal {
+    padding-top: var(--padding-2xl);
+    padding-bottom: var(--padding-2xl);
     box-sizing: border-box;
   }
 }

@@ -370,7 +370,12 @@ const Modal: FunctionComponent<ModalType> = ({ className = "" }) => {
               </div>
             </div>
             <div className={styles.frameGroup}>
-              <img className={styles.frameChild} loading="lazy" alt="" />
+              <img
+                className={styles.frameChild}
+                loading="lazy"
+                alt=""
+                src="/group-183.svg"
+              />
               <div className={styles.addSubTaskWrapper}>
                 <div className={styles.addSubTask}>Add Sub-task</div>
               </div>

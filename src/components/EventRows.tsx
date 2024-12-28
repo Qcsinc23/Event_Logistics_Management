@@ -29,7 +29,7 @@ const EventRows: FunctionComponent<EventRowsType> = ({
   prop1,
   prop2,
 }) => {
-  const groupDiv1Style: CSSProperties = useMemo(() => {
+  const groupDiv2Style: CSSProperties = useMemo(() => {
     return {
       backgroundColor: groupBoxBackgroundColor,
     };
@@ -41,7 +41,7 @@ const EventRows: FunctionComponent<EventRowsType> = ({
     };
   }, [rectangleBoxBackgroundColor]);
 
-  const frameDiv1Style: CSSProperties = useMemo(() => {
+  const frameDiv2Style: CSSProperties = useMemo(() => {
     return {
       width: frameBoxWidth,
     };
@@ -53,7 +53,7 @@ const EventRows: FunctionComponent<EventRowsType> = ({
     };
   }, [boxWidth]);
 
-  const frameDiv2Style: CSSProperties = useMemo(() => {
+  const frameDiv3Style: CSSProperties = useMemo(() => {
     return {
       width: frameBoxWidth1,
     };
@@ -66,7 +66,7 @@ const EventRows: FunctionComponent<EventRowsType> = ({
           <div className={styles.timeSlots}>
             <div className={styles.timePlaceholder}>{timePlaceholder}</div>
           </div>
-          <div className={styles.rectangleParent} style={groupDiv1Style}>
+          <div className={styles.rectangleParent} style={groupDiv2Style}>
             <div className={styles.frameChild} style={rectangleDiv1Style} />
             <div className={styles.eventName000000Container}>
               <p className={styles.eventName}>Event name</p>
@@ -74,12 +74,12 @@ const EventRows: FunctionComponent<EventRowsType> = ({
             </div>
           </div>
         </div>
-        <div className={styles.wrapper} style={frameDiv1Style}>
+        <div className={styles.wrapper} style={frameDiv2Style}>
           <div className={styles.div} style={div1Style}>
             {prop}
           </div>
         </div>
-        <div className={styles.container} style={frameDiv2Style}>
+        <div className={styles.container} style={frameDiv3Style}>
           <div className={styles.div1}>{prop1}</div>
         </div>
         <div className={styles.frame}>
