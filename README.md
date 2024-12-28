@@ -28,6 +28,67 @@ npm install
 - Get your Project ID and API Key from the Appwrite Console
 - Never commit the `.env` file to version control
 
+## Automated Appwrite Setup
+
+You can use the provided setup script to automatically configure Appwrite:
+
+1. Install Appwrite CLI:
+```bash
+npm install -g appwrite-cli
+```
+
+2. Login and configure CLI:
+```bash
+appwrite client --endpoint "https://cloud.appwrite.io/v1"
+appwrite client --project-id "your_project_id"
+appwrite client --key "your_api_key"
+```
+
+3. Run the setup script:
+```bash
+chmod +x setup-appwrite.sh  # On Unix-based systems
+./setup-appwrite.sh
+```
+
+The script will create:
+- Database (event_logistics_db)
+- Collections (events, venues, tasks, inventory)
+- Storage buckets (event_documents, user_avatars)
+- Teams (organizers, staff)
+- Password reset function
+
+## Deployment
+
+### Netlify Deployment
+
+1. Create netlify.toml in the project root:
+```toml
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+```
+
+2. Configure Environment Variables in Netlify:
+- APPWRITE_ENDPOINT
+- APPWRITE_PROJECT_ID
+- APPWRITE_API_KEY
+
+3. Deploy to Netlify:
+- Connect your GitHub repository
+- Configure build settings:
+  - Build command: npm run build
+  - Publish directory: build
+
+4. Update Appwrite Settings:
+- Set password reset URL to your Netlify domain
+- Configure OAuth redirect URLs if using OAuth providers
+- Update team invitation URLs
+
 ## Project Structure
 
 ```
@@ -180,6 +241,46 @@ All services include comprehensive error handling:
 - Test all API endpoints
 - Verify error handling
 - Check security measures
+
+## Post-Deployment Configuration
+
+1. Appwrite Console Settings:
+- Configure collection attributes and indexes
+- Set up team permissions
+- Enable required authentication methods
+- Configure storage bucket permissions
+
+2. Environment Variables:
+- Verify all environment variables are set
+- Test authentication flows
+- Confirm file upload functionality
+
+3. Security Checks:
+- Test password reset flow
+- Verify team permissions
+- Check file access controls
+
+## Troubleshooting
+
+1. Authentication Issues:
+- Verify environment variables
+- Check OAuth configuration
+- Confirm password reset URLs
+
+2. Database Access:
+- Verify collection permissions
+- Check team memberships
+- Confirm API key permissions
+
+3. File Storage:
+- Check bucket permissions
+- Verify file size limits
+- Confirm supported file types
+
+4. Team Management:
+- Verify team creation
+- Check membership roles
+- Test invitation flows
 
 ## Contributing
 
