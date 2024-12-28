@@ -1,0 +1,95 @@
+.datasetGroup,
+.datasetParent {
+  position: absolute;
+  width: 57.78%;
+  top: 38.3px;
+  right: 21.26%;
+  left: 20.97%;
+  height: 9.1px;
+}
+.datasetGroup {
+  width: 25.43%;
+  top: 54.7px;
+  right: 37.35%;
+  left: 37.22%;
+}
+.barchartMChild,
+.barchartMItem {
+  position: absolute;
+  top: calc(50% - 49.6px);
+  left: calc(50% - 78.9px);
+  border-radius: 50%;
+  width: 157.4px;
+  height: 157.4px;
+}
+.barchartMItem {
+  top: calc(50% + 133.8px);
+  left: calc(50% - 37.7px);
+  background-color: var(--color-gold);
+  transform: rotate(-115.3deg);
+  transform-origin: 0 0;
+}
+.barchartMInner,
+.ellipseDiv {
+  background-color: var(--color-tomato-100);
+  transform-origin: 0 0;
+}
+.barchartMInner {
+  position: absolute;
+  top: calc(50% + 133.8px);
+  left: calc(50% - 37.7px);
+  border-radius: 50%;
+  width: 157.4px;
+  height: 157.4px;
+  transform: rotate(-115.3deg);
+}
+.ellipseDiv {
+  top: calc(50% + 140.3px);
+  left: calc(50% - 2.6px);
+  transform: rotate(-133.8deg);
+}
+.barchartMChild1,
+.barchartMChild2,
+.barchartMChild3,
+.ellipseDiv {
+  position: absolute;
+  border-radius: 50%;
+  width: 157.4px;
+  height: 157.4px;
+}
+.barchartMChild1 {
+  top: calc(50% + 60.6px);
+  left: calc(50% + 106.6px);
+  background-color: var(--color-darkslategray-200);
+  transform: rotate(151.5deg);
+  transform-origin: 0 0;
+}
+.barchartMChild2,
+.barchartMChild3 {
+  top: calc(50% - 49.6px);
+  left: calc(50% - 78.9px);
+  background-color: var(--color-steelblue);
+}
+.barchartMChild3 {
+  background-color: var(--color-darkslategray-200);
+}
+.barchartM,
+.doughnutChartM {
+  position: absolute;
+  height: 100%;
+  top: 0;
+}
+.barchartM {
+  width: 100%;
+  right: 0.3px;
+  bottom: -0.2px;
+  left: 0;
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+.doughnutChartM {
+  width: calc(100% + 291.5px);
+  right: 0;
+  bottom: 0;
+  left: -291.5px;
+}

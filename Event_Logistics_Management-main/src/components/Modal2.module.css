@@ -1,0 +1,176 @@
+.modalChild {
+  width: 540px;
+  height: 420px;
+  position: relative;
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  display: none;
+  max-width: 100%;
+}
+.frameChild,
+.vehicleDetailsPanel {
+  position: relative;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.vehicleDetailsPanel {
+  width: 327.5px;
+  letter-spacing: -0.03em;
+  line-height: 120%;
+  font-weight: 600;
+  display: inline-block;
+  max-width: calc(100% - 38px);
+}
+.frameChild {
+  width: 17.9px;
+  height: 18px;
+}
+.frameWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-5xs) 0 0;
+}
+.vehicleDetailsPanelParent {
+  width: 448px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+  max-width: 100%;
+}
+.frameItem,
+.modalInner {
+  align-self: stretch;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.frameItem {
+  flex: 1;
+  position: relative;
+  border-top: 1px solid var(--color-lightgray);
+  z-index: 1;
+}
+.modalInner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 0 var(--padding-8xs) var(--padding-9xs);
+}
+.vehicleId {
+  position: relative;
+  letter-spacing: -0.03em;
+  line-height: 140%;
+  font-weight: 600;
+  display: inline-block;
+  min-width: 101px;
+  z-index: 1;
+}
+.driverName {
+  display: inline-block;
+  min-width: 127px;
+}
+.currentSpeed,
+.driverName,
+.eta,
+.status {
+  position: relative;
+  letter-spacing: -0.03em;
+  line-height: 140%;
+  font-weight: 600;
+  z-index: 1;
+}
+.eta,
+.status {
+  display: inline-block;
+  min-width: 60px;
+}
+.status {
+  min-width: 69px;
+}
+.vehicleIdParent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-6xl);
+}
+.ronaldGrey {
+  display: inline-block;
+  min-width: 117px;
+}
+.enRoute,
+.kmperHour,
+.minutes,
+.ronaldGrey {
+  position: relative;
+  letter-spacing: -0.03em;
+  line-height: 140%;
+  z-index: 1;
+}
+.enRoute,
+.minutes {
+  display: inline-block;
+  min-width: 98px;
+}
+.enRoute {
+  min-width: 83px;
+}
+.frameParent,
+.modal {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-31xl);
+  max-width: 100%;
+  font-size: var(--font-size-xl);
+  color: var(--color-darkslategray-100);
+}
+.modal {
+  position: absolute;
+  top: calc(50% - 250px);
+  left: calc(50% - 100px);
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  width: 540px;
+  flex-direction: column;
+  padding: var(--padding-21xl) var(--padding-21xl) var(--padding-31xl);
+  box-sizing: border-box;
+  gap: var(--gap-6xl);
+  z-index: 5;
+  text-align: left;
+  font-size: var(--font-size-7xl);
+  color: var(--color-darkslategray-200);
+  font-family: var(--font-poppins);
+}
+@media screen and (max-width: 450px) {
+  .vehicleDetailsPanel {
+    font-size: var(--font-size-2xl);
+    line-height: 25px;
+  }
+  .currentSpeed,
+  .driverName,
+  .eta,
+  .status,
+  .vehicleId {
+    font-size: var(--font-size-base);
+    line-height: 22px;
+  }
+  .vehicleIdParent {
+    flex: 1;
+  }
+  .enRoute,
+  .kmperHour,
+  .minutes,
+  .ronaldGrey {
+    font-size: var(--font-size-base);
+    line-height: 22px;
+  }
+  .frameParent {
+    flex-wrap: wrap;
+  }
+}

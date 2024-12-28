@@ -1,0 +1,48 @@
+.chartData,
+.chartData1,
+.chartData3,
+.chartData4,
+.chartData6 {
+  position: absolute;
+  top: calc(50% - 55.1px);
+  left: calc(50% - 36.6px);
+  border-radius: 50%;
+  width: 73.3px;
+  height: 73.3px;
+}
+.chartData1,
+.chartData3,
+.chartData4,
+.chartData6 {
+  background-color: var(--color-darkslategray-200);
+}
+.chartData3,
+.chartData4,
+.chartData6 {
+  background-color: var(--color-tomato-100);
+}
+.chartData4,
+.chartData6 {
+  background-color: var(--color-gold);
+}
+.chartData6 {
+  background-color: var(--color-steelblue);
+}
+.barchartXs,
+.doughnutChartXs {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.barchartXs {
+  right: 0.3px;
+  bottom: -0.2px;
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+.doughnutChartXs {
+  right: 0;
+  bottom: 0;
+}

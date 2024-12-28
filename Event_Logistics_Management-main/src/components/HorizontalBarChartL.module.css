@@ -1,0 +1,256 @@
+.barChart {
+  position: absolute;
+  height: 7.91%;
+  width: 8.6%;
+  top: 33.44%;
+  right: 9.36%;
+  bottom: 58.65%;
+  left: 82.03%;
+}
+.verticalAxisIcon,
+.verticalAxisIcon1 {
+  position: absolute;
+  width: 0.07%;
+  top: 44.6px;
+  right: 84.15%;
+  left: 15.78%;
+  max-width: 100%;
+  overflow: hidden;
+  height: 173.3px;
+}
+.verticalAxisIcon1 {
+  right: 69.61%;
+  left: 30.32%;
+}
+.verticalAxisIcon2,
+.verticalAxisIcon3,
+.verticalAxisIcon4,
+.verticalAxisIcon5,
+.verticalAxisIcon6 {
+  position: absolute;
+  width: 0.07%;
+  top: 44.6px;
+  right: 55.09%;
+  left: 44.84%;
+  max-width: 100%;
+  overflow: hidden;
+  height: 173.3px;
+}
+.verticalAxisIcon3,
+.verticalAxisIcon4,
+.verticalAxisIcon5,
+.verticalAxisIcon6 {
+  right: 40.64%;
+  left: 59.29%;
+}
+.verticalAxisIcon4,
+.verticalAxisIcon5,
+.verticalAxisIcon6 {
+  right: 26.1%;
+  left: 73.83%;
+}
+.verticalAxisIcon5,
+.verticalAxisIcon6 {
+  width: 59.77%;
+  top: 210.1px;
+  right: 26.17%;
+  left: 14.06%;
+  height: 0.4px;
+}
+.verticalAxisIcon6 {
+  top: 186.4px;
+}
+.verticalAxisIcon10,
+.verticalAxisIcon11,
+.verticalAxisIcon12,
+.verticalAxisIcon7,
+.verticalAxisIcon8,
+.verticalAxisIcon9 {
+  position: absolute;
+  width: 59.77%;
+  top: 162.7px;
+  right: 26.17%;
+  left: 14.06%;
+  max-width: 100%;
+  overflow: hidden;
+  height: 0.4px;
+}
+.verticalAxisIcon10,
+.verticalAxisIcon11,
+.verticalAxisIcon12,
+.verticalAxisIcon8,
+.verticalAxisIcon9 {
+  top: 139px;
+}
+.verticalAxisIcon10,
+.verticalAxisIcon11,
+.verticalAxisIcon12,
+.verticalAxisIcon9 {
+  top: 115.7px;
+}
+.verticalAxisIcon10,
+.verticalAxisIcon11,
+.verticalAxisIcon12 {
+  top: 92px;
+}
+.verticalAxisIcon11,
+.verticalAxisIcon12 {
+  top: 68.3px;
+}
+.verticalAxisIcon12 {
+  top: 44.6px;
+}
+.barIcon,
+.barIcon1,
+.barIcon2,
+.barIcon3,
+.barIcon4 {
+  position: absolute;
+  width: 22.19%;
+  top: 48.1px;
+  right: 55.16%;
+  left: 22.65%;
+  max-width: 100%;
+  overflow: hidden;
+  height: 7.1px;
+  object-fit: contain;
+}
+.barIcon1,
+.barIcon2,
+.barIcon3,
+.barIcon4 {
+  width: 19.93%;
+  top: 57.7px;
+  right: 35.23%;
+  left: 44.84%;
+}
+.barIcon2,
+.barIcon3,
+.barIcon4 {
+  width: 17.58%;
+  top: 71.8px;
+  right: 55.16%;
+  left: 27.26%;
+}
+.barIcon3,
+.barIcon4 {
+  width: 26.55%;
+  top: 81.4px;
+  left: 18.29%;
+}
+.barIcon4 {
+  width: 10.39%;
+  top: 95.5px;
+  right: 44.77%;
+  left: 44.84%;
+}
+.barIcon10,
+.barIcon11,
+.barIcon12,
+.barIcon13,
+.barIcon5,
+.barIcon6,
+.barIcon7,
+.barIcon8,
+.barIcon9 {
+  position: absolute;
+  width: 11.64%;
+  top: 105.1px;
+  right: 43.52%;
+  left: 44.84%;
+  max-width: 100%;
+  overflow: hidden;
+  height: 7.1px;
+  object-fit: contain;
+}
+.barIcon10,
+.barIcon11,
+.barIcon12,
+.barIcon13,
+.barIcon6,
+.barIcon7,
+.barIcon8,
+.barIcon9 {
+  width: 26.64%;
+  top: 119.2px;
+  right: 28.52%;
+}
+.barIcon10,
+.barIcon11,
+.barIcon12,
+.barIcon13,
+.barIcon7,
+.barIcon8,
+.barIcon9 {
+  width: 7.97%;
+  top: 128.8px;
+  right: 47.19%;
+}
+.barIcon10,
+.barIcon11,
+.barIcon12,
+.barIcon13,
+.barIcon8,
+.barIcon9 {
+  width: 11.96%;
+  top: 142.6px;
+  right: 55.14%;
+  left: 32.9%;
+}
+.barIcon10,
+.barIcon11,
+.barIcon12,
+.barIcon13,
+.barIcon9 {
+  width: 11.64%;
+  top: 152.1px;
+  right: 43.52%;
+  left: 44.84%;
+}
+.barIcon10,
+.barIcon11,
+.barIcon12,
+.barIcon13 {
+  width: 17.58%;
+  top: 166.3px;
+  right: 55.16%;
+  left: 27.26%;
+}
+.barIcon11,
+.barIcon12,
+.barIcon13 {
+  width: 8.75%;
+  top: 175.8px;
+  right: 46.41%;
+  left: 44.84%;
+}
+.barIcon12,
+.barIcon13 {
+  width: 14.45%;
+  top: 190px;
+  right: 40.71%;
+}
+.barIcon13 {
+  width: 1.8%;
+  top: 199.5px;
+  right: 53.36%;
+}
+.barChartParent,
+.horizontalBarChartL {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+}
+.barChartParent {
+  width: 100%;
+  bottom: -0.4px;
+  left: 0;
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+.horizontalBarChartL {
+  width: calc(100% + 452.4px);
+  bottom: 0;
+  left: -452.4px;
+}

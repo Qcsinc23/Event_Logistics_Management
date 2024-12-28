@@ -1,0 +1,107 @@
+.headerChild {
+  height: 60px;
+  width: 1480px;
+  position: relative;
+  border-radius: var(--br-xl) var(--br-xl) 0 0;
+  background-color: var(--color-darkslategray-200);
+  display: none;
+  max-width: 100%;
+}
+.cellBackground {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  border-radius: var(--br-10xs);
+  border: 1px solid var(--color-white);
+  box-sizing: border-box;
+  z-index: 1;
+}
+.deliveryIdCell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-7xs) 0 0;
+}
+.deliveryId {
+  position: relative;
+  letter-spacing: -0.03em;
+  line-height: 160%;
+  font-weight: 600;
+  display: inline-block;
+  min-width: 102px;
+  z-index: 1;
+}
+.headerRow {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-xl);
+}
+.relatedEvent,
+.status {
+  position: relative;
+  letter-spacing: -0.03em;
+  line-height: 160%;
+  font-weight: 600;
+  z-index: 1;
+}
+.status {
+  display: inline-block;
+  min-width: 64px;
+}
+.headerItems {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-21xl);
+  max-width: 100%;
+}
+.eta {
+  position: relative;
+  letter-spacing: -0.03em;
+  line-height: 160%;
+  font-weight: 600;
+  display: inline-block;
+  min-width: 37px;
+  z-index: 1;
+}
+.header {
+  align-self: stretch;
+  border-radius: var(--br-xl) var(--br-xl) 0 0;
+  background-color: var(--color-darkslategray-200);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-sm) var(--padding-7xl);
+  box-sizing: border-box;
+  gap: var(--gap-58xl);
+  max-width: 100%;
+  z-index: 1;
+  text-align: left;
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  font-family: var(--font-poppins);
+}
+@media screen and (max-width: 1350px) {
+  .header {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .headerItems {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 450px) {
+  .deliveryId,
+  .eta,
+  .relatedEvent,
+  .status {
+    font-size: var(--font-size-base);
+    line-height: 26px;
+  }
+}

@@ -1,0 +1,80 @@
+.datasetParent {
+  position: absolute;
+  width: 71.75%;
+  top: 38.3px;
+  right: 14.22%;
+  left: 14.03%;
+  height: 9.1px;
+}
+.barchartLChild {
+  position: absolute;
+  top: calc(50% - 61.8px);
+  left: calc(50% - 88.9px);
+  border-radius: 50%;
+  width: 177.5px;
+  height: 177.5px;
+}
+.barchartLInner,
+.barchartLItem,
+.ellipseDiv {
+  position: absolute;
+  top: calc(50% + 145.1px);
+  left: calc(50% - 42.5px);
+  border-radius: 50%;
+  background-color: var(--color-gold);
+  width: 177.6px;
+  height: 177.6px;
+  transform: rotate(-115.3deg);
+  transform-origin: 0 0;
+}
+.barchartLInner,
+.ellipseDiv {
+  top: calc(50% + 152.5px);
+  left: calc(50% - 2.9px);
+  background-color: var(--color-tomato-100);
+  transform: rotate(-133.8deg);
+}
+.ellipseDiv {
+  top: calc(50% + 62.6px);
+  left: calc(50% + 120.3px);
+  background-color: var(--color-darkslategray-200);
+  transform: rotate(151.5deg);
+}
+.barchartLChild1,
+.barchartLChild2,
+.barchartLChild3 {
+  position: absolute;
+  top: calc(50% - 61.8px);
+  left: calc(50% - 88.9px);
+  border-radius: 50%;
+  background-color: var(--color-steelblue);
+  width: 177.5px;
+  height: 177.5px;
+}
+.barchartLChild2,
+.barchartLChild3 {
+  background-color: var(--color-tomato-100);
+}
+.barchartLChild3 {
+  background-color: var(--color-darkslategray-200);
+}
+.barchartL,
+.doughnutChartL {
+  position: absolute;
+  height: 100%;
+  top: 0;
+}
+.barchartL {
+  width: 100%;
+  right: 0.3px;
+  bottom: -0.2px;
+  left: 0;
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+.doughnutChartL {
+  width: calc(100% + 388.7px);
+  right: 0.1px;
+  bottom: 0;
+  left: -388.8px;
+}

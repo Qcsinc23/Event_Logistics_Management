@@ -1,0 +1,705 @@
+.dashboardLogistics,
+.routePlanning1 {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  display: inline-block;
+  max-width: 100%;
+}
+.routePlanning1 {
+  margin: 0;
+  width: 761px;
+  font-size: inherit;
+  letter-spacing: -0.03em;
+  line-height: 120%;
+  font-weight: 600;
+  font-family: inherit;
+}
+.mapChild,
+.maskGroupIcon {
+  position: absolute;
+  margin: 0 !important;
+}
+.maskGroupIcon {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+}
+.mapChild {
+  height: 45.1px;
+  width: 45px;
+  top: 300px;
+  right: 182px;
+  z-index: 1;
+}
+.locationsChild {
+  width: 45.3px;
+  height: 45.3px;
+  position: relative;
+  z-index: 1;
+}
+.deepNestedLocationChild,
+.frameChild {
+  width: 45px;
+  height: 45.1px;
+  position: relative;
+  z-index: 1;
+}
+.frameChild {
+  height: 45.3px;
+  width: 45.3px;
+}
+.deepNestedLocationInner {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.deepNestedLocation {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 81.9px;
+}
+.locations,
+.nestedLocation {
+  width: 245.3px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 63px 169px;
+  box-sizing: border-box;
+}
+.locations {
+  height: 695.3px;
+  width: 268.3px;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 0 0 398px;
+  gap: 79.7px;
+}
+.dropoffIcon,
+.dropoffNameChild {
+  position: absolute;
+  margin: 0 !important;
+}
+.dropoffIcon {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  z-index: 2;
+}
+.dropoffNameChild {
+  height: 45.3px;
+  width: 37.2px;
+  top: -19px;
+  left: -12px;
+  z-index: 1;
+}
+.dropOffLocation {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 600;
+  display: inline-block;
+  min-width: 122px;
+  z-index: 3;
+}
+.dropoffName {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+}
+.sauerLock {
+  position: relative;
+  font-size: var(--body-size);
+  letter-spacing: -0.02em;
+  line-height: 120%;
+  color: var(--color-darkslategray-300);
+  z-index: 3;
+}
+.dropoffMarker {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-smi) var(--padding-lgi) var(--padding-5xl);
+  position: relative;
+  gap: var(--gap-8xs);
+}
+.frameItem {
+  height: 45.1px;
+  width: 45px;
+  position: relative;
+  z-index: 1;
+}
+.dropoffInfoInner {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 var(--padding-xl) 0 var(--padding-2xl);
+}
+.dropoffInfo {
+  width: 242px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: var(--gap-3xs);
+  flex-shrink: 0;
+}
+.secondDropoffChild {
+  width: 37.2px;
+  height: 45.3px;
+  position: relative;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.secondDropoff {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 0 1.8px;
+}
+.dropoffContent {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  max-width: 100%;
+  gap: var(--gap-xl);
+}
+.additionalMarker,
+.dropoffDetails {
+  display: flex;
+  align-items: flex-start;
+}
+.dropoffDetails {
+  width: 371px;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 0 var(--padding-5xs);
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.additionalMarker {
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: var(--padding-10xs) 0 0;
+}
+.moreMarkersChild {
+  height: 45.3px;
+  width: 45.3px;
+  position: absolute;
+  margin: 0 !important;
+  right: 159.7px;
+  bottom: 0;
+  z-index: 1;
+}
+.moreMarkersItem {
+  height: 45.1px;
+  width: 45px;
+  position: relative;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.moreMarkers,
+.pickupContainerParent {
+  align-self: stretch;
+  display: flex;
+  align-items: flex-start;
+}
+.moreMarkers {
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 0 77px;
+  position: relative;
+  gap: var(--gap-xl);
+}
+.pickupContainerParent {
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 18.7px;
+}
+.dropoffContainer,
+.dropoffContainerWrapper,
+.map {
+  display: flex;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.dropoffContainer {
+  align-self: stretch;
+  height: 578.3px;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 0 0 433.2px;
+  gap: 143.9px;
+}
+.dropoffContainerWrapper,
+.map {
+  align-items: flex-start;
+}
+.dropoffContainerWrapper {
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: var(--padding-4xl) 0 0;
+  min-width: 409px;
+}
+.map {
+  align-self: stretch;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: var(--padding-12xl) 49px 73.7px 70px;
+  position: relative;
+  gap: var(--gap-xl);
+  font-size: var(--name-size);
+}
+.planningContent {
+  align-self: stretch;
+  gap: var(--gap-11xl);
+  font-size: var(--font-size-11xl);
+}
+.innerContent,
+.mainContent,
+.planningContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.innerContent {
+  align-self: stretch;
+  gap: var(--gap-29xl);
+}
+.mainContent {
+  flex: 1;
+  padding: var(--padding-lg) 0 0;
+  box-sizing: border-box;
+}
+.routeDetailsChild {
+  width: 400px;
+  height: 514px;
+  position: relative;
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.05);
+  border-radius: var(--br-11xl);
+  background-color: var(--color-white);
+  display: none;
+  max-width: 100%;
+  z-index: 0;
+}
+.routeDetails1 {
+  align-self: stretch;
+  position: relative;
+  font-size: var(--font-size-7xl);
+  letter-spacing: -0.03em;
+  line-height: 120%;
+  font-weight: 600;
+  color: var(--color-darkslategray-200);
+  z-index: 1;
+}
+.routeDetailsItem {
+  width: 1px;
+  height: 182px;
+  position: absolute;
+  margin: 0 !important;
+  top: 93px;
+  left: 47px;
+  border-right: 1px dashed var(--color-darkgray);
+  box-sizing: border-box;
+  z-index: 1;
+}
+.routeLocationsChild {
+  height: 14px;
+  width: 14px;
+  position: relative;
+  border-radius: 50%;
+  background-color: var(--color-darkslategray-200);
+  z-index: 2;
+}
+.steuberMissionMichaelaside {
+  margin: 0;
+  line-height: 120%;
+}
+.terrellTowne {
+  margin: 0;
+  font-size: var(--name-size);
+  line-height: 180%;
+  font-weight: 600;
+}
+.steuberMissionMichaelasideContainer {
+  flex: 1;
+  position: relative;
+  letter-spacing: -0.02em;
+  z-index: 1;
+}
+.routeLocations {
+  align-self: stretch;
+  height: 67px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-xl);
+}
+.routeLocationsInner,
+.routeLocationsItem {
+  height: 14px;
+  width: 14px;
+  position: relative;
+  border-radius: 50%;
+  z-index: 2;
+}
+.routeLocationsItem {
+  background-color: var(--color-tomato-100);
+}
+.routeLocationsInner {
+  background-color: #6333ff;
+}
+.buttonChild {
+  height: 50px;
+  width: 180px;
+  position: relative;
+  border-radius: var(--br-3xs);
+  border: 1px solid var(--color-darkgray);
+  box-sizing: border-box;
+  display: none;
+}
+.autoOptimize {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 600;
+  white-space: nowrap;
+  z-index: 1;
+}
+.button,
+.buttonItem {
+  height: 50px;
+  border-radius: var(--br-3xs);
+  border: 1px solid var(--color-darkgray);
+  box-sizing: border-box;
+}
+.button {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-3xs) var(--padding-6xl) var(--padding-2xs)
+    var(--padding-7xl);
+  z-index: 1;
+}
+.buttonItem {
+  width: 120px;
+  position: relative;
+  display: none;
+}
+.reverse {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 600;
+  display: inline-block;
+  min-width: 72px;
+  z-index: 1;
+}
+.button1,
+.routeButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.button1 {
+  height: 50px;
+  border-radius: var(--br-3xs);
+  border: 1px solid var(--color-darkgray);
+  box-sizing: border-box;
+  padding: var(--padding-3xs) var(--padding-5xl) var(--padding-2xs)
+    var(--padding-6xl);
+  z-index: 1;
+}
+.routeButtons {
+  align-self: stretch;
+  gap: var(--gap-xl);
+  font-size: var(--font-size-lg);
+  color: var(--color-darkgray);
+}
+.buttonInner {
+  height: 50px;
+  width: 318px;
+  position: relative;
+  border-radius: var(--br-3xs);
+  border: 1px solid var(--color-darkgray);
+  box-sizing: border-box;
+  display: none;
+}
+.manuallyReorderStops {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 600;
+  z-index: 1;
+}
+.button2 {
+  align-self: stretch;
+  height: 50px;
+  border-radius: var(--br-3xs);
+  border: 1px solid var(--color-darkgray);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-3xs) var(--padding-35xl) var(--padding-2xs);
+  z-index: 1;
+  font-size: var(--font-size-lg);
+  color: var(--color-darkgray);
+}
+.routeDetails,
+.vehicleSelectionChild {
+  position: relative;
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.05);
+  border-radius: var(--br-11xl);
+  background-color: var(--color-white);
+  max-width: 100%;
+}
+.routeDetails {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-21xl) var(--padding-20xl) var(--padding-21xl)
+    var(--padding-21xl);
+  box-sizing: border-box;
+  gap: var(--gap-xl);
+}
+.vehicleSelectionChild {
+  width: 400px;
+  height: 182px;
+  display: none;
+}
+.vehicleSelection1 {
+  align-self: stretch;
+  position: relative;
+  letter-spacing: -0.03em;
+  line-height: 120%;
+  font-weight: 600;
+  z-index: 1;
+}
+.button3 {
+  width: 318px;
+  height: 50px;
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  font-size: var(--font-size-lg);
+  color: var(--color-darkgray);
+  z-index: 1;
+}
+.vehicleSelection {
+  align-self: stretch;
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.05);
+  border-radius: var(--br-11xl);
+  background-color: var(--color-white);
+  align-items: flex-start;
+  padding: var(--padding-21xl) var(--padding-20xl) var(--padding-21xl)
+    var(--padding-21xl);
+  box-sizing: border-box;
+  gap: var(--gap-lgi);
+  font-size: var(--font-size-7xl);
+  color: var(--color-darkslategray-200);
+}
+.routePanel,
+.userPanel,
+.vehicleSelection {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.routePanel {
+  align-self: stretch;
+  align-items: flex-start;
+  gap: var(--gap-21xl);
+}
+.userPanel {
+  width: 400px;
+  align-items: flex-end;
+  gap: 98px;
+  font-size: var(--font-size-base);
+  color: var(--color-darkslategray-300);
+}
+.mainContentParent {
+  align-self: stretch;
+  flex-direction: row;
+  gap: var(--gap-21xl);
+  max-width: 100%;
+  text-align: left;
+  font-size: var(--font-size-lg);
+  color: var(--color-darkslategray-100);
+  font-family: var(--font-poppins);
+}
+.mainContentParent,
+.pageContent,
+.routePlanning {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.pageContent {
+  width: 1480px;
+  flex-direction: column;
+  padding: var(--padding-21xl) 0 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.routePlanning {
+  width: 100%;
+  position: relative;
+  background-color: var(--color-whitesmoke);
+  overflow: hidden;
+  flex-direction: row;
+  gap: var(--gap-31xl);
+  line-height: normal;
+  letter-spacing: normal;
+}
+@media screen and (max-width: 1800px) {
+  .routePlanning {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 1350px) {
+  .dropoffContainer {
+    padding-bottom: 282px;
+    box-sizing: border-box;
+  }
+  .map {
+    padding-left: var(--padding-16xl);
+    padding-right: var(--padding-5xl);
+    box-sizing: border-box;
+  }
+  .userPanel {
+    flex: 1;
+  }
+  .mainContentParent {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 900px) {
+  .routePlanning1 {
+    font-size: var(--font-size-5xl);
+    line-height: 29px;
+  }
+  .locations {
+    flex: 1;
+    padding-bottom: 259px;
+    box-sizing: border-box;
+  }
+  .dropoffContainer {
+    padding-bottom: 183px;
+    box-sizing: border-box;
+  }
+  .dropoffContainerWrapper {
+    flex: 1;
+    min-width: 100%;
+  }
+  .map {
+    flex-wrap: wrap;
+    padding-top: var(--padding-xl);
+    padding-bottom: 48px;
+    box-sizing: border-box;
+  }
+  .innerContent {
+    gap: var(--gap-5xl);
+  }
+  .mainContent {
+    min-width: 100%;
+  }
+  .routeDetails {
+    padding-top: var(--padding-7xl);
+    padding-bottom: var(--padding-7xl);
+    box-sizing: border-box;
+  }
+  .mainContentParent {
+    gap: var(--gap-xl);
+  }
+  .routePlanning {
+    gap: var(--gap-6xl);
+  }
+}
+@media screen and (max-width: 450px) {
+  .routePlanning1 {
+    font-size: var(--font-size-lg);
+    line-height: 22px;
+  }
+  .locations {
+    gap: var(--gap-21xl);
+    padding-bottom: 168px;
+    box-sizing: border-box;
+  }
+  .dropoffContent,
+  .moreMarkers {
+    flex-wrap: wrap;
+  }
+  .dropoffContainer {
+    height: auto;
+    gap: 72px;
+  }
+  .map {
+    padding-bottom: var(--padding-12xl);
+    box-sizing: border-box;
+  }
+  .routeDetails1 {
+    font-size: var(--font-size-2xl);
+    line-height: 25px;
+  }
+  .routeButtons,
+  .routeLocations {
+    flex-wrap: wrap;
+  }
+  .button2 {
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+    box-sizing: border-box;
+  }
+  .vehicleSelection1 {
+    font-size: var(--font-size-2xl);
+    line-height: 25px;
+  }
+  .routePanel {
+    gap: var(--gap-xl);
+  }
+  .userPanel {
+    gap: var(--gap-30xl);
+    min-width: 100%;
+  }
+}

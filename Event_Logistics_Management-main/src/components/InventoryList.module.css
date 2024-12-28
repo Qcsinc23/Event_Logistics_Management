@@ -1,0 +1,326 @@
+.inventoryManagement {
+  margin: 0;
+  position: absolute;
+  top: 6px;
+  left: 0;
+  font-size: var(--font-size-11xl);
+  letter-spacing: -0.03em;
+  line-height: 120%;
+  font-weight: 600;
+  font-family: var(--font-poppins);
+  color: var(--color-darkslategray-100);
+  text-align: left;
+}
+.button,
+.button1,
+.button2,
+.button3 {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 1280px;
+}
+.button1,
+.button2,
+.button3 {
+  left: 800px;
+}
+.button2,
+.button3 {
+  left: 960px;
+}
+.button3 {
+  left: 1120px;
+}
+.actions,
+.filterChild {
+  position: absolute;
+  top: 131px;
+  left: 390px;
+  width: 1480px;
+  height: 50px;
+}
+.filterChild {
+  top: 0;
+  left: 0;
+  box-shadow: 2px 8px 15px rgba(63, 63, 63, 0.1);
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  width: 100%;
+  height: 100%;
+}
+.category,
+.enterName {
+  position: absolute;
+  top: 25px;
+}
+.enterName {
+  border: 0;
+  background-color: transparent;
+  left: 25px;
+  font-family: var(--font-poppins);
+  font-size: var(--font-size-lg);
+  color: var(--color-darkgray);
+}
+.category {
+  left: 430px;
+}
+.category,
+.location,
+.supplier {
+  font-family: var(--font-poppins);
+  font-size: var(--font-size-lg);
+  color: var(--color-darkgray);
+}
+.supplier {
+  position: absolute;
+  top: 25px;
+  left: 670px;
+}
+.location {
+  left: 910px;
+}
+.button4,
+.filter,
+.location,
+.status {
+  position: absolute;
+  top: 25px;
+}
+.status {
+  left: 1150px;
+  font-family: var(--font-poppins);
+  font-size: var(--font-size-lg);
+  color: var(--color-darkgray);
+}
+.button4,
+.filter {
+  left: 1330px;
+}
+.filter {
+  top: 211px;
+  left: 390px;
+  width: 1480px;
+  height: 100px;
+}
+.inventoryList1,
+.sort,
+.sortBy {
+  position: absolute;
+  font-family: var(--font-poppins);
+}
+.inventoryList1 {
+  margin: 0;
+  top: 357px;
+  left: 390px;
+  font-size: var(--font-size-11xl);
+  letter-spacing: -0.03em;
+  line-height: 120%;
+  font-weight: 600;
+  color: var(--color-darkslategray-100);
+  text-align: left;
+}
+.sort,
+.sortBy {
+  font-size: var(--font-size-lg);
+}
+.sortBy {
+  top: 13px;
+  left: 0;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 600;
+  color: var(--color-darkslategray-100);
+  text-align: left;
+  display: inline-block;
+  min-width: 67px;
+}
+.sort {
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 87px;
+  font-weight: 500;
+  color: var(--color-darkgray);
+}
+.sortFilter {
+  position: absolute;
+  top: 351px;
+  left: 1603px;
+  width: 267px;
+  height: 50px;
+}
+.result,
+.span {
+  font-family: var(--font-poppins);
+}
+.span {
+  font-weight: 600;
+}
+.pageInput,
+.result1Container {
+  position: absolute;
+  font-size: var(--font-size-lg);
+  color: var(--color-darkslategray-100);
+}
+.result1Container {
+  top: 8px;
+  left: 0;
+  letter-spacing: -0.03em;
+  line-height: 160%;
+  text-align: left;
+}
+.pageInput {
+  top: 0;
+  left: 166px;
+  font-family: var(--font-poppins);
+  font-weight: 600;
+}
+.pageNumberButtons {
+  position: absolute;
+  top: 0;
+  left: 61px;
+}
+.pageNumberButtons1,
+.pageNumberButtons2 {
+  position: absolute;
+  top: 0;
+  left: 122px;
+}
+.pageNumberButtons2 {
+  left: 183px;
+}
+.pageNumberButtons3,
+.pageNumberButtons4 {
+  position: absolute;
+  top: 0;
+  left: 244px;
+}
+.pageNumberButtons4 {
+  left: 305px;
+}
+.pageNumber,
+.pageNumberButtons5,
+.pageNumberButtons6,
+.pageNumberButtons7,
+.pageNumberButtons8 {
+  position: absolute;
+  top: 8px;
+  font-size: var(--font-size-lg);
+  letter-spacing: -0.03em;
+  line-height: 160%;
+  font-family: var(--font-poppins);
+  text-align: left;
+  display: inline-block;
+}
+.pageNumber {
+  left: 75px;
+  font-weight: 600;
+  color: var(--color-white);
+  min-width: 18px;
+}
+.pageNumberButtons5,
+.pageNumberButtons6,
+.pageNumberButtons7,
+.pageNumberButtons8 {
+  left: 134px;
+  color: var(--color-darkgray);
+  min-width: 22px;
+}
+.pageNumberButtons6,
+.pageNumberButtons7,
+.pageNumberButtons8 {
+  left: 195px;
+}
+.pageNumberButtons7,
+.pageNumberButtons8 {
+  left: 255px;
+  min-width: 23px;
+}
+.pageNumberButtons8 {
+  left: 316px;
+}
+.pageButton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-3xs);
+  border: 1px solid var(--color-silver);
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+.pageNumberButtonsChild {
+  position: absolute;
+  top: 23px;
+  left: 16px;
+  width: 14px;
+  height: 0;
+  object-fit: contain;
+}
+.pageNumberButtons9,
+.pageNumberButtonsItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45px;
+  height: 45px;
+}
+.pageNumberButtonsItem {
+  border-radius: var(--br-3xs);
+  border: 1px solid var(--color-darkslategray-200);
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+.pageNumberButtonsInner {
+  position: absolute;
+  top: 23px;
+  left: 16px;
+  width: 14px;
+  height: 14.7px;
+}
+.pageNumberButtons10,
+.pagination,
+.paginationButtons {
+  position: absolute;
+  top: 0;
+  left: 366px;
+  width: 45px;
+  height: 45px;
+}
+.pagination,
+.paginationButtons {
+  left: 1069px;
+  width: 411px;
+}
+.pagination {
+  top: 1301px;
+  left: 390px;
+  width: 1480px;
+}
+.inventoryList {
+  margin: 0;
+  width: 1920px;
+  height: 1420px;
+  background-color: var(--color-whitesmoke);
+  max-width: 100%;
+  overflow: hidden;
+  line-height: normal;
+  letter-spacing: normal;
+}
+@media screen and (max-width: 767px) {
+  .inventoryList1,
+  .inventoryManagement {
+    font-size: var(--font-size-5xl);
+    line-height: 29px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .inventoryList1,
+  .inventoryManagement {
+    font-size: var(--font-size-lg);
+    line-height: 22px;
+  }
+}

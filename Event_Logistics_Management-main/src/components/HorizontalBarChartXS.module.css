@@ -1,0 +1,131 @@
+.xSValueAxis,
+.xSVerticalAxis {
+  max-width: 100%;
+  overflow: hidden;
+}
+.xSVerticalAxis {
+  position: absolute;
+  width: 71.1%;
+  top: 93px;
+  right: 9.22%;
+  left: 19.68%;
+  height: 0.4px;
+}
+.xSValueAxis {
+  width: 0.07%;
+  right: 76.8%;
+  left: 23.13%;
+}
+.frameChild,
+.frameItem,
+.monthSmallIcon,
+.xSValueAxis {
+  position: absolute;
+  top: 89.1px;
+  height: 7.8px;
+}
+.frameChild {
+  width: 0.07%;
+  right: 43.06%;
+  left: 56.87%;
+  max-width: 100%;
+  overflow: hidden;
+}
+.frameItem,
+.monthSmallIcon {
+  left: 90.62%;
+  width: 0;
+}
+.monthSmallIcon {
+  width: 21.36%;
+  top: 99.4px;
+  right: 66.18%;
+  left: 12.46%;
+  max-width: 100%;
+  overflow: hidden;
+  height: 13.4px;
+  object-fit: contain;
+}
+.barIcon,
+.barIcon1,
+.barIcon2,
+.barIcon3,
+.monthSmallIcon1,
+.monthSmallIcon2 {
+  position: absolute;
+  width: 21.41%;
+  top: 100px;
+  right: 32.46%;
+  left: 46.13%;
+  max-width: 100%;
+  overflow: hidden;
+  height: 13.5px;
+  object-fit: contain;
+}
+.barIcon,
+.barIcon1,
+.barIcon2,
+.barIcon3,
+.monthSmallIcon2 {
+  right: -1.31%;
+  left: 79.89%;
+}
+.barIcon,
+.barIcon1,
+.barIcon2,
+.barIcon3 {
+  width: 16.87%;
+  top: 92px;
+  right: 43.13%;
+  left: 40%;
+  height: 0.4px;
+}
+.barIcon1,
+.barIcon2,
+.barIcon3 {
+  top: 90.6px;
+  right: 26.25%;
+  left: 56.87%;
+}
+.barIcon2,
+.barIcon3 {
+  width: 8.45%;
+  top: 91.3px;
+  right: 34.68%;
+}
+.barIcon3 {
+  width: 19.06%;
+  top: 92.7px;
+  right: 24.06%;
+}
+.datasetParent {
+  position: absolute;
+  height: 7.92%;
+  width: 8.6%;
+  top: 13.13%;
+  right: 45.71%;
+  bottom: 78.95%;
+  left: 45.69%;
+  text-align: left;
+  font-size: var(--body-size);
+}
+.horizontalBarChartXs,
+.xSVerticalAxisParent {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+.xSVerticalAxisParent {
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+.horizontalBarChartXs {
+  bottom: 0;
+  text-align: center;
+  font-size: var(--name-size);
+  color: var(--text-grey);
+  font-family: var(--body);
+}

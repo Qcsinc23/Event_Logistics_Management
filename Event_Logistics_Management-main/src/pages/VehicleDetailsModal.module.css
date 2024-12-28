@@ -1,0 +1,214 @@
+.dashboardDelivery {
+  position: absolute;
+  top: 58px;
+  left: 390px;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  color: var(--color-darkslategray-100);
+  display: inline-block;
+  width: 357px;
+  height: 25px;
+}
+.deliveryIcon {
+  position: absolute;
+  top: 56px;
+  left: 1581px;
+  width: 30px;
+  height: 29.9px;
+}
+.deliveryTracking {
+  margin: 0;
+  position: absolute;
+  top: 137px;
+  left: 390px;
+  font-size: var(--font-size-11xl);
+  letter-spacing: -0.03em;
+  line-height: 120%;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--color-darkslategray-100);
+  display: inline-block;
+  width: 761px;
+  height: 38px;
+}
+.buttonChild {
+  height: 50px;
+  width: 160px;
+  position: relative;
+  border-radius: var(--br-3xs);
+  border: 1px solid var(--color-darkgray);
+  box-sizing: border-box;
+  display: none;
+}
+.vectorIcon {
+  width: 24px;
+  height: 22px;
+  position: relative;
+  z-index: 1;
+}
+.vectorWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-11xs) 0 0;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+}
+.filterMap {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 500;
+  display: inline-block;
+  min-width: 87px;
+  z-index: 1;
+}
+.button,
+.buttonItem {
+  height: 50px;
+  border-radius: var(--br-3xs);
+  border: 1px solid var(--color-darkgray);
+  box-sizing: border-box;
+}
+.button {
+  position: absolute;
+  top: 131px;
+  left: 1330px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-3xs) var(--padding-mid) var(--padding-2xs)
+    var(--padding-xl);
+  gap: var(--gap-3xs);
+}
+.buttonItem {
+  width: 180px;
+  position: relative;
+  display: none;
+}
+.vectorIcon1 {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  z-index: 1;
+}
+.vectorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-12xs) 0 0;
+}
+.refreshMap {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 500;
+  display: inline-block;
+  min-width: 111px;
+  z-index: 1;
+}
+.button1 {
+  position: absolute;
+  top: 131px;
+  left: 1510px;
+  border-radius: var(--br-3xs);
+  border: 1px solid var(--color-darkgray);
+  box-sizing: border-box;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-3xs) var(--padding-mini) var(--padding-2xs)
+    var(--padding-lg);
+  gap: var(--gap-3xs);
+}
+.outIcon {
+  width: 25.4px;
+  height: 20.4px;
+  position: relative;
+  z-index: 1;
+}
+.outWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-10xs) 0 0;
+}
+.legends {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 500;
+  display: inline-block;
+  min-width: 75px;
+  z-index: 1;
+}
+.button2 {
+  position: absolute;
+  top: 131px;
+  left: 1710px;
+  border-radius: var(--br-3xs);
+  border: 1px solid var(--color-darkgray);
+  box-sizing: border-box;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-3xs) var(--padding-5xl) var(--padding-2xs);
+  gap: var(--gap-3xs-6);
+}
+.bg,
+.modalBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.modalBackground {
+  background-color: var(--color-gainsboro);
+  mix-blend-mode: multiply;
+  z-index: 4;
+}
+.bg {
+  max-width: 100%;
+  text-align: left;
+  font-size: var(--font-size-lg);
+  color: var(--color-darkgray);
+  font-family: var(--font-poppins);
+}
+.vehicleDetailsModal {
+  width: 100%;
+  height: 1080px;
+  position: relative;
+  background-color: var(--color-whitesmoke);
+  overflow: hidden;
+  line-height: normal;
+  letter-spacing: normal;
+}
+@media screen and (max-width: 1050px) {
+  .bg,
+  .vehicleDetailsModal {
+    height: auto;
+    min-height: 1080;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .deliveryTracking {
+    font-size: var(--font-size-5xl);
+    line-height: 29px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .deliveryTracking {
+    font-size: var(--font-size-lg);
+    line-height: 22px;
+  }
+}

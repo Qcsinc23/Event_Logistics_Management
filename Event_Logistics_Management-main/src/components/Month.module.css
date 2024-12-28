@@ -1,0 +1,22 @@
+.january {
+  width: 16px;
+  position: relative;
+  display: inline-block;
+}
+.month {
+  position: absolute;
+  height: 1.47%;
+  width: 2.83%;
+  top: 28.91%;
+  right: 80%;
+  bottom: 69.62%;
+  left: 17.17%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: center;
+  font-size: var(--body-size);
+  color: var(--text-grey);
+  font-family: var(--body);
+}

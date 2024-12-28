@@ -1,0 +1,73 @@
+.depotIcon {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  margin: 0 !important;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  z-index: 1;
+}
+.depotLocation,
+.sauerLock {
+  position: relative;
+  letter-spacing: -0.02em;
+  z-index: 2;
+}
+.depotLocation {
+  line-height: 140%;
+  font-weight: 600;
+}
+.sauerLock {
+  font-size: var(--body-size);
+  line-height: 120%;
+  color: var(--color-darkslategray-300);
+}
+.depotDetails {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-smi) var(--padding-lgi) var(--padding-5xl);
+  position: relative;
+  gap: var(--gap-8xs);
+}
+.frameChild {
+  height: 45.3px;
+  width: 45.3px;
+  position: relative;
+  z-index: 1;
+}
+.depotContainerInner {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 var(--padding-2xl) 0 var(--padding-xl);
+}
+.depotContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-sm);
+}
+.depotContainerWrapper {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 var(--padding-7xl) 0 0;
+  text-align: left;
+  font-size: var(--name-size);
+  color: var(--color-darkslategray-100);
+  font-family: var(--font-poppins);
+}
