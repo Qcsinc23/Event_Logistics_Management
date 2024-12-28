@@ -76,15 +76,6 @@
   color: var(--color-darkslategray-100);
   font-family: var(--font-poppins);
 }
-@media screen and (max-width: 900px) {
-  .itemName {
-    font-size: var(--font-size-lgi);
-    line-height: 38px;
-  }
-  .itemNameContainerParent {
-    flex-wrap: wrap;
-  }
-}
 @media screen and (max-width: 450px) {
   .itemName {
     font-size: var(--font-size-lgi);

@@ -322,80 +322,6 @@
   padding: 104px 0 0;
   box-sizing: border-box;
 }
-.ordersIcon {
-  width: 30px;
-  height: 29.9px;
-  position: relative;
-}
-.userIcon {
-  height: 45px;
-  width: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-end;
-  padding: 0 0 var(--padding-base-1);
-  box-sizing: border-box;
-}
-.userChild {
-  width: 224px;
-  position: relative;
-  border-radius: var(--br-81xl);
-  background-color: var(--color-white);
-  height: 61px;
-  display: none;
-}
-.orderlistIcon {
-  height: 40px;
-  width: 40px;
-  position: relative;
-  border-radius: var(--br-481xl);
-  object-fit: cover;
-  z-index: 1;
-}
-.sherwynGraham {
-  width: 136px;
-  height: 22px;
-  position: relative;
-  letter-spacing: -0.02em;
-  line-height: 140%;
-  display: inline-block;
-  flex-shrink: 0;
-  z-index: 1;
-}
-.user,
-.user1,
-.userName {
-  display: flex;
-  justify-content: flex-start;
-}
-.userName {
-  height: 31px;
-  width: 135px;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: var(--padding-4xs) 0 0;
-  box-sizing: border-box;
-}
-.user,
-.user1 {
-  height: 61px;
-  flex-direction: row;
-}
-.user1 {
-  width: 224px;
-  border-radius: var(--br-81xl);
-  background-color: var(--color-white);
-  align-items: flex-start;
-  padding: var(--padding-2xs) var(--padding-xs) var(--padding-3xs);
-  box-sizing: border-box;
-  gap: var(--gap-3xs);
-}
-.user {
-  width: 289px;
-  align-items: flex-end;
-  gap: var(--gap-16xl);
-}
 .filter1 {
   height: 50px;
   width: 180px;
@@ -425,8 +351,6 @@
   flex-direction: column;
   align-items: flex-end;
   gap: var(--gap-11xl);
-  font-size: var(--font-size-base);
-  color: var(--color-darkslategray-300);
 }
 .filters,
 .header {

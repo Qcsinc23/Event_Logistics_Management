@@ -9,6 +9,7 @@ import {
   InputAdornment,
   Button,
 } from "@mui/material";
+import UserContainer from "../components/UserContainer";
 import EventTime from "../components/EventTime";
 import EventRows from "../components/EventRows";
 import styles from "./EventCalendar.module.css";
@@ -156,30 +157,7 @@ const EventCalendar: FunctionComponent = () => {
                 <div className={styles.sortBy}>Sort by:</div>
               </div>
               <div className={styles.userFilter}>
-                <div className={styles.user}>
-                  <div className={styles.userIcon}>
-                    <img
-                      className={styles.ordersIcon}
-                      loading="lazy"
-                      alt=""
-                      src="/vector-12.svg"
-                    />
-                  </div>
-                  <div className={styles.user1}>
-                    <div className={styles.userChild} />
-                    <img
-                      className={styles.orderlistIcon}
-                      loading="lazy"
-                      alt=""
-                      src="/rectangle-2@2x.png"
-                    />
-                    <div className={styles.userName}>
-                      <div
-                        className={styles.sherwynGraham}
-                      >{`Sherwyn Graham `}</div>
-                    </div>
-                  </div>
-                </div>
+                <UserContainer />
                 <div className={styles.dropdownFilters}>
                   <FormControl
                     className={styles.filter1}

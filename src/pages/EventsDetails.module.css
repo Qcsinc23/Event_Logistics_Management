@@ -391,7 +391,6 @@
   letter-spacing: normal;
 }
 @media screen and (max-width: 1800px) {
-  .breadcrumbBarParent,
   .eventsDetails {
     flex-wrap: wrap;
   }
@@ -399,30 +398,6 @@
 @media screen and (max-width: 1350px) {
   .breadcrumbBarParent {
     flex-wrap: wrap;
-  }
-  .eventSummary {
-    font-size: var(--font-size-2xl);
-    line-height: 25px;
-  }
-  .ddMmYyyy,
-  .pm {
-    font-size: var(--font-size-base);
-    line-height: 22px;
-  }
-  .addressParent {
-    gap: 18px;
-  }
-  .summary {
-    padding-top: var(--padding-xl);
-    padding-bottom: var(--padding-7xl);
-    box-sizing: border-box;
-  }
-  .robertSteveCompletedContainer {
-    font-size: var(--font-size-lg);
-    line-height: 35px;
-  }
-  .sidebar {
-    gap: var(--gap-xl);
   }
 }
 @media screen and (max-width: 900px) {
@@ -466,7 +441,7 @@
     line-height: 22px;
   }
   .addressParent {
-    gap: 18px;
+    gap: var(--gap-lg);
   }
   .summary {
     padding-top: var(--padding-xl);
@@ -479,8 +454,5 @@
   }
   .sidebar {
     gap: var(--gap-xl);
-  }
-  .eventsDetails {
-    flex-wrap: wrap;
   }
 }

@@ -294,32 +294,10 @@
   color: var(--color-darkslategray-100);
   font-family: var(--font-poppins);
 }
-@media screen and (max-width: 1350px) {
+@media screen and (max-width: 900px) {
   .leftMenu {
     padding-top: var(--padding-8xl);
     padding-bottom: var(--padding-153xl);
-    box-sizing: border-box;
-  }
-}
-@media screen and (max-width: 900px) {
-  .dashboard,
-  .deliveries,
-  .events,
-  .inventory,
-  .logistics,
-  .overview,
-  .reports,
-  .routePlanning,
-  .settings,
-  .users {
-    font-size: var(--font-size-base);
-    line-height: 22px;
-  }
-  .leftMenu {
-    gap: var(--gap-6xl);
-    padding-left: var(--padding-xl);
-    padding-top: var(--padding-xl);
-    padding-bottom: var(--padding-93xl);
     box-sizing: border-box;
   }
 }

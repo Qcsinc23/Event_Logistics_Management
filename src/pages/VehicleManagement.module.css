@@ -588,7 +588,7 @@
   height: 14px;
   position: relative;
   border-radius: 50%;
-  background-color: #ffeb3b;
+  background-color: var(--color-gold);
   z-index: 1;
 }
 .maintenance {
@@ -702,9 +702,6 @@
   }
 }
 @media screen and (max-width: 1350px) {
-  .vehicleManagement {
-    flex-wrap: wrap;
-  }
   .header {
     gap: 136px;
   }
@@ -712,52 +709,8 @@
   .rowItems {
     flex-wrap: wrap;
   }
-  .dashboard,
-  .deliveries,
-  .events,
-  .inventory,
-  .logistics,
-  .overview,
-  .reports,
-  .settings,
-  .users,
-  .vehicleManagement1 {
-    font-size: var(--font-size-base);
-    line-height: 22px;
-  }
-  .leftMenu {
-    gap: var(--gap-6xl);
-    padding-left: var(--padding-xl);
-    padding-top: var(--padding-xl);
-    padding-bottom: var(--padding-93xl);
-    box-sizing: border-box;
-  }
-  .vehicleManagement2 {
-    font-size: var(--font-size-lg);
-    line-height: 22px;
-  }
-  .actions,
-  .capacity,
-  .status,
-  .type,
-  .vehicleIdname {
-    font-size: var(--font-size-base);
-    line-height: 26px;
-  }
-  .header {
-    gap: var(--gap-15xl);
-  }
-  .frameParent3,
-  .frameParent6,
-  .rowData {
-    gap: var(--gap-6xl);
-  }
 }
 @media screen and (max-width: 900px) {
-  .header,
-  .rowItems {
-    flex-wrap: wrap;
-  }
   .leftMenu {
     padding-top: var(--padding-8xl);
     padding-bottom: var(--padding-153xl);
@@ -788,24 +741,6 @@
   }
 }
 @media screen and (max-width: 450px) {
-  .headerActions {
-    flex-wrap: wrap;
-  }
-  .header {
-    gap: 68px;
-  }
-  .rowData {
-    padding-right: var(--padding-9xl);
-    box-sizing: border-box;
-  }
-  .frameParent3,
-  .frameParent6,
-  .rowData {
-    flex-wrap: wrap;
-  }
-  .vehicleManagement {
-    gap: var(--gap-6xl);
-  }
   .dashboard,
   .deliveries,
   .events,

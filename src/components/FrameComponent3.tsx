@@ -17,9 +17,9 @@ export type FrameComponent3Type = {
 const FrameComponent3: FunctionComponent<FrameComponent3Type> = ({
   className = "",
   dashboardEventsCreateNewEve,
+  dashboardEventsDisplay,
   createNewEvent,
   button,
-  dashboardEventsDisplay,
   buttonWidth,
   buttonAlignSelf,
 }) => {

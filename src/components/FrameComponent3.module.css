@@ -127,13 +127,6 @@
   .frameParent {
     flex-wrap: wrap;
   }
-  .createNewEvent {
-    font-size: var(--font-size-lg);
-    line-height: 22px;
-  }
-  .frameGroup {
-    gap: var(--gap-mid);
-  }
 }
 @media screen and (max-width: 900px) {
   .createNewEvent {

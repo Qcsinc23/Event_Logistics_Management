@@ -92,15 +92,6 @@
   color: var(--color-darkslategray-100);
   font-family: var(--font-poppins);
 }
-@media screen and (max-width: 900px) {
-  .eventName {
-    font-size: var(--font-size-lgi);
-    line-height: 38px;
-  }
-  .rectangleParent {
-    flex-wrap: wrap;
-  }
-}
 @media screen and (max-width: 450px) {
   .eventName {
     font-size: var(--font-size-lgi);

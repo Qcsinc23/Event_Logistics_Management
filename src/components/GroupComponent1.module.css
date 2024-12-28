@@ -43,16 +43,6 @@
   color: var(--color-darkslategray-200);
   font-family: var(--font-poppins);
 }
-@media screen and (max-width: 1800px) {
-  .metricPlaceholder {
-    font-size: var(--font-size-5xl);
-    line-height: 45px;
-  }
-  .tasksDueToday {
-    font-size: var(--font-size-base);
-    line-height: 22px;
-  }
-}
 @media screen and (max-width: 900px) {
   .metricPlaceholder {
     font-size: var(--font-size-21xl);

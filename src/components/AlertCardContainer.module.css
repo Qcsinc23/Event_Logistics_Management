@@ -1,0 +1,25 @@
+.alertCardContainer {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 0 var(--padding-3xs);
+  box-sizing: border-box;
+  gap: var(--gap-20xl-5);
+  max-width: 100%;
+  text-align: left;
+  font-size: var(--font-size-xl);
+  color: var(--color-darkgray);
+  font-family: var(--font-poppins);
+}
+@media screen and (max-width: 1350px) {
+  .alertCardContainer {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 900px) {
+  .alertCardContainer {
+    gap: var(--gap-xl);
+  }
+}

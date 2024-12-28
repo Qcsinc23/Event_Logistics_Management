@@ -1,0 +1,150 @@
+.columnOne,
+.sectionName {
+  position: absolute;
+  top: 18px;
+  left: 820px;
+  letter-spacing: -0.03em;
+  line-height: 140%;
+  font-weight: 500;
+  display: inline-block;
+  width: 76px;
+}
+.sectionName {
+  left: 936px;
+  width: 120px;
+  min-width: 120px;
+}
+.rectangleInput {
+  margin: 0;
+  position: absolute;
+  top: 20px;
+  left: 1px;
+  border-radius: var(--br-10xs);
+  border: 1px solid var(--color-gainsboro);
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+}
+.categoryHere {
+  left: 509px;
+  display: inline-block;
+  min-width: 125px;
+}
+.abc12345SBl,
+.categoryHere,
+.columnFour {
+  position: absolute;
+  top: 18px;
+  letter-spacing: -0.03em;
+  line-height: 140%;
+  font-weight: 500;
+}
+.columnFour {
+  left: 684px;
+  display: inline-block;
+  min-width: 45px;
+}
+.abc12345SBl {
+  left: 315px;
+}
+.imageIcon {
+  position: absolute;
+  top: 0;
+  left: 46px;
+  border-radius: var(--br-3xs);
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+.itemNameHere {
+  position: absolute;
+  top: 18px;
+  left: 121px;
+  letter-spacing: -0.03em;
+  line-height: 140%;
+  font-weight: 500;
+}
+.groupChild,
+.groupInner,
+.groupItem {
+  position: absolute;
+  height: 100%;
+  width: 24.75%;
+  top: 0;
+  right: 75.25%;
+  bottom: 0;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.groupInner,
+.groupItem {
+  height: 99.23%;
+  width: 19.65%;
+  right: 36.56%;
+  bottom: 0.77%;
+  left: 43.79%;
+}
+.groupInner {
+  height: 98.46%;
+  width: 17.59%;
+  right: -0.08%;
+  bottom: 1.54%;
+  left: 82.48%;
+}
+.groupParent {
+  position: absolute;
+  height: 30.59%;
+  width: 9.18%;
+  top: 20%;
+  right: 1.03%;
+  bottom: 49.41%;
+  left: 89.79%;
+}
+.available {
+  position: absolute;
+  top: 0;
+  left: 24px;
+  letter-spacing: -0.03em;
+  line-height: 160%;
+  font-weight: 500;
+  display: inline-block;
+  min-width: 81px;
+}
+.ellipseDiv {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  border-radius: 50%;
+  background-color: var(--color-forestgreen);
+  width: 14px;
+  height: 14px;
+}
+.availableParent {
+  position: absolute;
+  top: 16px;
+  left: 1116px;
+  width: 105px;
+  height: 29px;
+}
+.tableColumnsChild {
+  position: absolute;
+  top: 85px;
+  left: 0;
+  border-top: 1px solid var(--color-lightgray);
+  box-sizing: border-box;
+  width: 1431px;
+  height: 1px;
+}
+.tableColumns {
+  position: absolute;
+  top: 85px;
+  left: 25px;
+  width: 1430px;
+  height: 85px;
+  text-align: left;
+  font-size: var(--font-size-lg);
+  color: var(--color-darkslategray-100);
+  font-family: var(--font-poppins);
+}

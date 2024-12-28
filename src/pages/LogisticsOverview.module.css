@@ -474,7 +474,7 @@
   border: 1px solid var(--color-silver);
   box-sizing: border-box;
   flex-direction: row;
-  padding: 29px var(--padding-21xl) var(--padding-11xl);
+  padding: var(--padding-10xl) var(--padding-21xl) var(--padding-11xl);
 }
 .userContainerParent {
   flex-direction: column;
@@ -601,52 +601,6 @@
   font-family: var(--font-poppins);
 }
 @media screen and (max-width: 1800px) {
-  .dashboard,
-  .deliveries,
-  .events,
-  .inventory,
-  .logistics,
-  .overview,
-  .reports,
-  .settings2,
-  .taskAssignment,
-  .users {
-    font-size: var(--font-size-base);
-    line-height: 22px;
-  }
-  .leftMenu {
-    gap: var(--gap-6xl);
-    padding-left: var(--padding-xl);
-    padding-top: var(--padding-xl);
-    padding-bottom: var(--padding-93xl);
-    box-sizing: border-box;
-  }
-  .div {
-    font-size: var(--font-size-5xl);
-    line-height: 45px;
-  }
-  .overDueTasks {
-    font-size: var(--font-size-base);
-    line-height: 22px;
-  }
-  .metrics {
-    gap: var(--gap-xl);
-  }
-  .dashboardContainer {
-    gap: var(--gap-5xl);
-  }
-  .tasksByStatus {
-    font-size: var(--font-size-lgi);
-    line-height: 23px;
-  }
-  .taskList,
-  .upcoming {
-    font-size: var(--font-size-base);
-    line-height: 22px;
-  }
-  .taskList {
-    font-size: var(--font-size-lg);
-  }
   .logisticsOverview {
     flex-wrap: wrap;
   }
@@ -692,13 +646,6 @@
   }
 }
 @media screen and (max-width: 450px) {
-  .userContainerParent {
-    flex: 1;
-  }
-  .body,
-  .taskListContainerParent {
-    flex-wrap: wrap;
-  }
   .dashboard,
   .deliveries,
   .events,

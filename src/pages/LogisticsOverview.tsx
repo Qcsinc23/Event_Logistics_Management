@@ -174,8 +174,8 @@ const LogisticsOverview: FunctionComponent = () => {
                 </div>
                 <GroupComponent1
                   metricPlaceholder="44"
-                  tasksDueToday="Open Tasks"
                   metricPlaceholderWidth="166px"
+                  tasksDueToday="Open Tasks"
                   tasksDueTodayDisplay="inline-block"
                   tasksDueTodayMinWidth="113px"
                 />

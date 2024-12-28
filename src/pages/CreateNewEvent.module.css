@@ -138,7 +138,7 @@
   background-color: var(--color-white);
   padding: var(--padding-21xl) var(--padding-31xl);
   box-sizing: border-box;
-  gap: 39.5px;
+  gap: var(--gap-20xl-5);
 }
 .frameGroup {
   flex: 1;
@@ -194,16 +194,6 @@
   }
   .frameGroup {
     gap: 97px;
-  }
-  .basicInformation {
-    font-size: var(--font-size-2xl);
-    line-height: 25px;
-  }
-  .navigationButtons {
-    flex-wrap: wrap;
-  }
-  .frameGroup {
-    gap: var(--gap-5xl);
   }
 }
 @media screen and (max-width: 900px) {

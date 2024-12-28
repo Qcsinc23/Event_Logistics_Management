@@ -96,11 +96,11 @@ const Dashboard: FunctionComponent = () => {
               <div className={styles.alertList}>
                 <div className={styles.alertCards}>
                   <GroupComponent2
-                    ongoing="Upcoming"
                     groupDivAlignSelf="stretch"
                     groupDivFlex="unset"
                     groupDivMinWidth="unset"
                     souscatgorieBackgroundColor="#4caf50"
+                    ongoing="Upcoming"
                     ongoingDisplay="unset"
                     ongoingMinWidth="unset"
                   />
@@ -130,11 +130,11 @@ const Dashboard: FunctionComponent = () => {
                 <div className={styles.frameParent}>
                   <div className={styles.frameGroup}>
                     <GroupComponent2
-                      ongoing="Upcoming"
                       groupDivAlignSelf="unset"
                       groupDivFlex="1"
                       groupDivMinWidth="256px"
                       souscatgorieBackgroundColor="#4caf50"
+                      ongoing="Upcoming"
                       ongoingDisplay="unset"
                       ongoingMinWidth="unset"
                     />

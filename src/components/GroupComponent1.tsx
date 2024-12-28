@@ -16,8 +16,8 @@ export type GroupComponent1Type = {
 const GroupComponent1: FunctionComponent<GroupComponent1Type> = ({
   className = "",
   metricPlaceholder,
-  tasksDueToday,
   metricPlaceholderWidth,
+  tasksDueToday,
   tasksDueTodayDisplay,
   tasksDueTodayMinWidth,
 }) => {

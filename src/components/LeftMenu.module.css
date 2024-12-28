@@ -229,30 +229,6 @@
   color: var(--color-darkslategray-100);
   font-family: var(--font-poppins);
 }
-@media screen and (max-width: 1350px) {
-  .dashboard,
-  .deliveries,
-  .eventList,
-  .events,
-  .inventory,
-  .reports,
-  .settings,
-  .users {
-    font-size: var(--font-size-base);
-    line-height: 22px;
-  }
-  .content,
-  .leftMenu {
-    padding-top: var(--padding-32xl);
-    box-sizing: border-box;
-  }
-  .leftMenu {
-    gap: var(--gap-6xl);
-    padding-left: var(--padding-xl);
-    padding-top: var(--padding-xl);
-    padding-bottom: var(--padding-129xl);
-  }
-}
 @media screen and (max-width: 900px) {
   .leftMenu {
     padding-top: var(--padding-8xl);

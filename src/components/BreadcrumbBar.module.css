@@ -353,30 +353,9 @@
   color: var(--color-darkslategray-100);
   font-family: var(--font-poppins);
 }
-@media screen and (max-width: 1800px) {
-  .breadcrumbBar {
-    flex: 1;
-  }
-}
 @media screen and (max-width: 1350px) {
   .breadcrumbBar {
     flex: 1;
-  }
-  .eventsTitleGoes,
-  .upcoming {
-    font-size: var(--font-size-lg);
-    line-height: 22px;
-  }
-  .upcoming {
-    font-size: var(--font-size-base);
-  }
-  .logisticsPlan2 {
-    font-size: var(--font-size-2xl);
-    line-height: 25px;
-  }
-  .taskName {
-    font-size: var(--font-size-lg);
-    line-height: 35px;
   }
 }
 @media screen and (max-width: 900px) {

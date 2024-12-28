@@ -319,7 +319,7 @@
   gap: var(--gap-6xl);
 }
 .itemDetails {
-  gap: 29px;
+  gap: var(--gap-10xl);
 }
 .inventoryCard {
   flex: 1;
@@ -581,14 +581,7 @@
   letter-spacing: normal;
 }
 @media screen and (max-width: 1800px) {
-  .dashboard,
-  .metrics {
-    flex-wrap: wrap;
-  }
-  .eventCards {
-    flex: 1;
-  }
-  .eventsContainer {
+  .dashboard {
     flex-wrap: wrap;
   }
 }
@@ -602,6 +595,8 @@
   .eventsContainer {
     flex-wrap: wrap;
   }
+}
+@media screen and (max-width: 900px) {
   .checkbox,
   .grosOeuvres {
     font-size: var(--font-size-21xl);
@@ -645,79 +640,6 @@
   .dashboard,
   .dashboardContainer {
     gap: var(--gap-6xl);
-  }
-}
-@media screen and (max-width: 900px) {
-  .metrics {
-    gap: var(--gap-xl);
-  }
-  .alertCards,
-  .eventCards {
-    min-width: 100%;
-  }
-  .alertCards {
-    flex: 1;
-  }
-  .frameGroup,
-  .frameParent {
-    gap: var(--gap-xl);
-  }
-  .alertList {
-    flex-wrap: wrap;
-    min-width: 100%;
-  }
-  .alertList,
-  .eventsContainer {
-    gap: var(--gap-xl);
-  }
-  .dashboard,
-  .dashboardContainer {
-    gap: var(--gap-6xl);
-  }
-  .grosOeuvres {
-    font-size: var(--font-size-5xl);
-    line-height: 45px;
-  }
-  .eventsManagedThis {
-    font-size: var(--font-size-base);
-    line-height: 22px;
-  }
-  .checkbox {
-    font-size: var(--font-size-5xl);
-    line-height: 45px;
-  }
-  .upcomingEvents {
-    font-size: var(--font-size-lg);
-    line-height: 22px;
-  }
-  .taskName {
-    font-size: var(--font-size-lgi);
-    line-height: 38px;
-  }
-  .dueDateDdMmYyyyParent {
-    flex: 1;
-  }
-  .assigneeInfoParent {
-    gap: var(--gap-mid);
-    flex-wrap: wrap;
-  }
-  .alertCards,
-  .eventCards {
-    gap: var(--gap-3xl);
-  }
-  .frameGroup {
-    flex-wrap: wrap;
-  }
-  .activeDeliveries {
-    font-size: var(--font-size-lg);
-    line-height: 22px;
-  }
-  .deliveriesContent {
-    gap: var(--gap-mid);
-    flex-wrap: wrap;
-  }
-  .frameParent {
-    min-width: 100%;
   }
 }
 @media screen and (max-width: 450px) {
@@ -765,8 +687,5 @@
   }
   .frameParent {
     min-width: 100%;
-  }
-  .dashboard {
-    flex-wrap: wrap;
   }
 }

@@ -121,9 +121,9 @@ const EventsList: FunctionComponent = () => {
         <section className={styles.breadcrumbItemsParent}>
           <FrameComponent3
             dashboardEventsCreateNewEve={`Dashboard > Events > Event List`}
+            dashboardEventsDisplay="unset"
             createNewEvent="Event Management"
             button="Create New Event"
-            dashboardEventsDisplay="unset"
             buttonWidth="unset"
             buttonAlignSelf="stretch"
           />

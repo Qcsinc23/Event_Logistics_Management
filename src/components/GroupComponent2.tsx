@@ -17,11 +17,11 @@ export type GroupComponent2Type = {
 
 const GroupComponent2: FunctionComponent<GroupComponent2Type> = ({
   className = "",
-  ongoing,
   groupDivAlignSelf,
   groupDivFlex,
   groupDivMinWidth,
   souscatgorieBackgroundColor,
+  ongoing,
   ongoingDisplay,
   ongoingMinWidth,
 }) => {

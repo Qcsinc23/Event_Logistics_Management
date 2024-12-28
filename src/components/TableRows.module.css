@@ -67,12 +67,6 @@
   color: var(--color-darkslategray-100);
   font-family: var(--font-poppins);
 }
-@media screen and (max-width: 1350px) {
-  .taskName {
-    font-size: var(--font-size-lg);
-    line-height: 35px;
-  }
-}
 @media screen and (max-width: 900px) {
   .assigneeRobertSteveParent {
     flex-wrap: wrap;

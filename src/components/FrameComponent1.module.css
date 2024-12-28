@@ -88,20 +88,12 @@
   color: var(--color-darkslategray-100);
   font-family: var(--font-poppins);
 }
-@media screen and (max-width: 1350px) {
-  .userIconParent {
-    gap: var(--gap-mid);
-  }
-}
 @media screen and (max-width: 900px) {
   .dashboardLogisticsVehiclWrapper {
     display: none;
   }
 }
 @media screen and (max-width: 450px) {
-  .dashboardLogisticsVehiclWrapper {
-    display: none;
-  }
   .userIconParent {
     gap: var(--gap-mid);
   }
