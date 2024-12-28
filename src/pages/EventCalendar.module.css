@@ -71,12 +71,14 @@
 .frameParent,
 .menuContent {
   width: 31px;
-  height: 357.3px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 35.9px;
+}
+.frameParent {
+  height: 357.3px;
+  gap: var(--gap-16xl-9);
 }
 .menuContent {
   height: 579px;

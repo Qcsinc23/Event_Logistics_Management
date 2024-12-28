@@ -63,7 +63,13 @@ const VehicleDetailsModal: FunctionComponent = () => {
           </div>
           <div className={styles.legends}>Legends</div>
         </div>
-        <Map1 />
+        <Map1
+          mapAlignSelf="unset"
+          mapPosition="absolute"
+          mapTop="211px"
+          mapLeft="390px"
+          mapWidth="1480px"
+        />
         <section className={styles.modalBackground} />
       </main>
       <Modal2 />

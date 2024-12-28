@@ -132,7 +132,7 @@
 }
 .sauerLock {
   position: relative;
-  font-size: var(--font-size-xs);
+  font-size: var(--body-size);
   letter-spacing: -0.02em;
   line-height: 120%;
   color: var(--color-darkslategray-300);
@@ -279,7 +279,7 @@
   padding: var(--padding-12xl) 49px 73.7px 70px;
   position: relative;
   gap: var(--gap-xl);
-  font-size: var(--font-size-sm);
+  font-size: var(--name-size);
 }
 .planningContent {
   align-self: stretch;
@@ -350,7 +350,7 @@
 }
 .terrellTowne {
   margin: 0;
-  font-size: var(--font-size-sm);
+  font-size: var(--name-size);
   line-height: 180%;
   font-weight: 600;
 }

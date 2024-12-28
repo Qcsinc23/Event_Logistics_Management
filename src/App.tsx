@@ -5,7 +5,7 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
-import StatusUpdates from "./pages/StatusUpdates";
+import Reports from "./pages/Reports";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 import EventsDetails from "./pages/EventsDetails";
@@ -24,6 +24,9 @@ import LiveTrackingMap from "./pages/LiveTrackingMap";
 import VehicleDetailsModal from "./pages/VehicleDetailsModal";
 import DeliveryDetailsModal from "./pages/DeliveryDetailsModal";
 import ProofOfDelivery from "./pages/ProofOfDelivery";
+import StatusUpdates from "./pages/StatusUpdates";
+import ProofDetailsModal from "./pages/ProofDetailsModal";
+import AddProofOfDelivery from "./pages/AddProofOfDelivery";
 
 function App() {
   const action = useNavigationType();
@@ -117,6 +120,18 @@ function App() {
         title = "";
         metaDescription = "";
         break;
+      case "/status-updates":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/proof-details-modal":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/add-proof-of-delivery":
+        title = "";
+        metaDescription = "";
+        break;
     }
 
     if (title) {
@@ -135,7 +150,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<StatusUpdates />} />
+      <Route path="/" element={<Reports />} />
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/events-details" element={<EventsDetails />} />
@@ -160,6 +175,9 @@ function App() {
         element={<DeliveryDetailsModal />}
       />
       <Route path="/proof-of-delivery" element={<ProofOfDelivery />} />
+      <Route path="/status-updates" element={<StatusUpdates />} />
+      <Route path="/proof-details-modal" element={<ProofDetailsModal />} />
+      <Route path="/add-proof-of-delivery" element={<AddProofOfDelivery />} />
     </Routes>
   );
 }

@@ -102,7 +102,8 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: var(--padding-xs) 22px var(--padding-smi) var(--padding-4xl);
+  padding: var(--padding-xs) var(--padding-3xl) var(--padding-smi)
+    var(--padding-4xl);
   gap: var(--gap-3xs);
   color: var(--color-white);
 }

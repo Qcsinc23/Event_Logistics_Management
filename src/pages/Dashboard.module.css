@@ -240,7 +240,7 @@
 .assigneeInfoParent {
   flex-direction: row;
   gap: var(--gap-16xl);
-  font-size: var(--font-size-sm);
+  font-size: var(--name-size);
   color: var(--color-darkgray);
 }
 .taskDetails {

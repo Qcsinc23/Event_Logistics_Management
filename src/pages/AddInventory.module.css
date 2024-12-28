@@ -316,7 +316,7 @@
 }
 .addMoreWrapper {
   flex-direction: column;
-  padding: 52px 0 0;
+  padding: var(--padding-33xl) 0 0;
 }
 .addMoreWrapper,
 .frameGroup,

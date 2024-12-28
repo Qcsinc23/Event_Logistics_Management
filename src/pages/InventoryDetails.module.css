@@ -259,7 +259,7 @@
   width: 760px;
   flex-direction: row;
   align-items: flex-start;
-  gap: 26px;
+  gap: var(--gap-7xl);
   font-size: var(--font-size-xl);
 }
 .info,
