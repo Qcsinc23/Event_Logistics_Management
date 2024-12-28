@@ -592,12 +592,37 @@
   line-height: normal;
   letter-spacing: normal;
 }
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 1800px) {
   .routePlanning {
     flex-wrap: wrap;
   }
+  .dropoffContainer {
+    padding-bottom: 282px;
+    box-sizing: border-box;
+  }
+  .map {
+    padding-left: var(--padding-16xl);
+    padding-right: var(--padding-5xl);
+    box-sizing: border-box;
+  }
+  .userPanel {
+    flex: 1;
+  }
+  .mainContentParent {
+    flex-wrap: wrap;
+  }
 }
-@media screen and (max-width: 1275px) {
+@media screen and (max-width: 1350px) {
+  .map {
+    padding-left: var(--padding-16xl);
+    padding-right: var(--padding-5xl);
+  }
+  .userPanel {
+    flex: 1;
+  }
+  .mainContentParent {
+    flex-wrap: wrap;
+  }
   .routePlanning1 {
     font-size: var(--font-size-5xl);
     line-height: 29px;
@@ -640,6 +665,39 @@
   }
 }
 @media screen and (max-width: 900px) {
+  .locations {
+    flex: 1;
+  }
+  .dropoffContainer {
+    padding-bottom: 183px;
+    box-sizing: border-box;
+  }
+  .dropoffContainerWrapper {
+    flex: 1;
+    min-width: 100%;
+  }
+  .map {
+    flex-wrap: wrap;
+    padding-top: var(--padding-xl);
+    padding-bottom: 48px;
+  }
+  .innerContent {
+    gap: var(--gap-5xl);
+  }
+  .mainContent {
+    min-width: 100%;
+  }
+  .routeDetails {
+    padding-top: var(--padding-7xl);
+    padding-bottom: var(--padding-7xl);
+    box-sizing: border-box;
+  }
+  .mainContentParent {
+    gap: var(--gap-xl);
+  }
+  .routePlanning {
+    gap: var(--gap-6xl);
+  }
   .routePlanning1 {
     font-size: var(--font-size-lg);
     line-height: 22px;
@@ -687,19 +745,52 @@
   }
 }
 @media screen and (max-width: 450px) {
-  .dropoffContainer {
-    padding-bottom: 282px;
+  .routePlanning1 {
+    font-size: var(--font-size-lg);
+    line-height: 22px;
+  }
+  .locations {
+    gap: var(--gap-21xl);
+    padding-bottom: 168px;
     box-sizing: border-box;
+  }
+  .dropoffContent,
+  .moreMarkers {
+    flex-wrap: wrap;
+  }
+  .dropoffContainer {
+    height: auto;
+    gap: 72px;
   }
   .map {
-    padding-left: var(--padding-16xl);
-    padding-right: var(--padding-5xl);
+    padding-bottom: var(--padding-12xl);
     box-sizing: border-box;
   }
-  .userPanel {
-    flex: 1;
+  .routeDetails1 {
+    font-size: var(--font-size-2xl);
+    line-height: 25px;
   }
-  .mainContentParent {
+  .routeButtons,
+  .routeLocations {
+    flex-wrap: wrap;
+  }
+  .button2 {
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+    box-sizing: border-box;
+  }
+  .vehicleSelection1 {
+    font-size: var(--font-size-2xl);
+    line-height: 25px;
+  }
+  .routePanel {
+    gap: var(--gap-xl);
+  }
+  .userPanel {
+    gap: 49px;
+    min-width: 100%;
+  }
+  .routePlanning {
     flex-wrap: wrap;
   }
 }

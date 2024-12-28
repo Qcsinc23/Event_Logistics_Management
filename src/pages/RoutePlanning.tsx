@@ -28,13 +28,23 @@ const RoutePlanning: FunctionComponent = () => {
               <div className={styles.planningContent}>
                 <h3 className={styles.routePlanning1}>Route Planning</h3>
                 <div className={styles.map}>
-                  <img className={styles.maskGroupIcon} alt="" />
-                  <img className={styles.mapChild} loading="lazy" alt="" />
+                  <img
+                    className={styles.maskGroupIcon}
+                    alt=""
+                    src="/mask-group2@2x.png"
+                  />
+                  <img
+                    className={styles.mapChild}
+                    loading="lazy"
+                    alt=""
+                    src="/group-191.svg"
+                  />
                   <div className={styles.locations}>
                     <img
                       className={styles.locationsChild}
                       loading="lazy"
                       alt=""
+                      src="/group-195.svg"
                     />
                     <div className={styles.nestedLocation}>
                       <div className={styles.deepNestedLocation}>
@@ -42,20 +52,22 @@ const RoutePlanning: FunctionComponent = () => {
                           className={styles.deepNestedLocationChild}
                           loading="lazy"
                           alt=""
+                          src="/group-191.svg"
                         />
                         <div className={styles.deepNestedLocationInner}>
                           <img
                             className={styles.frameChild}
                             loading="lazy"
                             alt=""
+                            src="/group-195.svg"
                           />
                         </div>
                       </div>
                     </div>
                     <FrameComponent
-                      depotIcon="pending_1:2429"
+                      depotIcon="/vector-11.svg"
                       depotLocation="Depot Location"
-                      group196="pending_1:2394"
+                      group196="/group-195.svg"
                     />
                   </div>
                   <div className={styles.dropoffContainerWrapper}>
@@ -64,12 +76,17 @@ const RoutePlanning: FunctionComponent = () => {
                         <div className={styles.dropoffContent}>
                           <div className={styles.dropoffInfo}>
                             <div className={styles.dropoffMarker}>
-                              <img className={styles.dropoffIcon} alt="" />
+                              <img
+                                className={styles.dropoffIcon}
+                                alt=""
+                                src="/vector-11.svg"
+                              />
                               <div className={styles.dropoffName}>
                                 <img
                                   className={styles.dropoffNameChild}
                                   loading="lazy"
                                   alt=""
+                                  src="/group-187.svg"
                                 />
                                 <div className={styles.dropOffLocation}>
                                   Drop-off Location
@@ -84,6 +101,7 @@ const RoutePlanning: FunctionComponent = () => {
                                 className={styles.frameItem}
                                 loading="lazy"
                                 alt=""
+                                src="/group-191.svg"
                               />
                             </div>
                           </div>
@@ -92,6 +110,7 @@ const RoutePlanning: FunctionComponent = () => {
                               className={styles.secondDropoffChild}
                               loading="lazy"
                               alt=""
+                              src="/group-187.svg"
                             />
                           </div>
                         </div>
@@ -102,9 +121,9 @@ const RoutePlanning: FunctionComponent = () => {
                           frameBoxJustifyContent="flex-start"
                           frameBoxWidth="258px"
                           depotContainerGap="10px"
-                          depotIcon="pending_1:2421"
+                          depotIcon="/vector-11.svg"
                           depotLocation="Pickup Location"
-                          group196="pending_1:2414"
+                          group196="/group-187.svg"
                           groupIconWidth="37.2px"
                         />
                         <div className={styles.moreMarkers}>
@@ -113,17 +132,20 @@ const RoutePlanning: FunctionComponent = () => {
                               className={styles.secondDropoffChild}
                               loading="lazy"
                               alt=""
+                              src="/group-187.svg"
                             />
                           </div>
                           <img
                             className={styles.moreMarkersChild}
                             loading="lazy"
                             alt=""
+                            src="/group-195.svg"
                           />
                           <img
                             className={styles.moreMarkersItem}
                             loading="lazy"
                             alt=""
+                            src="/group-191.svg"
                           />
                         </div>
                       </div>

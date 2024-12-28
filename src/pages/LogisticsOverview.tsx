@@ -9,6 +9,7 @@ import {
   FormControl,
   InputAdornment,
 } from "@mui/material";
+import GroupComponent1 from "../components/GroupComponent1";
 import UserContainer from "../components/UserContainer";
 import Table from "../components/Table";
 import styles from "./LogisticsOverview.module.css";
@@ -18,22 +19,67 @@ const LogisticsOverview: FunctionComponent = () => {
     <div className={styles.logisticsOverview}>
       <div className={styles.leftMenu}>
         <div className={styles.leftMenuChild} />
-        <img className={styles.logoIcon} loading="lazy" alt="" />
+        <img
+          className={styles.logoIcon}
+          loading="lazy"
+          alt=""
+          src="/logo1.svg"
+        />
         <div className={styles.content}>
           <div className={styles.frameParent}>
             <div className={styles.layer1Parent}>
-              <img className={styles.layer1Icon} loading="lazy" alt="" />
-              <img className={styles.layer1Icon} loading="lazy" alt="" />
-              <img className={styles.frameChild} loading="lazy" alt="" />
+              <img
+                className={styles.layer1Icon}
+                loading="lazy"
+                alt=""
+                src="/layer-11.svg"
+              />
+              <img
+                className={styles.layer1Icon}
+                loading="lazy"
+                alt=""
+                src="/layer-1-1.svg"
+              />
+              <img
+                className={styles.frameChild}
+                loading="lazy"
+                alt=""
+                src="/group-1071.svg"
+              />
             </div>
             <div className={styles.layer1Group}>
               <div className={styles.layer1}>
-                <img className={styles.layer1Child} loading="lazy" alt="" />
+                <img
+                  className={styles.layer1Child}
+                  loading="lazy"
+                  alt=""
+                  src="/group-111.svg"
+                />
               </div>
-              <img className={styles.frameItem} loading="lazy" alt="" />
-              <img className={styles.frameItem} loading="lazy" alt="" />
-              <img className={styles.moneyIcon} loading="lazy" alt="" />
-              <img className={styles.layer1Icon2} loading="lazy" alt="" />
+              <img
+                className={styles.frameItem}
+                loading="lazy"
+                alt=""
+                src="/group-113.svg"
+              />
+              <img
+                className={styles.frameItem}
+                loading="lazy"
+                alt=""
+                src="/group-114.svg"
+              />
+              <img
+                className={styles.moneyIcon}
+                loading="lazy"
+                alt=""
+                src="/vector.svg"
+              />
+              <img
+                className={styles.layer1Icon2}
+                loading="lazy"
+                alt=""
+                src="/layer-1-2.svg"
+              />
             </div>
           </div>
           <div className={styles.main}>
@@ -57,13 +103,19 @@ const LogisticsOverview: FunctionComponent = () => {
                 </div>
                 <div className={styles.management}>
                   <div className={styles.frameGroup}>
-                    <img className={styles.frameIcon} loading="lazy" alt="" />
+                    <img
+                      className={styles.frameIcon}
+                      loading="lazy"
+                      alt=""
+                      src="/frame-2@2x.png"
+                    />
                     <div className={styles.settings}>
                       <div className={styles.settingsChild} />
                       <img
                         className={styles.settingsItem}
                         loading="lazy"
                         alt=""
+                        src="/arrow-4.svg"
                       />
                     </div>
                   </div>
@@ -83,11 +135,19 @@ const LogisticsOverview: FunctionComponent = () => {
                 <div className={styles.frameGroup}>
                   <div className={styles.settings}>
                     <div className={styles.settingsChild} />
-                    <img className={styles.arrowIcon} alt="" />
+                    <img
+                      className={styles.arrowIcon}
+                      alt=""
+                      src="/arrow-4.svg"
+                    />
                   </div>
                   <div className={styles.settings}>
                     <div className={styles.settingsChild} />
-                    <img className={styles.arrowIcon} alt="" />
+                    <img
+                      className={styles.arrowIcon}
+                      alt=""
+                      src="/arrow-4.svg"
+                    />
                   </div>
                 </div>
               </div>
@@ -103,21 +163,22 @@ const LogisticsOverview: FunctionComponent = () => {
                 className={styles.dashboardLogistics}
               >{`Dashboard > Logistics > Overview`}</div>
               <div className={styles.metrics}>
+                <GroupComponent1
+                  metricPlaceholder="03"
+                  tasksDueToday="Tasks Due Today"
+                />
                 <div className={styles.rectangleContainer}>
                   <div className={styles.frameChild3} />
-                  <div className={styles.metricPlaceholder}>03</div>
-                  <div className={styles.tasksDueToday}>Tasks Due Today</div>
-                </div>
-                <div className={styles.groupDiv}>
-                  <div className={styles.frameChild4} />
                   <div className={styles.div}>05</div>
-                  <div className={styles.tasksDueToday}>Over Due Tasks</div>
+                  <div className={styles.overDueTasks}>Over Due Tasks</div>
                 </div>
-                <div className={styles.rectangleContainer}>
-                  <div className={styles.frameChild3} />
-                  <div className={styles.div1}>44</div>
-                  <div className={styles.openTasks}>Open Tasks</div>
-                </div>
+                <GroupComponent1
+                  metricPlaceholder="44"
+                  tasksDueToday="Open Tasks"
+                  metricPlaceholderWidth="166px"
+                  tasksDueTodayDisplay="inline-block"
+                  tasksDueTodayMinWidth="113px"
+                />
               </div>
             </div>
             <div className={styles.userContainerParent}>

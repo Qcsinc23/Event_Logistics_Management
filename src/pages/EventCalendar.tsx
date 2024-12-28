@@ -18,22 +18,67 @@ const EventCalendar: FunctionComponent = () => {
     <div className={styles.eventCalendar}>
       <div className={styles.leftMenu}>
         <div className={styles.leftMenuChild} />
-        <img className={styles.logoIcon} loading="lazy" alt="" />
+        <img
+          className={styles.logoIcon}
+          loading="lazy"
+          alt=""
+          src="/logo1.svg"
+        />
         <div className={styles.menuContentParent}>
           <div className={styles.menuContent}>
             <div className={styles.layers}>
-              <img className={styles.layer1Icon} loading="lazy" alt="" />
-              <img className={styles.layer1Icon} loading="lazy" alt="" />
+              <img
+                className={styles.layer1Icon}
+                loading="lazy"
+                alt=""
+                src="/layer-11.svg"
+              />
+              <img
+                className={styles.layer1Icon}
+                loading="lazy"
+                alt=""
+                src="/layer-1-12.svg"
+              />
             </div>
             <div className={styles.frameParent}>
-              <img className={styles.frameChild} loading="lazy" alt="" />
+              <img
+                className={styles.frameChild}
+                loading="lazy"
+                alt=""
+                src="/group-1072.svg"
+              />
               <div className={styles.layer1}>
-                <img className={styles.layer1Child} loading="lazy" alt="" />
+                <img
+                  className={styles.layer1Child}
+                  loading="lazy"
+                  alt=""
+                  src="/group-1111.svg"
+                />
               </div>
-              <img className={styles.frameItem} loading="lazy" alt="" />
-              <img className={styles.frameItem} loading="lazy" alt="" />
-              <img className={styles.vectorIcon} loading="lazy" alt="" />
-              <img className={styles.layer1Icon2} loading="lazy" alt="" />
+              <img
+                className={styles.frameItem}
+                loading="lazy"
+                alt=""
+                src="/group-1131.svg"
+              />
+              <img
+                className={styles.frameItem}
+                loading="lazy"
+                alt=""
+                src="/group-1141.svg"
+              />
+              <img
+                className={styles.vectorIcon}
+                loading="lazy"
+                alt=""
+                src="/vector1.svg"
+              />
+              <img
+                className={styles.layer1Icon2}
+                loading="lazy"
+                alt=""
+                src="/layer-1-2.svg"
+              />
             </div>
           </div>
           <div className={styles.navigation}>
@@ -56,19 +101,39 @@ const EventCalendar: FunctionComponent = () => {
           </div>
           <div className={styles.footer}>
             <div className={styles.footerContent}>
-              <img className={styles.placeholderIcon} loading="lazy" alt="" />
+              <img
+                className={styles.placeholderIcon}
+                loading="lazy"
+                alt=""
+                src="/placeholder@2x.png"
+              />
               <div className={styles.frameGroup}>
                 <div className={styles.rectangleParent}>
                   <div className={styles.rectangleDiv} />
-                  <img className={styles.arrowIcon} loading="lazy" alt="" />
+                  <img
+                    className={styles.arrowIcon}
+                    loading="lazy"
+                    alt=""
+                    src="/arrow-4.svg"
+                  />
                 </div>
                 <div className={styles.rectangleParent}>
                   <div className={styles.rectangleDiv} />
-                  <img className={styles.arrowIcon} loading="lazy" alt="" />
+                  <img
+                    className={styles.arrowIcon}
+                    loading="lazy"
+                    alt=""
+                    src="/arrow-4.svg"
+                  />
                 </div>
                 <div className={styles.rectangleParent}>
                   <div className={styles.rectangleDiv} />
-                  <img className={styles.arrowIcon} loading="lazy" alt="" />
+                  <img
+                    className={styles.arrowIcon}
+                    loading="lazy"
+                    alt=""
+                    src="/arrow-4.svg"
+                  />
                 </div>
               </div>
             </div>
@@ -93,7 +158,12 @@ const EventCalendar: FunctionComponent = () => {
               <div className={styles.userFilter}>
                 <div className={styles.user}>
                   <div className={styles.userIcon}>
-                    <img className={styles.ordersIcon} loading="lazy" alt="" />
+                    <img
+                      className={styles.ordersIcon}
+                      loading="lazy"
+                      alt=""
+                      src="/vector-12.svg"
+                    />
                   </div>
                   <div className={styles.user1}>
                     <div className={styles.userChild} />
@@ -101,6 +171,7 @@ const EventCalendar: FunctionComponent = () => {
                       className={styles.orderlistIcon}
                       loading="lazy"
                       alt=""
+                      src="/rectangle-2@2x.png"
                     />
                     <div className={styles.userName}>
                       <div
@@ -277,6 +348,7 @@ const EventCalendar: FunctionComponent = () => {
                           className={styles.frameChild6}
                           loading="lazy"
                           alt=""
+                          src="/arrow-6.svg"
                         />
                       </div>
                     </div>
@@ -324,12 +396,13 @@ const EventCalendar: FunctionComponent = () => {
                     <div className={styles.cellContent}>1</div>
                   </div>
                   <div className={styles.eventMarkers}>
-                    <img className={styles.linesIcon} alt="" />
+                    <img className={styles.linesIcon} alt="" src="/lines.svg" />
                     <div className={styles.eventPositions}>
                       <img
                         className={styles.disableIcon}
                         loading="lazy"
                         alt=""
+                        src="/disable@2x.png"
                       />
                       <div className={styles.eventPlaceholders}>27</div>
                       <div className={styles.eventPlaceholders1}>28</div>
@@ -401,11 +474,13 @@ const EventCalendar: FunctionComponent = () => {
                                         className={styles.hoverActionsChild}
                                         loading="lazy"
                                         alt=""
+                                        src="/group-1401.svg"
                                       />
                                       <img
                                         className={styles.hoverActionsItem}
                                         loading="lazy"
                                         alt=""
+                                        src="/group-1372.svg"
                                       />
                                     </div>
                                   </div>

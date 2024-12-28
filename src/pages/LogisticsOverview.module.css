@@ -294,106 +294,47 @@
   width: 280px;
   height: 180px;
   position: relative;
-  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.05);
-  border-radius: var(--br-xl);
-  background-color: var(--color-white);
-  display: none;
-}
-.metricPlaceholder,
-.tasksDueToday {
-  position: relative;
-  letter-spacing: -0.02em;
-  line-height: 140%;
-  z-index: 1;
-}
-.metricPlaceholder {
-  width: 125px;
-  height: 63px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-.tasksDueToday {
-  font-size: var(--font-size-xl);
-  color: var(--color-darkslategray-100);
-}
-.frameChild4,
-.rectangleContainer {
-  border-radius: var(--br-xl);
-  background-color: var(--color-white);
-}
-.rectangleContainer {
-  flex: 1;
-  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: var(--padding-19xl) var(--padding-xl) var(--padding-18xl)
-    var(--padding-21xl);
-  gap: var(--gap-sm);
-}
-.frameChild4 {
-  width: 280px;
-  height: 180px;
-  position: relative;
   box-shadow: 5px 20px 50px rgba(255, 111, 60, 0.15);
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
   border: 1px solid var(--color-tomato-100);
   box-sizing: border-box;
   display: none;
 }
-.div {
-  width: 130px;
-  height: 63px;
+.div,
+.overDueTasks {
   position: relative;
   letter-spacing: -0.02em;
   line-height: 140%;
+  z-index: 1;
+}
+.div {
+  width: 130px;
+  height: 63px;
   font-weight: 600;
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  z-index: 1;
 }
-.groupDiv {
+.overDueTasks {
+  font-size: var(--font-size-xl);
+  color: var(--color-darkslategray-100);
+}
+.rectangleContainer {
   align-self: stretch;
   flex: 1;
   box-shadow: 5px 20px 50px rgba(255, 111, 60, 0.15);
   border-radius: var(--br-xl);
   background-color: var(--color-white);
   border: 1px solid var(--color-tomato-100);
-  display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
   padding: var(--padding-17xl) var(--padding-xl) var(--padding-16xl)
     var(--padding-21xl);
   gap: var(--gap-sm);
-  color: var(--color-tomato-100);
-}
-.div1,
-.openTasks {
-  position: relative;
-  letter-spacing: -0.02em;
-  line-height: 140%;
-  z-index: 1;
-}
-.div1 {
-  width: 166px;
-  height: 63px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-.openTasks {
-  font-size: var(--font-size-xl);
-  color: var(--color-darkslategray-100);
-  display: inline-block;
-  min-width: 113px;
 }
 .dashboardContainer,
-.metrics {
+.metrics,
+.rectangleContainer {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -403,7 +344,7 @@
   flex-direction: row;
   gap: var(--gap-21xl);
   font-size: var(--font-size-61xl);
-  color: var(--color-darkslategray-200);
+  color: var(--color-tomato-100);
 }
 .dashboardContainer {
   flex: 1;
@@ -659,12 +600,7 @@
   color: var(--color-darkslategray-100);
   font-family: var(--font-poppins);
 }
-@media screen and (max-width: 1600px) {
-  .logisticsOverview {
-    flex-wrap: wrap;
-  }
-}
-@media screen and (max-width: 1275px) {
+@media screen and (max-width: 1800px) {
   .dashboard,
   .deliveries,
   .events,
@@ -685,20 +621,11 @@
     padding-bottom: var(--padding-93xl);
     box-sizing: border-box;
   }
-  .metricPlaceholder {
+  .div {
     font-size: var(--font-size-5xl);
     line-height: 45px;
   }
-  .tasksDueToday {
-    font-size: var(--font-size-base);
-    line-height: 22px;
-  }
-  .div,
-  .div1 {
-    font-size: var(--font-size-5xl);
-    line-height: 45px;
-  }
-  .openTasks {
+  .overDueTasks {
     font-size: var(--font-size-base);
     line-height: 22px;
   }
@@ -720,6 +647,18 @@
   .taskList {
     font-size: var(--font-size-lg);
   }
+  .logisticsOverview {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 1350px) {
+  .userContainerParent {
+    flex: 1;
+  }
+  .body,
+  .taskListContainerParent {
+    flex-wrap: wrap;
+  }
 }
 @media screen and (max-width: 900px) {
   .leftMenu {
@@ -727,9 +666,7 @@
     padding-bottom: var(--padding-153xl);
     box-sizing: border-box;
   }
-  .div,
-  .div1,
-  .metricPlaceholder {
+  .div {
     font-size: var(--font-size-21xl);
     line-height: 67px;
   }
@@ -761,5 +698,51 @@
   .body,
   .taskListContainerParent {
     flex-wrap: wrap;
+  }
+  .dashboard,
+  .deliveries,
+  .events,
+  .inventory,
+  .logistics,
+  .overview,
+  .reports,
+  .settings2,
+  .taskAssignment,
+  .users {
+    font-size: var(--font-size-base);
+    line-height: 22px;
+  }
+  .leftMenu {
+    gap: var(--gap-6xl);
+    padding-left: var(--padding-xl);
+    padding-top: var(--padding-xl);
+    padding-bottom: var(--padding-93xl);
+    box-sizing: border-box;
+  }
+  .div {
+    font-size: var(--font-size-5xl);
+    line-height: 45px;
+  }
+  .overDueTasks {
+    font-size: var(--font-size-base);
+    line-height: 22px;
+  }
+  .metrics {
+    gap: var(--gap-xl);
+  }
+  .dashboardContainer {
+    gap: var(--gap-5xl);
+  }
+  .tasksByStatus {
+    font-size: var(--font-size-lgi);
+    line-height: 23px;
+  }
+  .taskList,
+  .upcoming {
+    font-size: var(--font-size-base);
+    line-height: 22px;
+  }
+  .taskList {
+    font-size: var(--font-size-lg);
   }
 }
