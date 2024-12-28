@@ -600,7 +600,7 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 0 21px 0 0;
+  padding: 0 var(--padding-2xl) 0 0;
   gap: var(--gap-3xs);
 }
 .alexMartin {
@@ -831,7 +831,7 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 75px;
+  gap: var(--gap-56xl);
   max-width: 100%;
 }
 .eventNameHereFrame,
@@ -961,13 +961,13 @@
 .frameWrapper7 {
   width: 712px;
   flex-direction: column;
-  padding: var(--padding-11xs) 19px 0 0;
+  padding: var(--padding-11xs) var(--padding-lgi) 0 0;
   box-sizing: border-box;
   max-width: 100%;
 }
 .frameParent20 {
   flex-direction: row;
-  padding: 0 13px 0 0;
+  padding: 0 var(--padding-smi) 0 0;
   gap: var(--gap-3xs);
 }
 .jenniferMartin {
@@ -1095,14 +1095,14 @@
     gap: var(--gap-41xl);
   }
   .assigneeData {
-    gap: 32px;
+    gap: var(--gap-13xl);
     flex-wrap: wrap;
   }
   .dateItemParent {
     gap: var(--gap-21xl);
   }
   .frameParent7 {
-    gap: 37px;
+    gap: var(--gap-18xl);
   }
   .frameParent13 {
     gap: var(--gap-21xl);
@@ -1176,7 +1176,7 @@
     gap: var(--gap-21xl);
   }
   .frameParent7 {
-    gap: 19px;
+    gap: var(--gap-lgi);
   }
   .frameParent13 {
     gap: var(--gap-xl);

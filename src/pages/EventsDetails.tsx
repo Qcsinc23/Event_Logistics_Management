@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
 import { Box, Typography, Button } from "@mui/material";
+import UserContainer from "../components/UserContainer";
 import styles from "./EventsDetails.module.css";
 
 const EventsDetails: FunctionComponent = () => {
@@ -262,30 +263,7 @@ const EventsDetails: FunctionComponent = () => {
           </div>
           <div className={styles.sidebar}>
             <div className={styles.sidebarTop}>
-              <div className={styles.frameParent1}>
-                <div className={styles.userIconWrapper}>
-                  <img
-                    className={styles.userIcon}
-                    loading="lazy"
-                    alt=""
-                    src="/vector-1.svg"
-                  />
-                </div>
-                <div className={styles.user}>
-                  <div className={styles.userChild} />
-                  <img
-                    className={styles.buttonIcon}
-                    loading="lazy"
-                    alt=""
-                    src="/rectangle-2@2x.png"
-                  />
-                  <div className={styles.sherwynGrahamWrapper}>
-                    <div
-                      className={styles.sherwynGraham}
-                    >{`Sherwyn Graham `}</div>
-                  </div>
-                </div>
-              </div>
+              <UserContainer />
               <div className={styles.summary}>
                 <div className={styles.summaryChild} />
                 <h2 className={styles.eventSummary}>Event Summary</h2>
@@ -313,8 +291,8 @@ const EventsDetails: FunctionComponent = () => {
                     </div>
                   </div>
                   <div className={styles.summaryRight}>
-                    <div className={styles.frameParent2}>
-                      <div className={styles.frameParent3}>
+                    <div className={styles.frameParent1}>
+                      <div className={styles.frameParent2}>
                         <div className={styles.ddMmYyyyWrapper}>
                           <div className={styles.contactPerson}>dd-mm-yyyy</div>
                         </div>

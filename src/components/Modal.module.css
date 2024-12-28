@@ -1,0 +1,327 @@
+.modalChild {
+  width: 1480px;
+  height: 800px;
+  position: relative;
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  display: none;
+  max-width: 100%;
+}
+.eventName,
+.eventType {
+  max-width: 100%;
+  z-index: 1;
+}
+.eventName {
+  border: 0;
+  background-color: transparent;
+  flex: 1;
+  font-family: var(--font-poppins);
+  font-size: var(--font-size-lg);
+  min-width: 439px;
+}
+.eventType {
+  height: 60px;
+  width: 675px;
+}
+.modalHeader {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-11xl);
+  max-width: 100%;
+}
+.description,
+.dueDate,
+.priorityLevel {
+  font-family: var(--font-poppins);
+  font-size: var(--font-size-lg);
+  z-index: 1;
+}
+.description {
+  border: 0;
+  background-color: transparent;
+  align-self: stretch;
+}
+.dueDate,
+.priorityLevel {
+  height: 60px;
+  width: 440.4px;
+  max-width: 100%;
+}
+.dueDate {
+  width: 439.4px;
+}
+.priorityFields {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-10xl-9);
+  max-width: 100%;
+}
+.assignedTo,
+.attachments {
+  font-size: var(--font-size-lg);
+  font-family: var(--font-poppins);
+  z-index: 1;
+}
+.assignedTo {
+  height: 60px;
+  width: 675px;
+  max-width: 100%;
+}
+.attachments {
+  position: relative;
+  letter-spacing: -0.03em;
+  line-height: 160%;
+  color: var(--color-darkslategray-100);
+  text-align: left;
+  display: inline-block;
+  min-width: 113px;
+}
+.attachmentsWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-base) 0 0;
+}
+.assigneeFieldChild {
+  border: 0;
+  background-color: transparent;
+  width: 532px;
+  font-family: var(--font-poppins);
+  font-size: var(--font-size-lg);
+  color: var(--color-darkslategray-100);
+  max-width: 100%;
+  z-index: 1;
+}
+.assigneeField {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-11xl-5);
+  max-width: 100%;
+}
+.checkbox {
+  margin: 0;
+  height: 30px;
+  width: 30px;
+  position: relative;
+  border-radius: var(--br-8xs);
+  border: 1px solid var(--color-darkgray);
+  box-sizing: border-box;
+  z-index: 1;
+}
+.span {
+  color: var(--color-tomato-100);
+}
+.sendAnImmediate {
+  color: var(--color-darkslategray-100);
+}
+.sendAnImmediateContainer {
+  align-self: stretch;
+  position: relative;
+  font-size: var(--font-size-lg);
+  letter-spacing: -0.03em;
+  line-height: 160%;
+  font-family: var(--font-poppins);
+  text-align: left;
+  z-index: 1;
+}
+.checkboxParent,
+.sendAnImmediateNotificationWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.sendAnImmediateNotificationWrapper {
+  flex: 1;
+  flex-direction: column;
+  padding: var(--padding-12xs) 0 0;
+  box-sizing: border-box;
+  min-width: 274px;
+}
+.checkboxParent {
+  width: 459px;
+  flex-direction: row;
+  gap: var(--gap-6xs);
+}
+.addSubTask,
+.frameChild {
+  position: relative;
+  z-index: 1;
+}
+.frameChild {
+  height: 45px;
+  width: 45px;
+}
+.addSubTask {
+  align-self: stretch;
+  font-size: var(--font-size-3xl);
+  letter-spacing: -0.03em;
+  line-height: 120%;
+  font-family: var(--font-poppins);
+  color: var(--color-darkslategray-100);
+  text-align: left;
+}
+.addSubTaskWrapper,
+.frameGroup {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.addSubTaskWrapper {
+  flex: 1;
+  flex-direction: column;
+  padding: var(--padding-3xs) 0 0;
+}
+.frameGroup {
+  width: 207px;
+  flex-direction: row;
+  gap: var(--gap-mini);
+}
+.assigneeFieldParent,
+.frameParent {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  max-width: 100%;
+  gap: var(--gap-xl);
+}
+.assigneeFieldParent {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 0 var(--padding-3xs);
+  box-sizing: border-box;
+  gap: var(--gap-11xl);
+}
+.dueDate1,
+.setReminder,
+.time1 {
+  font-family: var(--font-poppins);
+  max-width: 100%;
+  z-index: 1;
+}
+.setReminder {
+  margin: 0;
+  width: 331px;
+  position: relative;
+  font-size: var(--font-size-7xl);
+  letter-spacing: -0.03em;
+  line-height: 34px;
+  font-weight: 600;
+  color: var(--color-darkslategray-200);
+  text-align: left;
+  display: inline-block;
+}
+.dueDate1,
+.time1 {
+  height: 60px;
+  width: 439.4px;
+  font-size: var(--font-size-lg);
+  flex-shrink: 0;
+}
+.time1 {
+  width: 440.4px;
+}
+.reminderFields,
+.setReminderParent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-10xl-9);
+  max-width: 100%;
+}
+.setReminderParent {
+  flex-direction: column;
+  gap: var(--gap-xl);
+}
+.button {
+  width: 160px;
+  height: 50px;
+  box-shadow: 0 10px 30px rgba(237, 48, 6, 0.2);
+  z-index: 1;
+}
+.modal,
+.priorityFieldsParent {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-11xl);
+  max-width: 100%;
+}
+.priorityFieldsParent {
+  margin: 0;
+}
+.modal {
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  padding: var(--padding-31xl) var(--padding-31xl) var(--padding-32xl);
+  box-sizing: border-box;
+}
+@media screen and (max-width: 1600px) {
+  .assigneeField,
+  .priorityFields {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 1275px) {
+  .checkboxParent {
+    flex-wrap: wrap;
+  }
+  .addSubTask {
+    font-size: var(--font-size-lg);
+    line-height: 21px;
+  }
+  .setReminder {
+    font-size: var(--font-size-2xl);
+    line-height: 25px;
+  }
+  .modal {
+    padding-top: var(--padding-2xl);
+    padding-bottom: var(--padding-2xl);
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 900px) {
+  .eventName {
+    min-width: 100%;
+  }
+  .assigneeField {
+    gap: var(--gap-mini);
+  }
+  .frameParent {
+    flex-wrap: wrap;
+  }
+  .modal {
+    gap: var(--gap-mini);
+    padding-top: var(--padding-13xl);
+    padding-bottom: var(--padding-14xl);
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 450px) {
+  .modalHeader,
+  .reminderFields {
+    flex-wrap: wrap;
+  }
+  .modal {
+    padding-left: var(--padding-6xl);
+    padding-right: var(--padding-6xl);
+    box-sizing: border-box;
+  }
+}

@@ -5,11 +5,16 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
-import EventsList from "./pages/EventsList";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 import EventsDetails from "./pages/EventsDetails";
 import CreateNewEvent from "./pages/CreateNewEvent";
+import EventsList from "./pages/EventsList";
+import RoutePlanning from "./pages/RoutePlanning";
+import VehicleManagement from "./pages/VehicleManagement";
+import EventCalendar from "./pages/EventCalendar";
+import TaskAssignment from "./pages/TaskAssignment";
+import LogisticsOverview from "./pages/LogisticsOverview";
 
 function App() {
   const action = useNavigationType();
@@ -31,10 +36,6 @@ function App() {
         title = "";
         metaDescription = "";
         break;
-      case "/sign-up":
-        title = "";
-        metaDescription = "";
-        break;
       case "/dashboard":
         title = "";
         metaDescription = "";
@@ -44,6 +45,30 @@ function App() {
         metaDescription = "";
         break;
       case "/create-new-event":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/events-list":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/route-planning":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/vehicle-management":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/event-calendar":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/task-assignment":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/logistics-overview":
         title = "";
         metaDescription = "";
         break;
@@ -65,11 +90,16 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<EventsList />} />
-      <Route path="/sign-up" element={<SignUp />} />
+      <Route path="/" element={<SignUp />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/events-details" element={<EventsDetails />} />
       <Route path="/create-new-event" element={<CreateNewEvent />} />
+      <Route path="/events-list" element={<EventsList />} />
+      <Route path="/route-planning" element={<RoutePlanning />} />
+      <Route path="/vehicle-management" element={<VehicleManagement />} />
+      <Route path="/event-calendar" element={<EventCalendar />} />
+      <Route path="/task-assignment" element={<TaskAssignment />} />
+      <Route path="/logistics-overview" element={<LogisticsOverview />} />
     </Routes>
   );
 }

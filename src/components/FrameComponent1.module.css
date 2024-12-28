@@ -1,0 +1,100 @@
+.dashboardLogistics {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+}
+.dashboardLogisticsVehiclWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-lg) 0 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.icon {
+  width: 30px;
+  height: 29.9px;
+  position: relative;
+}
+.userIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 0 var(--padding-base-1);
+}
+.userChild {
+  height: 61px;
+  width: 224px;
+  position: relative;
+  border-radius: var(--br-81xl);
+  background-color: var(--color-white);
+  display: none;
+}
+.userImageIcon {
+  height: 40px;
+  width: 40px;
+  position: relative;
+  border-radius: var(--br-481xl);
+  object-fit: cover;
+  z-index: 1;
+}
+.sherwynGraham {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  z-index: 1;
+}
+.user,
+.userName {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.userName {
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding-4xs) 0 0;
+}
+.user {
+  flex: 1;
+  border-radius: var(--br-81xl);
+  background-color: var(--color-white);
+  padding: var(--padding-2xs) var(--padding-xs) var(--padding-3xs);
+  gap: var(--gap-3xs);
+}
+.frameParent,
+.user,
+.userIconParent {
+  display: flex;
+  flex-direction: row;
+}
+.userIconParent {
+  width: 289px;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: var(--gap-16xl);
+  font-size: var(--font-size-base);
+  color: var(--color-darkslategray-300);
+}
+.frameParent {
+  align-self: stretch;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 100%;
+  gap: var(--gap-xl);
+  text-align: left;
+  font-size: var(--font-size-lg);
+  color: var(--color-darkslategray-100);
+  font-family: var(--font-poppins);
+}
+@media screen and (max-width: 1275px) {
+  .dashboardLogisticsVehiclWrapper {
+    display: none;
+  }
+}
+@media screen and (max-width: 900px) {
+  .userIconParent {
+    gap: var(--gap-mid);
+  }
+}

@@ -567,66 +567,6 @@
   gap: var(--gap-29xl);
   min-width: 600px;
 }
-.userIcon {
-  width: 30px;
-  height: 29.9px;
-  position: relative;
-}
-.userIconWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-end;
-  padding: 0 0 var(--padding-base-1);
-}
-.userChild {
-  height: 61px;
-  width: 224px;
-  position: relative;
-  border-radius: var(--br-81xl);
-  background-color: var(--color-white);
-  display: none;
-}
-.buttonIcon {
-  height: 40px;
-  width: 40px;
-  position: relative;
-  border-radius: var(--br-481xl);
-  object-fit: cover;
-  z-index: 1;
-}
-.sherwynGraham {
-  position: relative;
-  letter-spacing: -0.02em;
-  line-height: 140%;
-  z-index: 1;
-}
-.sherwynGrahamWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: var(--padding-4xs) 0 0;
-}
-.frameParent1,
-.user {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-.user {
-  flex: 1;
-  border-radius: var(--br-81xl);
-  background-color: var(--color-white);
-  align-items: flex-start;
-  padding: var(--padding-2xs) var(--padding-xs) var(--padding-3xs);
-  gap: var(--gap-3xs);
-}
-.frameParent1 {
-  width: 289px;
-  align-items: flex-end;
-  gap: var(--gap-16xl);
-}
 .eventSummary,
 .summaryChild {
   position: relative;
@@ -738,7 +678,7 @@
   position: relative;
   z-index: 1;
 }
-.frameParent3 {
+.frameParent2 {
   align-self: stretch;
   display: flex;
   flex-direction: row;
@@ -770,7 +710,7 @@
   z-index: 1;
 }
 .addressParent,
-.frameParent2 {
+.frameParent1 {
   align-self: stretch;
   display: flex;
   align-items: flex-start;
@@ -779,10 +719,10 @@
 }
 .addressParent {
   flex-direction: row;
-  gap: 73px;
+  gap: var(--gap-54xl);
   font-size: var(--font-size-lg);
 }
-.frameParent2 {
+.frameParent1 {
   flex-direction: column;
   gap: var(--gap-11xl);
 }
@@ -832,8 +772,6 @@
     var(--padding-21xl);
   box-sizing: border-box;
   gap: var(--gap-6xl);
-  font-size: var(--font-size-7xl);
-  color: var(--color-darkslategray-100);
 }
 .sidebarTop {
   align-items: flex-end;
@@ -994,7 +932,6 @@
   box-sizing: border-box;
   gap: var(--gap-mid);
   font-size: var(--font-size-3xl);
-  color: var(--color-darkslategray-100);
 }
 .breadcrumbBarParent,
 .sidebar {
@@ -1005,8 +942,7 @@
   flex-direction: column;
   align-items: flex-start;
   min-width: 546px;
-  font-size: var(--font-size-base);
-  color: var(--color-darkslategray-300);
+  font-size: var(--font-size-7xl);
 }
 .breadcrumbBarParent {
   align-self: stretch;
@@ -1079,11 +1015,11 @@
     gap: var(--gap-5xl);
     min-width: 100%;
   }
-  .frameParent3 {
+  .frameParent2 {
     flex-wrap: wrap;
   }
   .addressParent {
-    gap: 36px;
+    gap: var(--gap-17xl);
     flex-wrap: wrap;
   }
   .summaryRight {
@@ -1142,9 +1078,6 @@
   .taskName {
     font-size: var(--font-size-lg);
     line-height: 35px;
-  }
-  .frameParent1 {
-    gap: var(--gap-mid);
   }
   .eventSummary {
     font-size: var(--font-size-2xl);

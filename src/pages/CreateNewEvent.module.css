@@ -437,10 +437,10 @@
   height: 120px;
   width: auto;
   outline: 0;
-  border-radius: 10px;
+  border-radius: var(--br-3xs);
   box-sizing: border-box;
   flex-direction: row;
-  padding: var(--padding-mini) 28px;
+  padding: var(--padding-mini) var(--padding-9xl);
   font-family: var(--font-poppins);
   font-size: var(--font-size-lg);
   z-index: 1;

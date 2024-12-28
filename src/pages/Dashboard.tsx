@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
 import { Box, Typography } from "@mui/material";
+import FrameComponent1 from "../components/FrameComponent1";
 import styles from "./Dashboard.module.css";
 
 const Dashboard: FunctionComponent = () => {
@@ -123,35 +124,7 @@ const Dashboard: FunctionComponent = () => {
       <main className={styles.main}>
         <section className={styles.dashboardContainer}>
           <div className={styles.firstRowParent}>
-            <div className={styles.firstRow}>
-              <div className={styles.dashboardWrapper}>
-                <div className={styles.dashboard2}>Dashboard</div>
-              </div>
-              <div className={styles.frameGroup}>
-                <div className={styles.profilePictureWrapper}>
-                  <img
-                    className={styles.profilePictureIcon}
-                    loading="lazy"
-                    alt=""
-                    src="/vector-1.svg"
-                  />
-                </div>
-                <div className={styles.user}>
-                  <div className={styles.userChild} />
-                  <img
-                    className={styles.profileBackgroundIcon}
-                    loading="lazy"
-                    alt=""
-                    src="/rectangle-2@2x.png"
-                  />
-                  <div className={styles.nameContainer}>
-                    <div
-                      className={styles.sherwynGraham}
-                    >{`Sherwyn Graham `}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <FrameComponent1 />
             <div className={styles.metrics}>
               <div className={styles.groupDiv}>
                 <div className={styles.frameChild4} />
@@ -265,7 +238,7 @@ const Dashboard: FunctionComponent = () => {
                       <div className={styles.inventoryCard}>
                         <div className={styles.itemDetails}>
                           <div className={styles.itemTopRow}>
-                            <div className={styles.firstRow}>
+                            <div className={styles.itemNameContainerParent}>
                               <div className={styles.itemNameContainer}>
                                 <div className={styles.eventTime}>
                                   <div className={styles.itemName}>
@@ -283,7 +256,7 @@ const Dashboard: FunctionComponent = () => {
                             </div>
                             <div className={styles.separator} />
                           </div>
-                          <div className={styles.firstRow}>
+                          <div className={styles.itemNameContainerParent}>
                             <div className={styles.itemNameContainer}>
                               <div className={styles.eventTime}>
                                 <div className={styles.itemName}>Item name</div>
@@ -307,8 +280,8 @@ const Dashboard: FunctionComponent = () => {
                     </div>
                   </div>
                 </div>
-                <div className={styles.frameContainer}>
-                  <div className={styles.frameParent1}>
+                <div className={styles.frameGroup}>
+                  <div className={styles.frameContainer}>
                     <div className={styles.rectangleParent7}>
                       <div className={styles.frameChild7} />
                       <div className={styles.eventDetails}>
@@ -333,7 +306,7 @@ const Dashboard: FunctionComponent = () => {
                       />
                     </div>
                   </div>
-                  <div className={styles.eventList}>
+                  <div className={styles.deliveries1}>
                     <div className={styles.deliveriesContent}>
                       <div className={styles.deliveriesTitle}>
                         <h2 className={styles.activeDeliveries}>
