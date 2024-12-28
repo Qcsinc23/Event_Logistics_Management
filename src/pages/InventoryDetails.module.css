@@ -277,7 +277,7 @@
 }
 .titleBar {
   align-self: stretch;
-  gap: 42px;
+  gap: var(--gap-23xl);
 }
 .imageIcon1 {
   height: 140px;
@@ -363,7 +363,7 @@
     flex-wrap: wrap;
   }
   .titleBar {
-    gap: 21px;
+    gap: var(--gap-2xl);
   }
   .images {
     flex-wrap: wrap;

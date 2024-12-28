@@ -182,7 +182,7 @@ const LogisticsOverview: FunctionComponent = () => {
               </div>
             </div>
             <div className={styles.userContainerParent}>
-              <UserContainer profilePicture="/vector-1.svg" />
+              <UserContainer />
               <div className={styles.summary}>
                 <div className={styles.summaryChild} />
                 <div className={styles.taskStatus}>

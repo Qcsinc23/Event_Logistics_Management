@@ -5,7 +5,7 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
-import AddInventory from "./pages/AddInventory";
+import StatusUpdates from "./pages/StatusUpdates";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 import EventsDetails from "./pages/EventsDetails";
@@ -19,6 +19,11 @@ import LogisticsOverview from "./pages/LogisticsOverview";
 import AddAlertModal from "./pages/AddAlertModal";
 import InventoryDetails from "./pages/InventoryDetails";
 import InventoryAlertsNotificatio from "./pages/InventoryAlertsNotificatio";
+import AddInventory from "./pages/AddInventory";
+import LiveTrackingMap from "./pages/LiveTrackingMap";
+import VehicleDetailsModal from "./pages/VehicleDetailsModal";
+import DeliveryDetailsModal from "./pages/DeliveryDetailsModal";
+import ProofOfDelivery from "./pages/ProofOfDelivery";
 
 function App() {
   const action = useNavigationType();
@@ -92,6 +97,26 @@ function App() {
         title = "";
         metaDescription = "";
         break;
+      case "/add-inventory":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/live-tracking-map":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/vehicle-details-modal":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/delivery-details-modal":
+        title = "";
+        metaDescription = "";
+        break;
+      case "/proof-of-delivery":
+        title = "";
+        metaDescription = "";
+        break;
     }
 
     if (title) {
@@ -110,7 +135,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<AddInventory />} />
+      <Route path="/" element={<StatusUpdates />} />
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/events-details" element={<EventsDetails />} />
@@ -127,6 +152,14 @@ function App() {
         path="/inventory-alerts-notifications"
         element={<InventoryAlertsNotificatio />}
       />
+      <Route path="/add-inventory" element={<AddInventory />} />
+      <Route path="/live-tracking-map" element={<LiveTrackingMap />} />
+      <Route path="/vehicle-details-modal" element={<VehicleDetailsModal />} />
+      <Route
+        path="/delivery-details-modal"
+        element={<DeliveryDetailsModal />}
+      />
+      <Route path="/proof-of-delivery" element={<ProofOfDelivery />} />
     </Routes>
   );
 }

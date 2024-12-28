@@ -699,7 +699,7 @@
     gap: var(--gap-xl);
   }
   .userPanel {
-    gap: 49px;
+    gap: var(--gap-30xl);
     min-width: 100%;
   }
 }

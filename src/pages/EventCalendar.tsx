@@ -157,22 +157,7 @@ const EventCalendar: FunctionComponent = () => {
                 <div className={styles.sortBy}>Sort by:</div>
               </div>
               <div className={styles.userFilter}>
-                <UserContainer
-                  userContainerWidth="289px"
-                  userContainerAlignSelf="unset"
-                  userContainerHeight="61px"
-                  userIconHeight="45px"
-                  userIconWidth="30px"
-                  profilePicture="/vector-12.svg"
-                  userFlex="unset"
-                  userHeight="61px"
-                  userWidth="224px"
-                  userNameHeight="31px"
-                  userNameWidth="135px"
-                  sherwynGrahamWidth="136px"
-                  sherwynGrahamHeight="22px"
-                  sherwynGrahamDisplay="inline-block"
-                />
+                <UserContainer />
                 <div className={styles.dropdownFilters}>
                   <FormControl
                     className={styles.filter1}

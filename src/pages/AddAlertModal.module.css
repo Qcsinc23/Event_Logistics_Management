@@ -8,50 +8,6 @@
   width: 393px;
   height: 25px;
 }
-.userChild {
-  height: 61px;
-  width: 224px;
-  position: relative;
-  border-radius: var(--br-81xl);
-  background-color: var(--color-white);
-  display: none;
-}
-.userAvatarIcon {
-  height: 40px;
-  width: 40px;
-  position: relative;
-  border-radius: var(--br-481xl);
-  object-fit: cover;
-  z-index: 1;
-}
-.sherwynGraham {
-  position: relative;
-  letter-spacing: -0.02em;
-  line-height: 140%;
-  z-index: 1;
-}
-.user,
-.userName {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: var(--padding-4xs) 0 0;
-}
-.user {
-  position: absolute;
-  top: 40px;
-  left: 1646px;
-  border-radius: var(--br-81xl);
-  background-color: var(--color-white);
-  width: 224px;
-  flex-direction: row;
-  padding: var(--padding-2xs) var(--padding-xs) var(--padding-3xs);
-  box-sizing: border-box;
-  gap: var(--gap-3xs);
-  font-size: var(--font-size-base);
-  color: var(--color-darkslategray-300);
-}
 .inventoryAlerts,
 .notificationIcon {
   position: absolute;

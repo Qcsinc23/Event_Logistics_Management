@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import { Box, Typography } from "@mui/material";
 import LeftMenu4 from "../components/LeftMenu4";
+import User1 from "../components/User1";
 import Card3 from "../components/Card3";
 import Card2 from "../components/Card2";
 import Modal1 from "../components/Modal1";
@@ -24,18 +25,7 @@ const AddAlertModal: FunctionComponent = () => {
         <div
           className={styles.dashboardInventory}
         >{`Dashboard > Inventory > Alerts & Notifications`}</div>
-        <div className={styles.user}>
-          <div className={styles.userChild} />
-          <img
-            className={styles.userAvatarIcon}
-            loading="lazy"
-            alt=""
-            src="/rectangle-2@2x.png"
-          />
-          <div className={styles.userName}>
-            <div className={styles.sherwynGraham}>{`Sherwyn Graham `}</div>
-          </div>
-        </div>
+        <User1 />
         <img
           className={styles.notificationIcon}
           loading="lazy"
