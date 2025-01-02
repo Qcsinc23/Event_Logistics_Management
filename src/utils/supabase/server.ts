@@ -8,10 +8,20 @@ if (!supabaseUrl || !supabaseKey) {
 }
 
 // Create a single supabase client for interacting with your database
-export const supabase = createClient(supabaseUrl, supabaseKey);
+export const supabase = createClient(supabaseUrl, supabaseKey, {
+  auth: {
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: true
+  },
+  db: {
+    schema: 'public'
+  }
+});
 
-// Log auth state changes
+// Log auth state changes and handle errors
 supabase.auth.onAuthStateChange((event, session) => {
+  console.log('Auth event:', event);
   switch (event) {
     case 'SIGNED_IN':
       console.log('Signed in:', session?.user?.email);
