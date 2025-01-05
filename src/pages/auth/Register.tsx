@@ -143,7 +143,44 @@ export const Register: React.FC = () => {
                         Register
                     </button>
                 </form>
-                <div style={{ marginTop: '1rem', textAlign: 'center' }}>
+                <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', margin: '1rem 0' }}>
+                        <div style={{ flex: 1, height: '1px', background: '#ddd' }} />
+                        <span style={{ padding: '0 1rem', color: '#666', fontSize: '0.9rem' }}>OR</span>
+                        <div style={{ flex: 1, height: '1px', background: '#ddd' }} />
+                    </div>
+                    <button
+                        onClick={async () => {
+                            try {
+                                await authService.loginWithGoogle();
+                                // Navigation will happen automatically after successful OAuth
+                            } catch (err: any) {
+                                setError(err.message || 'Failed to sign up with Google');
+                            }
+                        }}
+                        type="button"
+                        style={{
+                            width: '100%',
+                            padding: '12px',
+                            fontSize: '1rem',
+                            fontWeight: '500',
+                            backgroundColor: '#fff',
+                            border: '1px solid #ddd',
+                            borderRadius: '4px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            cursor: 'pointer',
+                            marginBottom: '1rem'
+                        }}
+                    >
+                        <img
+                            src="https://www.google.com/favicon.ico"
+                            alt="Google"
+                            style={{ width: '20px', height: '20px', marginRight: '10px' }}
+                        />
+                        Sign up with Google
+                    </button>
                     <Link to="/login" style={{ color: '#007bff', textDecoration: 'none' }}>
                         Already have an account? Login here
                     </Link>

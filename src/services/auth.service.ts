@@ -1,22 +1,46 @@
-import { ID } from 'appwrite';
+import { ID, Account, Models } from 'appwrite';
 import { account } from '../config/appwrite';
 
 export class AuthService {
+    private async retryWithBackoff<T>(operation: () => Promise<T>, maxRetries: number = 3): Promise<T> {
+        for (let attempt = 0; attempt < maxRetries; attempt++) {
+            try {
+                return await operation();
+            } catch (error: any) {
+                if (error.type === 'general_rate_limit_exceeded' && attempt < maxRetries - 1) {
+                    // Calculate delay with exponential backoff: 2^attempt * 1000ms (1s, 2s, 4s)
+                    const delay = Math.min(Math.pow(2, attempt) * 1000, 4000);
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    continue;
+                }
+                throw error;
+            }
+        }
+        throw new Error('Max retries exceeded');
+    }
+
     async createAccount(email: string, password: string, name: string) {
         try {
-            // Create a valid user ID from email (remove special chars and limit length)
-            const userId = email
+            // Create a valid user ID from email
+            let userId = email
                 .split('@')[0] // Take part before @
-                .replace(/[^a-zA-Z0-9]/g, '_') // Replace special chars with underscore
-                .slice(0, 36); // Limit to 36 chars
+                .replace(/[^a-zA-Z0-9\.\-_]/g, '_') // Keep letters, numbers, periods, hyphens, underscores
+                .replace(/^[^a-zA-Z0-9]+/, 'u'); // Replace leading special chars with 'u'
 
-            const user = await account.create(
-                userId,
-                email,
-                password,
-                name
-            );
-            await this.login(email, password);
+            // Limit to 36 chars
+            userId = userId.slice(0, 36);
+
+            // Validate final userId
+            if (!/^[a-zA-Z0-9][a-zA-Z0-9\.\-_]{0,35}$/.test(userId)) {
+                userId = 'u' + userId.replace(/[^a-zA-Z0-9\.\-_]/g, '_').slice(0, 35);
+            }
+
+            const user = await this.retryWithBackoff(async () => {
+                const createdUser = await account.create(userId, email, password, name);
+                await this.login(email, password);
+                return createdUser;
+            });
+            
             return user;
         } catch (error) {
             this.handleError(error);
@@ -26,7 +50,19 @@ export class AuthService {
 
     async login(email: string, password: string) {
         try {
-            return await account.createSession(email, password);
+            return await this.retryWithBackoff(() => account.createSession(email, password));
+        } catch (error) {
+            this.handleError(error);
+            throw error;
+        }
+    }
+
+    async loginWithGoogle() {
+        try {
+            return await this.retryWithBackoff(() => {
+                // Let Appwrite handle the redirect URLs since they're configured in the console
+                return account.createOAuth2Session('google' as any);
+            });
         } catch (error) {
             this.handleError(error);
             throw error;
@@ -35,7 +71,7 @@ export class AuthService {
 
     async logout() {
         try {
-            return await account.deleteSession('current');
+            return await this.retryWithBackoff(() => account.deleteSession('current'));
         } catch (error) {
             this.handleError(error);
             throw error;
@@ -44,7 +80,7 @@ export class AuthService {
 
     async getCurrentUser() {
         try {
-            return await account.get();
+            return await this.retryWithBackoff(() => account.get());
         } catch (error) {
             this.handleError(error);
             return null;
@@ -53,7 +89,9 @@ export class AuthService {
 
     async resetPassword(email: string) {
         try {
-            return await account.createRecovery(email, 'http://localhost:5173/reset-password');
+            return await this.retryWithBackoff(() =>
+                account.createRecovery(email, 'http://localhost:5173/reset-password')
+            );
         } catch (error) {
             this.handleError(error);
             throw error;
@@ -62,7 +100,7 @@ export class AuthService {
 
     async updateName(name: string) {
         try {
-            return await account.updateName(name);
+            return await this.retryWithBackoff(() => account.updateName(name));
         } catch (error) {
             this.handleError(error);
             throw error;
@@ -71,7 +109,9 @@ export class AuthService {
 
     async updatePassword(password: string, oldPassword: string) {
         try {
-            return await account.updatePassword(password, oldPassword);
+            return await this.retryWithBackoff(() =>
+                account.updatePassword(password, oldPassword)
+            );
         } catch (error) {
             this.handleError(error);
             throw error;
@@ -80,7 +120,7 @@ export class AuthService {
 
     async updatePreferences(prefs: object) {
         try {
-            return await account.updatePrefs(prefs);
+            return await this.retryWithBackoff(() => account.updatePrefs(prefs));
         } catch (error) {
             this.handleError(error);
             throw error;
