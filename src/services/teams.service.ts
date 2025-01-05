@@ -55,16 +55,22 @@ export class TeamsService {
     // Membership methods
     async createMembership(
         teamId: string,
-        email: string,
         roles: string[] = [],
-        url: string = 'http://localhost:5173/team-invite'
+        email?: string,
+        userId?: string,
+        phone?: string,
+        url: string = 'http://localhost:5173/team-invite',
+        name?: string
     ) {
         try {
             return await teams.createMembership(
                 teamId,
-                email,
                 roles,
-                url
+                email,
+                userId,
+                phone,
+                url,
+                name
             );
         } catch (error) {
             this.handleError(error);
@@ -127,7 +133,7 @@ export class TeamsService {
     }
 
     async addEventTeamMember(teamId: string, email: string, role: 'admin' | 'member' = 'member') {
-        return this.createMembership(teamId, email, Array.isArray(role) ? role : [role]);
+        return this.createMembership(teamId, [role], email);
     }
 
     private handleError(error: any) {
