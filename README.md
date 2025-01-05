@@ -20,6 +20,15 @@ VITE_APPWRITE_PROJECT_ID=your_project_id_here
 npm run dev
 ```
 
+## Environment Variables
+
+The following environment variables are required:
+
+| Variable Name              | Description                          | Example Value                          |
+|----------------------------|--------------------------------------|----------------------------------------|
+| VITE_APPWRITE_ENDPOINT      | Appwrite server endpoint             | https://cloud.appwrite.io/v1           |
+| VITE_APPWRITE_PROJECT_ID    | Appwrite project ID                  | your_project_id_here                   |
+
 ## Netlify Deployment
 
 ### Prerequisites
@@ -77,3 +86,30 @@ The repository includes a `netlify.toml` file that configures:
 - Vite 6
 - React Router DOM 7
 - Appwrite 16.1
+
+## Running Tests
+
+To run the test suite, use the following command:
+```bash
+npm test
+```
+
+## Contributing
+
+We welcome contributions! Please follow these steps:
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/YourFeatureName`)
+3. Commit your changes (`git commit -m 'Add some feature'`)
+4. Push to the branch (`git push origin feature/YourFeatureName`)
+5. Open a pull request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Screenshots
+
+![Dashboard](public/screenshots/dashboard.png)
+![Events](public/screenshots/events.png)
+![Tasks](public/screenshots/tasks.png)

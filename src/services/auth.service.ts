@@ -60,8 +60,13 @@ export class AuthService {
     async loginWithGoogle() {
         try {
             return await this.retryWithBackoff(() => {
-                // Let Appwrite handle the redirect URLs since they're configured in the console
-                return account.createOAuth2Session('google' as any);
+                const origin = window.location.origin;
+                // Use type assertion to match Appwrite's internal type
+                return (account.createOAuth2Session as Function)(
+                    'google',
+                    `${origin}/auth/callback`,
+                    `${origin}/auth/failure`
+                );
             });
         } catch (error) {
             this.handleError(error);
