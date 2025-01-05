@@ -1,0 +1,330 @@
+.menuBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 12px 20px 50px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-white);
+  width: 100%;
+  height: 100%;
+}
+.layer1Icon,
+.logoIcon {
+  position: absolute;
+  top: 41px;
+  left: 50px;
+  width: 216px;
+  height: 60px;
+  overflow: hidden;
+}
+.layer1Icon {
+  top: 0;
+  left: 0;
+  width: 31px;
+  height: 31px;
+}
+.dashboard1 {
+  margin: 0;
+  position: absolute;
+  top: 2px;
+  left: 46px;
+  font-size: inherit;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 400;
+  font-family: inherit;
+  display: inline-block;
+  min-width: 109px;
+}
+.dashboard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 155px;
+  height: 31px;
+}
+.events1 {
+  margin: 0;
+  position: absolute;
+  top: 2px;
+  left: 46px;
+  font-size: inherit;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 400;
+  font-family: inherit;
+  display: inline-block;
+  min-width: 63px;
+}
+.eventsChild {
+  position: absolute;
+  top: 11px;
+  left: 244px;
+  width: 12px;
+  height: 9px;
+  object-fit: contain;
+}
+.events {
+  position: absolute;
+  top: 66px;
+  left: 0;
+  width: 100%;
+  height: 31px;
+}
+.logistics1 {
+  margin: 0;
+  position: absolute;
+  top: 1.4px;
+  left: 46px;
+  font-size: inherit;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 400;
+  font-family: inherit;
+  display: inline-block;
+  min-width: 82px;
+}
+.frameChild,
+.logisticsChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+.logisticsChild {
+  width: 12.11%;
+  right: 87.89%;
+  bottom: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.frameChild {
+  background-color: var(--color-gainsboro);
+  width: 100%;
+  display: none;
+}
+.frameItem {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 0;
+  height: 1px;
+  object-fit: contain;
+}
+.rectangleParent {
+  position: absolute;
+  top: 11.4px;
+  left: 244px;
+  width: 12px;
+  height: 9px;
+}
+.inventoryChild,
+.logistics {
+  position: absolute;
+  top: 131.6px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+}
+.inventoryChild {
+  top: 12.5px;
+  left: 244px;
+  width: 12px;
+  height: 9px;
+  object-fit: contain;
+}
+.inventory1 {
+  margin: 0;
+  position: absolute;
+  top: 3.5px;
+  left: 46px;
+  font-size: inherit;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 400;
+  font-family: inherit;
+  display: inline-block;
+  min-width: 90px;
+}
+.inventoryItem,
+.layer1 {
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+}
+.inventoryItem {
+  height: 98.21%;
+  width: 12.11%;
+  top: 0;
+  right: 87.89%;
+  bottom: 1.79%;
+  max-width: 100%;
+  max-height: 100%;
+}
+.layer1 {
+  top: 0.5px;
+  width: 31px;
+  height: 33px;
+}
+.inventory,
+.rectangleGroup {
+  position: absolute;
+  top: 196.5px;
+  left: 0;
+  width: 100%;
+  height: 33.5px;
+}
+.rectangleGroup {
+  top: 11.6px;
+  left: 244px;
+  width: 12px;
+  height: 9px;
+}
+.deliveries1 {
+  margin: 0;
+  position: absolute;
+  top: 1.6px;
+  left: 46px;
+  font-size: inherit;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 400;
+  font-family: inherit;
+  display: inline-block;
+  min-width: 92px;
+}
+.deliveries {
+  position: absolute;
+  top: 264.4px;
+  left: 0;
+  width: 100%;
+  height: 31px;
+}
+.reports1 {
+  margin: 0;
+  position: absolute;
+  top: 2px;
+  left: 46px;
+  font-size: inherit;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 600;
+  font-family: inherit;
+  display: inline-block;
+  min-width: 76px;
+}
+.reports,
+.reportsChild {
+  position: absolute;
+  left: 0;
+}
+.reportsChild {
+  height: 100%;
+  width: 25.41%;
+  top: 0;
+  right: 74.59%;
+  bottom: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.reports {
+  top: 330px;
+  width: 122px;
+  height: 30.9px;
+  color: var(--color-darkslategray-200);
+}
+.users1 {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 46px;
+  font-size: inherit;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 400;
+  font-family: inherit;
+  display: inline-block;
+  min-width: 53px;
+}
+.users,
+.vectorIcon {
+  position: absolute;
+  left: 0;
+}
+.vectorIcon {
+  height: 85.71%;
+  width: 31.31%;
+  top: 3.21%;
+  right: 68.69%;
+  bottom: 11.07%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.users {
+  top: 396px;
+  width: 99px;
+  height: 28px;
+}
+.settings1 {
+  margin: 0;
+  position: absolute;
+  top: 1px;
+  left: 46px;
+  font-size: inherit;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 400;
+  font-family: inherit;
+  display: inline-block;
+  min-width: 78px;
+}
+.layer1Icon2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 31px;
+  height: 29px;
+  overflow: hidden;
+}
+.leftMenu,
+.links,
+.settings {
+  position: absolute;
+  top: 459px;
+  left: 0;
+  width: 124px;
+  height: 29px;
+}
+.leftMenu,
+.links {
+  top: 151px;
+  left: 50px;
+  width: 256px;
+  height: 488px;
+}
+.leftMenu {
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 340px;
+  text-align: left;
+  font-size: var(--font-size-xl);
+  color: var(--color-darkslategray-100);
+  font-family: var(--font-poppins);
+}
+@media screen and (max-width: 450px) {
+  .dashboard1,
+  .deliveries1,
+  .events1,
+  .inventory1,
+  .logistics1,
+  .reports1,
+  .settings1,
+  .users1 {
+    font-size: var(--font-size-base);
+    line-height: 22px;
+  }
+}

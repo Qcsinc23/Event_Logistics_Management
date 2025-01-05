@@ -1,0 +1,227 @@
+.stepsIcon {
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.stepsWrapper {
+  height: 295.3px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 175px 0 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.basicInformation,
+.formChild {
+  position: relative;
+  max-width: 100%;
+}
+.formChild {
+  width: 1480px;
+  height: 479px;
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  display: none;
+}
+.basicInformation {
+  width: 331px;
+  letter-spacing: -0.03em;
+  line-height: 120%;
+  font-weight: 600;
+  display: inline-block;
+  z-index: 1;
+}
+.basicInformationParent,
+.frameChild {
+  align-self: stretch;
+  box-sizing: border-box;
+}
+.frameChild {
+  height: 1px;
+  position: relative;
+  border-top: 1px solid var(--color-lightgray);
+  z-index: 1;
+}
+.basicInformationParent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 0 var(--padding-12xs);
+  gap: var(--gap-6xl);
+  max-width: 100%;
+}
+.eventName,
+.eventType {
+  font-family: var(--font-poppins);
+  font-size: var(--font-size-lg);
+  max-width: 100%;
+  z-index: 1;
+}
+.eventName {
+  border: 0;
+  background-color: transparent;
+  flex: 1;
+  min-width: 439px;
+}
+.eventType {
+  height: 60px;
+  width: 675px;
+}
+.eventNameInput {
+  flex-direction: row;
+  gap: var(--gap-11xl);
+  max-width: 100%;
+}
+.description,
+.eventNameInput,
+.eventNameInputParent {
+  align-self: stretch;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.description {
+  border: 1px solid var(--color-darkgray);
+  background-color: var(--color-white);
+  height: 120px;
+  width: auto;
+  outline: 0;
+  border-radius: var(--br-3xs);
+  box-sizing: border-box;
+  flex-direction: row;
+  padding: var(--padding-mini) var(--padding-9xl);
+  font-family: var(--font-poppins);
+  font-size: var(--font-size-lg);
+  z-index: 1;
+}
+.eventNameInputParent {
+  flex-direction: column;
+  gap: var(--gap-11xl);
+  max-width: 100%;
+}
+.button,
+.button1 {
+  height: 50px;
+  width: 140px;
+  z-index: 1;
+}
+.button1 {
+  width: 220px;
+  box-shadow: 0 10px 30px rgba(237, 48, 6, 0.2);
+}
+.navigationButtons {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+}
+.form,
+.frameGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.form {
+  align-self: stretch;
+  border-radius: var(--br-xl);
+  background-color: var(--color-white);
+  padding: var(--padding-21xl) var(--padding-31xl);
+  box-sizing: border-box;
+  gap: var(--gap-20xl-5);
+}
+.frameGroup {
+  flex: 1;
+  gap: 194px;
+  margin-left: -1480px;
+}
+.frameParent {
+  align-self: stretch;
+  flex-direction: row;
+  max-width: 100%;
+  text-align: left;
+  font-size: var(--font-size-7xl);
+  color: var(--color-darkslategray-200);
+  font-family: var(--font-poppins);
+}
+.createNewEvent,
+.createNewEventInner,
+.frameParent {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.createNewEventInner {
+  width: 1480px;
+  flex-direction: column;
+  padding: var(--padding-21xl) 0 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.createNewEvent {
+  width: 100%;
+  position: relative;
+  background-color: var(--color-whitesmoke);
+  overflow: hidden;
+  flex-direction: row;
+  gap: var(--gap-31xl);
+  line-height: normal;
+  letter-spacing: normal;
+}
+@media screen and (max-width: 1800px) {
+  .createNewEvent {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 1350px) {
+  .eventNameInput {
+    flex-wrap: wrap;
+  }
+  .form {
+    padding-left: var(--padding-6xl);
+    padding-right: var(--padding-6xl);
+    box-sizing: border-box;
+  }
+  .frameGroup {
+    gap: 97px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .eventName {
+    min-width: 100%;
+  }
+  .form {
+    gap: var(--gap-xl);
+    padding-top: 1500px;
+    padding-bottom: var(--padding-7xl);
+    box-sizing: border-box;
+  }
+  .frameGroup {
+    gap: var(--gap-29xl);
+  }
+  .createNewEvent {
+    gap: var(--gap-6xl);
+  }
+}
+@media screen and (max-width: 450px) {
+  .basicInformation {
+    font-size: var(--font-size-2xl);
+    line-height: 25px;
+  }
+  .navigationButtons {
+    flex-wrap: wrap;
+  }
+  .frameGroup {
+    gap: var(--gap-5xl);
+  }
+}

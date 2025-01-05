@@ -1,0 +1,21 @@
+.chartjsBarChart {
+  height: 6px;
+  width: 65px;
+  position: relative;
+  font-weight: 600;
+  display: inline-block;
+}
+.name {
+  position: absolute;
+  top: 21.2px;
+  left: calc(50% - 32.5px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: center;
+  font-size: var(--name-size);
+  color: var(--text-grey);
+  font-family: var(--body);
+}

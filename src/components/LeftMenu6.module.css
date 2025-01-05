@@ -1,0 +1,281 @@
+.leftMenuChild {
+  width: 340px;
+  height: 1080px;
+  position: relative;
+  box-shadow: 12px 20px 50px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-white);
+  display: none;
+  max-width: 100%;
+}
+.brandwomenIcon,
+.logoIcon {
+  position: relative;
+  z-index: 1;
+}
+.logoIcon {
+  width: 216px;
+  height: 60px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.brandwomenIcon {
+  width: 12px;
+  height: 9px;
+  object-fit: contain;
+}
+.abelChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-gainsboro);
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.abelItem {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 0;
+  height: 1px;
+  object-fit: contain;
+}
+.abel {
+  width: 12px;
+  height: 9px;
+  position: relative;
+  z-index: 1;
+}
+.brandwomenParent {
+  position: absolute;
+  top: 77px;
+  left: 244px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-38xl-3);
+}
+.dashboard,
+.events {
+  display: inline-block;
+}
+.dashboard {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  min-width: 110px;
+  z-index: 1;
+}
+.events {
+  min-width: 64px;
+}
+.deliveries,
+.events,
+.inventory,
+.logistics {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  z-index: 1;
+}
+.deliveries,
+.inventory {
+  display: inline-block;
+  min-width: 91px;
+}
+.deliveries {
+  font-weight: 600;
+  color: var(--color-darkslategray-200);
+  min-width: 97px;
+}
+.liveTrackingMap {
+  font-weight: 600;
+  color: var(--color-tomato-100);
+}
+.liveTrackingMap,
+.statusUpdates {
+  align-self: stretch;
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  z-index: 1;
+}
+.trackingItems {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 0 var(--padding-base);
+  gap: var(--gap-mini);
+}
+.reports,
+.users {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  display: inline-block;
+  min-width: 75px;
+  z-index: 1;
+}
+.users {
+  min-width: 54px;
+}
+.accountItems {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 0 var(--padding-base);
+  gap: var(--gap-18xl);
+}
+.settings {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  display: inline-block;
+  min-width: 79px;
+  z-index: 1;
+}
+.menuItemContainer,
+.submenuContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.submenuContainer {
+  align-self: stretch;
+  gap: var(--gap-xl);
+}
+.menuItemContainer {
+  position: absolute;
+  top: 2px;
+  left: 46px;
+  width: 210px;
+  gap: var(--gap-19xl);
+}
+.layer1Icon,
+.layerItemsChild {
+  width: 31px;
+  position: relative;
+  z-index: 1;
+}
+.layer1Icon {
+  height: 31px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.layerItemsChild {
+  height: 30px;
+}
+.frameChild,
+.layer1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.layer1 {
+  overflow: hidden;
+  display: none;
+  z-index: 2;
+}
+.frameParent,
+.layerItemsItem {
+  width: 31px;
+  height: 33px;
+  position: relative;
+}
+.layerItemsItem {
+  height: 31px;
+  z-index: 1;
+}
+.layerItems {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-16xl);
+}
+.brandwomenIcon2,
+.layer1Icon2 {
+  width: 31px;
+  height: 24px;
+  position: relative;
+  z-index: 1;
+}
+.layer1Icon2 {
+  height: 29px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.frameGroup,
+.layerPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-18xl);
+}
+.layerPanel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  gap: var(--gap-148xl);
+}
+.menu {
+  align-self: stretch;
+  height: 621px;
+  position: relative;
+}
+.leftMenu {
+  width: 340px;
+  box-shadow: 12px 20px 50px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-22xl) var(--padding-15xl) var(--padding-289xl)
+    var(--padding-31xl);
+  box-sizing: border-box;
+  gap: var(--gap-31xl);
+  max-width: 100%;
+  text-align: left;
+  font-size: var(--font-size-xl);
+  color: var(--color-darkslategray-100);
+  font-family: var(--font-poppins);
+}
+@media screen and (max-width: 900px) {
+  .leftMenu {
+    padding-top: var(--padding-8xl);
+    padding-bottom: var(--padding-181xl);
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 450px) {
+  .dashboard,
+  .deliveries,
+  .events,
+  .inventory,
+  .liveTrackingMap,
+  .logistics,
+  .reports,
+  .settings,
+  .statusUpdates,
+  .users {
+    font-size: var(--font-size-base);
+    line-height: 22px;
+  }
+  .leftMenu {
+    gap: var(--gap-6xl);
+    padding-left: var(--padding-xl);
+    padding-top: var(--padding-xl);
+    padding-bottom: var(--padding-111xl);
+    box-sizing: border-box;
+  }
+}

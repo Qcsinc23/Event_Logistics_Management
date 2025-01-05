@@ -1,0 +1,20 @@
+.xSValue {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: inline-block;
+}
+.numberSmall {
+  position: absolute;
+  width: 15.62%;
+  top: 90.2px;
+  right: 81.57%;
+  left: 2.81%;
+  height: 5.7px;
+  text-align: center;
+  font-size: var(--name-size);
+  color: var(--text-grey);
+  font-family: var(--body);
+}

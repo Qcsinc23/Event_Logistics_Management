@@ -1,0 +1,269 @@
+.dashboardDelivery {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  display: inline-block;
+  max-width: 100%;
+}
+.deliveryTracking {
+  margin: 0;
+  align-self: stretch;
+  position: relative;
+  font-size: var(--font-size-11xl);
+  letter-spacing: -0.03em;
+  line-height: 120%;
+  font-weight: 600;
+  font-family: inherit;
+}
+.title,
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 100%;
+}
+.title {
+  align-self: stretch;
+  justify-content: flex-start;
+  gap: var(--gap-35xl);
+}
+.titleWrapper {
+  justify-content: flex-end;
+  padding: 0 0 var(--padding-7xs);
+  box-sizing: border-box;
+  min-width: 760px;
+}
+.buttonChild {
+  height: 50px;
+  width: 160px;
+  position: relative;
+  border-radius: var(--br-3xs);
+  border: 1px solid var(--color-darkgray);
+  box-sizing: border-box;
+  display: none;
+}
+.acneIcon {
+  width: 24px;
+  height: 22px;
+  position: relative;
+  z-index: 1;
+}
+.filterIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-11xs) 0 0;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+}
+.filterMap {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 500;
+  display: inline-block;
+  min-width: 87px;
+  z-index: 1;
+}
+.button,
+.buttonItem {
+  height: 50px;
+  border-radius: var(--br-3xs);
+  border: 1px solid var(--color-darkgray);
+  box-sizing: border-box;
+}
+.button {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-3xs) var(--padding-mid) var(--padding-2xs)
+    var(--padding-xl);
+  gap: var(--gap-3xs);
+}
+.buttonItem {
+  width: 180px;
+  position: relative;
+  display: none;
+}
+.brandwomenIcon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  z-index: 1;
+}
+.buttonIcons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-12xs) 0 0;
+}
+.refreshMap {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 500;
+  display: inline-block;
+  min-width: 111px;
+  z-index: 1;
+}
+.button1 {
+  align-self: stretch;
+  flex: 1;
+  border-radius: var(--br-3xs);
+  border: 1px solid var(--color-darkgray);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-3xs) var(--padding-mini) var(--padding-2xs)
+    var(--padding-lg);
+  gap: var(--gap-3xs);
+}
+.outIcon {
+  width: 25.4px;
+  height: 20.4px;
+  position: relative;
+  z-index: 1;
+}
+.outWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-10xs) 0 0;
+}
+.legends {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 140%;
+  font-weight: 500;
+  display: inline-block;
+  min-width: 75px;
+  z-index: 1;
+}
+.button2 {
+  align-self: stretch;
+  border-radius: var(--br-3xs);
+  border: 1px solid var(--color-darkgray);
+  flex-direction: row;
+  align-items: flex-start;
+  padding: var(--padding-3xs) var(--padding-5xl) var(--padding-2xs);
+  gap: var(--gap-3xs-6);
+}
+.actions,
+.button2,
+.mapActions,
+.userDropdown {
+  display: flex;
+  justify-content: flex-start;
+}
+.mapActions {
+  align-self: stretch;
+  height: 50px;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--gap-xl);
+}
+.actions,
+.userDropdown {
+  align-items: flex-end;
+  max-width: 100%;
+}
+.userDropdown {
+  flex: 1;
+  flex-direction: column;
+  gap: var(--gap-11xl);
+  min-width: 234px;
+}
+.actions {
+  flex-direction: row;
+  gap: var(--gap-xl);
+  color: var(--color-darkgray);
+}
+.header,
+.mainPanel {
+  align-self: stretch;
+  max-width: 100%;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+}
+.mainPanel {
+  flex-direction: column;
+  gap: var(--gap-11xl);
+  text-align: left;
+  font-size: var(--font-size-lg);
+  color: var(--color-darkslategray-100);
+  font-family: var(--font-poppins);
+}
+.brandCardSixteen,
+.liveTrackingMap,
+.mainPanel {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.brandCardSixteen {
+  width: 1480px;
+  flex-direction: column;
+  padding: var(--padding-21xl) 0 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.liveTrackingMap {
+  width: 100%;
+  position: relative;
+  background-color: var(--color-whitesmoke);
+  overflow: hidden;
+  flex-direction: row;
+  gap: var(--gap-31xl);
+  line-height: normal;
+  letter-spacing: normal;
+}
+@media screen and (max-width: 1800px) {
+  .liveTrackingMap {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 1350px) {
+  .actions,
+  .titleWrapper {
+    flex: 1;
+  }
+  .header {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 900px) {
+  .deliveryTracking {
+    font-size: var(--font-size-5xl);
+    line-height: 29px;
+  }
+  .title {
+    gap: var(--gap-8xl);
+  }
+  .actions,
+  .titleWrapper {
+    min-width: 100%;
+  }
+  .liveTrackingMap {
+    gap: var(--gap-6xl);
+  }
+}
+@media screen and (max-width: 450px) {
+  .deliveryTracking {
+    font-size: var(--font-size-lg);
+    line-height: 22px;
+  }
+  .actions {
+    flex-wrap: wrap;
+  }
+}
