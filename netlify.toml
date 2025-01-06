@@ -3,7 +3,7 @@
   publish = "build"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
   VITE_APPWRITE_ENDPOINT = "https://cloud.appwrite.io/v1"
 
