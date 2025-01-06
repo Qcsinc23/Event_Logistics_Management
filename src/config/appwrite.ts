@@ -7,9 +7,15 @@ if (!__APPWRITE_ENDPOINT__ || !__APPWRITE_PROJECT_ID__) {
     throw new Error('Missing required environment variables for Appwrite configuration');
 }
 
-export const client = new Client()
+// Initialize client for web platform
+const client = new Client();
+
+// Set up client configuration
+client
     .setEndpoint(__APPWRITE_ENDPOINT__)
     .setProject(__APPWRITE_PROJECT_ID__);
+
+export { client };
 
 export const account = new Account(client);
 export const databases = new Databases(client);

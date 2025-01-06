@@ -1,5 +1,9 @@
 import { ID, Account, Models } from 'appwrite';
-import { account } from '../config/appwrite';
+import { account, client } from '../config/appwrite';
+
+// Get Appwrite endpoint and project ID from client config
+const APPWRITE_ENDPOINT = client.config.endpoint;
+const APPWRITE_PROJECT_ID = client.config.project;
 
 export class AuthService {
     private async retryWithBackoff<T>(operation: () => Promise<T>, maxRetries: number = 3): Promise<T> {
@@ -60,13 +64,25 @@ export class AuthService {
     async loginWithGoogle() {
         try {
             return await this.retryWithBackoff(() => {
-                const origin = window.location.origin;
-                // Use type assertion to match Appwrite's internal type
-                return (account.createOAuth2Session as Function)(
-                    'google',
-                    `${origin}/auth/callback`,
-                    `${origin}/auth/failure`
-                );
+                const successUrl = 'http://localhost:3000/auth/callback';
+                const failureUrl = 'http://localhost:3000/auth/failure';
+                
+                try {
+                    // Use string literal for provider as per Appwrite SDK
+                    return (account.createOAuth2Session as Function)(
+                        'google',
+                        successUrl,
+                        failureUrl
+                    );
+                } catch (error: any) {
+                    console.error('OAuth Session Error:', error);
+                    if (error.message?.includes('storage')) {
+                        // Handle storage context error by using window.location
+                        window.location.href = `${APPWRITE_ENDPOINT}/account/sessions/oauth2/google?project=${APPWRITE_PROJECT_ID}&success=${encodeURIComponent(successUrl)}&failure=${encodeURIComponent(failureUrl)}`;
+                        return;
+                    }
+                    throw error;
+                }
             });
         } catch (error) {
             this.handleError(error);
