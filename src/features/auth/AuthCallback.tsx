@@ -1,62 +1,132 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { account } from '../../config/appwrite';
-import { Box, CircularProgress, Typography } from '@mui/material';
+import { authService } from '../../services';
+import { Box, CircularProgress, Typography, Container, Paper } from '@mui/material';
 
 export const AuthCallback = () => {
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const handleCallback = async () => {
       try {
-        // Get current session
-        const session = await account.getSession('current');
-        if (!session) {
-          throw new Error('No session found');
+        // Check URL hash for OAuth response
+        if (window.location.hash) {
+          const params = new URLSearchParams(window.location.hash.substring(1));
+          const userId = params.get('userId');
+          const secret = params.get('secret');
+
+          if (userId && secret) {
+            // Create session with OAuth credentials
+            await authService.handleOAuthCallback();
+            return;
+          }
         }
 
-        // Get user
-        const user = await account.get();
-        if (!user) {
-          throw new Error('No user found');
+        // If no hash parameters, try to get current session
+        const user = await authService.getCurrentUser();
+        if (user) {
+          navigate('/dashboard');
+          return;
         }
 
-        // Redirect to dashboard
-        navigate('/dashboard');
+        throw new Error('Authentication failed');
       } catch (err: any) {
         console.error('Auth callback error:', err);
         setError(err.message || 'Authentication failed');
         
-        // Sign out and redirect to login on error
+        // Clean up on error
         try {
-          await account.deleteSession('current');
+          await authService.logout();
         } catch (signOutErr) {
           console.error('Sign out error:', signOutErr);
         }
-        navigate('/login');
+        
+        setTimeout(() => {
+          navigate('/login');
+        }, 2000);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     handleCallback();
   }, [navigate]);
 
-  if (error) {
-    return (
-      <Box sx={{ p: 4, textAlign: 'center' }}>
-        <Typography color="error" variant="h6">
-          {error}
-        </Typography>
-      </Box>
-    );
-  }
-
   return (
-    <Box sx={{ p: 4, textAlign: 'center' }}>
-      <CircularProgress />
-      <Typography sx={{ mt: 2 }}>
-        Completing authentication...
-      </Typography>
+    <Box
+      sx={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        background: 'linear-gradient(135deg, #ff6f3c 0%, #ff9a7b 100%)',
+        py: 4
+      }}
+    >
+      <Container maxWidth="sm">
+        <Paper
+          elevation={12}
+          sx={{
+            p: { xs: 3, sm: 6 },
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            borderRadius: 3,
+            backdropFilter: 'blur(10px)',
+            background: 'rgba(255, 255, 255, 0.95)',
+          }}
+        >
+          {isLoading ? (
+            <>
+              <CircularProgress size={48} sx={{ color: 'primary.main', mb: 3 }} />
+              <Typography 
+                variant="h6" 
+                sx={{ 
+                  fontFamily: 'Poppins, sans-serif',
+                  textAlign: 'center',
+                  color: 'text.primary'
+                }}
+              >
+                Completing authentication...
+              </Typography>
+              <Typography 
+                variant="body2" 
+                sx={{ 
+                  mt: 2,
+                  textAlign: 'center',
+                  color: 'text.secondary'
+                }}
+              >
+                Please wait while we verify your credentials
+              </Typography>
+            </>
+          ) : error ? (
+            <>
+              <Typography 
+                color="error" 
+                variant="h6" 
+                sx={{ 
+                  fontFamily: 'Poppins, sans-serif',
+                  textAlign: 'center',
+                  mb: 2
+                }}
+              >
+                {error}
+              </Typography>
+              <Typography 
+                variant="body2" 
+                sx={{ 
+                  textAlign: 'center',
+                  color: 'text.secondary'
+                }}
+              >
+                Redirecting you back to login...
+              </Typography>
+            </>
+          ) : null}
+        </Paper>
+      </Container>
     </Box>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { account } from '../../config/appwrite';
+import { authService } from '../../services';
 import {
   Box,
   Typography,
@@ -41,7 +41,7 @@ const BundlesPage: React.FC = () => {
       setIsLoading(true);
 
       // Check authentication first
-      const user = await account.get();
+      const user = await authService.getCurrentUser();
       if (!user) {
         throw new Error('Please sign in to view bundles');
       }

@@ -40,6 +40,7 @@ export default defineConfig(({ mode }) => {
         v7_relativeSplatPath: true
       }),
       __APPWRITE_ENDPOINT__: JSON.stringify(env.VITE_APPWRITE_ENDPOINT),
+      __APPWRITE_PROJECT_ID__: JSON.stringify(env.VITE_APPWRITE_PROJECT_ID),
     },
     resolve: {
       dedupe: ['react', 'react-dom', 'konva', 'react-konva'],

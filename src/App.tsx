@@ -1,11 +1,8 @@
 import React from 'react';
-import { authService } from './services/auth.service';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { ProtectedRoute } from './components/ProtectedRoute';
 import { Layout } from './components/Layout';
+import { ProtectedRoute } from './components/ProtectedRoute';
 import './styles/app.css';
-import { Login } from './pages/auth/Login';
-import { Register } from './pages/auth/Register';
 import { Dashboard } from './pages/Dashboard';
 import { Events } from './pages/events/Events';
 import { EventDetails } from './pages/events/EventDetails';
@@ -13,82 +10,87 @@ import { Venues } from './pages/venues/Venues';
 import { Tasks } from './pages/tasks/Tasks';
 import { Inventory } from './pages/inventory/Inventory';
 import { Profile } from './pages/Profile';
+import { LoginPage } from './features/auth/LoginPage';
+import { SignupPage } from './features/auth/SignupPage';
+import { AuthCallback } from './features/auth/AuthCallback';
 
 const App: React.FC = () => {
     return (
         <Router>
-            <Layout>
-                <Routes>
+            <Routes>
                 {/* Public Routes */}
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/auth/callback" element={
-                    <React.Fragment>
-                        {(() => {
-                            // Log the URL for debugging
-                            console.log('OAuth callback URL:', window.location.href);
-                            console.log('OAuth callback hash:', window.location.hash);
-                            
-                            // Handle the callback
-                            authService.handleOAuthCallback().catch(error => {
-                                console.error('OAuth callback handling failed:', error);
-                                window.location.href = '/login';
-                            });
-                            
-                            // Show loading state
-                            return <div>Processing login...</div>;
-                        })()}
-                    </React.Fragment>
-                } />
-                <Route path="/auth/failure" element={<Navigate to="/login" replace />} />
-                
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<SignupPage />} />
+                <Route path="/auth/callback" element={<AuthCallback />} />
+
                 {/* Protected Routes */}
+                <Route path="/" element={
+                    <ProtectedRoute>
+                        <Layout>
+                            <Navigate to="/dashboard" replace />
+                        </Layout>
+                    </ProtectedRoute>
+                } />
+                
                 <Route path="/dashboard" element={
                     <ProtectedRoute>
-                        <Dashboard />
+                        <Layout>
+                            <Dashboard />
+                        </Layout>
                     </ProtectedRoute>
                 } />
                 
                 <Route path="/events" element={
                     <ProtectedRoute>
-                        <Events />
+                        <Layout>
+                            <Events />
+                        </Layout>
                     </ProtectedRoute>
                 } />
                 
                 <Route path="/events/:id" element={
                     <ProtectedRoute>
-                        <EventDetails />
+                        <Layout>
+                            <EventDetails />
+                        </Layout>
                     </ProtectedRoute>
                 } />
                 
                 <Route path="/venues" element={
                     <ProtectedRoute>
-                        <Venues />
+                        <Layout>
+                            <Venues />
+                        </Layout>
                     </ProtectedRoute>
                 } />
                 
                 <Route path="/tasks" element={
                     <ProtectedRoute>
-                        <Tasks />
+                        <Layout>
+                            <Tasks />
+                        </Layout>
                     </ProtectedRoute>
                 } />
                 
                 <Route path="/inventory" element={
                     <ProtectedRoute>
-                        <Inventory />
+                        <Layout>
+                            <Inventory />
+                        </Layout>
                     </ProtectedRoute>
                 } />
                 
                 <Route path="/profile" element={
                     <ProtectedRoute>
-                        <Profile />
+                        <Layout>
+                            <Profile />
+                        </Layout>
                     </ProtectedRoute>
                 } />
 
-                {/* Redirect root to register page */}
-                <Route path="/" element={<Navigate to="/register" replace />} />
-                </Routes>
-            </Layout>
+                {/* Catch all route */}
+                <Route path="*" element={<Navigate to="/dashboard" replace />} />
+            </Routes>
         </Router>
     );
 };

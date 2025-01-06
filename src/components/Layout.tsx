@@ -1,24 +1,8 @@
 import React from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { authService } from '../services';
+import { Link, useLocation } from 'react-router-dom';
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const navigate = useNavigate();
     const location = useLocation();
-
-    const handleLogout = async () => {
-        try {
-            await authService.logout();
-            navigate('/login');
-        } catch (error) {
-            console.error('Logout failed:', error);
-        }
-    };
-
-    // Don't show navigation on auth pages
-    if (location.pathname === '/login' || location.pathname === '/register') {
-        return <>{children}</>;
-    }
 
     return (
         <div className="app-layout">
@@ -72,9 +56,6 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                     <Link to="/profile" className="profile-link">
                         Profile
                     </Link>
-                    <button onClick={handleLogout} className="logout-button">
-                        Logout
-                    </button>
                 </div>
             </nav>
 
