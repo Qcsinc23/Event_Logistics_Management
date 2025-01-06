@@ -186,7 +186,7 @@ const InventoryList: FunctionComponent<InventoryListType> = ({
             color="primary"
             disableUnderline
             displayEmpty
-            IconComponent="null"
+            IconComponent={undefined}
           >
             <MenuItem>Category</MenuItem>
           </Select>
@@ -251,7 +251,7 @@ const InventoryList: FunctionComponent<InventoryListType> = ({
             color="primary"
             disableUnderline
             displayEmpty
-            IconComponent="null"
+            IconComponent={undefined}
           >
             <MenuItem>Supplier</MenuItem>
           </Select>
@@ -316,7 +316,7 @@ const InventoryList: FunctionComponent<InventoryListType> = ({
             color="primary"
             disableUnderline
             displayEmpty
-            IconComponent="null"
+            IconComponent={undefined}
           >
             <MenuItem>Location</MenuItem>
           </Select>
@@ -381,7 +381,7 @@ const InventoryList: FunctionComponent<InventoryListType> = ({
             color="primary"
             disableUnderline
             displayEmpty
-            IconComponent="null"
+            IconComponent={undefined}
           >
             <MenuItem>Status</MenuItem>
           </Select>
@@ -466,7 +466,7 @@ const InventoryList: FunctionComponent<InventoryListType> = ({
             color="primary"
             disableUnderline
             displayEmpty
-            IconComponent="null"
+            IconComponent={undefined}
           >
             <MenuItem>Default</MenuItem>
           </Select>

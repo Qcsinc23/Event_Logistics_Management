@@ -213,7 +213,7 @@ const DashboardContent: FunctionComponent<DashboardContentType> = ({
             color="secondary"
             disableUnderline
             displayEmpty
-            IconComponent="null"
+            IconComponent={undefined}
           >
             <MenuItem>Status</MenuItem>
           </Select>
@@ -278,7 +278,7 @@ const DashboardContent: FunctionComponent<DashboardContentType> = ({
             color="secondary"
             disableUnderline
             displayEmpty
-            IconComponent="null"
+            IconComponent={undefined}
           >
             <MenuItem>Drivers</MenuItem>
           </Select>
@@ -343,7 +343,7 @@ const DashboardContent: FunctionComponent<DashboardContentType> = ({
             color="secondary"
             disableUnderline
             displayEmpty
-            IconComponent="null"
+            IconComponent={undefined}
           >
             <MenuItem>Data Range</MenuItem>
           </Select>

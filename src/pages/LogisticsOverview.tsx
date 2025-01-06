@@ -295,7 +295,7 @@ const LogisticsOverview: FunctionComponent = () => {
                   color="warning"
                   disableUnderline
                   displayEmpty
-                  IconComponent="null"
+                  IconComponent={undefined}
                 >
                   <MenuItem>Due Date</MenuItem>
                 </Select>
@@ -362,7 +362,7 @@ const LogisticsOverview: FunctionComponent = () => {
                   color="warning"
                   disableUnderline
                   displayEmpty
-                  IconComponent="null"
+                  IconComponent={undefined}
                 >
                   <MenuItem>Assignee</MenuItem>
                 </Select>

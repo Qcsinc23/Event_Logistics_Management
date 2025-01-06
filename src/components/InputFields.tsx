@@ -201,7 +201,7 @@ const InputFields: FunctionComponent<InputFieldsType> = ({
           color="secondary"
           disableUnderline
           displayEmpty
-          IconComponent="null"
+          IconComponent={undefined}
         >
           <MenuItem>* Expected number of deliveries per week?</MenuItem>
         </Select>

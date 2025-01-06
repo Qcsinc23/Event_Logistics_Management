@@ -217,7 +217,7 @@ const EventCalendar: FunctionComponent = () => {
                       color="warning"
                       disableUnderline
                       displayEmpty
-                      IconComponent="null"
+                      IconComponent={undefined}
                     >
                       <MenuItem>Event Type</MenuItem>
                     </Select>
@@ -281,7 +281,7 @@ const EventCalendar: FunctionComponent = () => {
                       color="warning"
                       disableUnderline
                       displayEmpty
-                      IconComponent="null"
+                      IconComponent={undefined}
                     >
                       <MenuItem>Event Status</MenuItem>
                     </Select>

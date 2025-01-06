@@ -66,7 +66,7 @@ const playErrorSound = () => createBeepSound(200, 0.3);
 export const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onScan, onError }) => {
   const theme = useTheme();
   const videoRef = useRef<HTMLVideoElement>(null);
-  const codeReaderRef = useRef<BrowserMultiFormatReader>();
+  const codeReaderRef = useRef<BrowserMultiFormatReader | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [stream, setStream] = useState<MediaStream | null>(null);

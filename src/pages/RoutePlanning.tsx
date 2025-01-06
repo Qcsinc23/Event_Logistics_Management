@@ -275,7 +275,7 @@ const RoutePlanning: FunctionComponent = () => {
                     color="warning"
                     disableUnderline
                     displayEmpty
-                    IconComponent="null"
+                    IconComponent={undefined}
                   >
                     <MenuItem>Assign Routes</MenuItem>
                   </Select>

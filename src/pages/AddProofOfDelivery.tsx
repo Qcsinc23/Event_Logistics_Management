@@ -230,7 +230,7 @@ const AddProofOfDelivery: FunctionComponent = () => {
                     color="secondary"
                     disableUnderline
                     displayEmpty
-                    IconComponent="null"
+                    IconComponent={undefined}
                   >
                     <MenuItem>* Delivery Selection</MenuItem>
                   </Select>

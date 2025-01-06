@@ -132,7 +132,7 @@ const AddInventory: FunctionComponent = () => {
                         color="secondary"
                         disableUnderline
                         displayEmpty
-                        IconComponent="null"
+                        IconComponent={undefined}
                       >
                         <MenuItem>* Category</MenuItem>
                       </Select>
@@ -270,7 +270,7 @@ const AddInventory: FunctionComponent = () => {
                         color="secondary"
                         disableUnderline
                         displayEmpty
-                        IconComponent="null"
+                        IconComponent={undefined}
                       >
                         <MenuItem>* Primary Location</MenuItem>
                       </Select>
@@ -360,7 +360,7 @@ const AddInventory: FunctionComponent = () => {
                       color="secondary"
                       disableUnderline
                       displayEmpty
-                      IconComponent="null"
+                      IconComponent={undefined}
                     >
                       <MenuItem>* Supplier Name</MenuItem>
                     </Select>
@@ -505,7 +505,7 @@ const AddInventory: FunctionComponent = () => {
                         color="secondary"
                         disableUnderline
                         displayEmpty
-                        IconComponent="null"
+                        IconComponent={undefined}
                       >
                         <MenuItem>* Currency</MenuItem>
                       </Select>

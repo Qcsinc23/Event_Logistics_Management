@@ -104,7 +104,7 @@ const GroupComponent3: FunctionComponent<GroupComponent3Type> = ({
           color="secondary"
           disableUnderline
           displayEmpty
-          IconComponent="null"
+          IconComponent={undefined}
         >
           <MenuItem>Location</MenuItem>
         </Select>
@@ -169,7 +169,7 @@ const GroupComponent3: FunctionComponent<GroupComponent3Type> = ({
           color="secondary"
           disableUnderline
           displayEmpty
-          IconComponent="null"
+          IconComponent={undefined}
         >
           <MenuItem>Event type</MenuItem>
         </Select>
@@ -234,7 +234,7 @@ const GroupComponent3: FunctionComponent<GroupComponent3Type> = ({
           color="secondary"
           disableUnderline
           displayEmpty
-          IconComponent="null"
+          IconComponent={undefined}
         >
           <MenuItem>Date Range</MenuItem>
         </Select>
@@ -299,7 +299,7 @@ const GroupComponent3: FunctionComponent<GroupComponent3Type> = ({
           color="secondary"
           disableUnderline
           displayEmpty
-          IconComponent="null"
+          IconComponent={undefined}
         >
           <MenuItem>Status</MenuItem>
         </Select>

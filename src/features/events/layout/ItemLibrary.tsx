@@ -1,3 +1,4 @@
+import React from "react";
 import { Box, Typography, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Divider, Tooltip } from '@mui/material';
 import TableRestaurantIcon from '@mui/icons-material/TableRestaurant';
 import TableBarIcon from '@mui/icons-material/TableBar';
@@ -16,7 +17,7 @@ interface ItemCategory {
   items: {
     id: string;
     name: string;
-    icon: JSX.Element;
+    icon: React.ReactElement;
     defaultWidth: number;
     defaultHeight: number;
     description: string;

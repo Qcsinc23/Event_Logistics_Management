@@ -116,7 +116,7 @@ const CreateNewEvent: FunctionComponent = () => {
                       color="secondary"
                       disableUnderline
                       displayEmpty
-                      IconComponent="null"
+                      IconComponent={undefined}
                     >
                       <MenuItem>* Event Type</MenuItem>
                     </Select>

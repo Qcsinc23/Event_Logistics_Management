@@ -109,7 +109,7 @@ const Modal1: FunctionComponent<Modal1Type> = ({ className = "" }) => {
           color="secondary"
           disableUnderline
           displayEmpty
-          IconComponent="null"
+          IconComponent={undefined}
         >
           <MenuItem>* Trigger Type</MenuItem>
         </Select>

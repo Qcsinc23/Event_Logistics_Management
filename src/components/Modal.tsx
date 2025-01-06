@@ -130,7 +130,7 @@ const Modal: FunctionComponent<ModalType> = ({ className = "" }) => {
               color="secondary"
               disableUnderline
               displayEmpty
-              IconComponent="null"
+              IconComponent={undefined}
             >
               <MenuItem>* Priority Level</MenuItem>
             </Select>
@@ -194,7 +194,7 @@ const Modal: FunctionComponent<ModalType> = ({ className = "" }) => {
               color="secondary"
               disableUnderline
               displayEmpty
-              IconComponent="null"
+              IconComponent={undefined}
             >
               <MenuItem>* Due Date</MenuItem>
             </Select>
@@ -258,7 +258,7 @@ const Modal: FunctionComponent<ModalType> = ({ className = "" }) => {
               color="secondary"
               disableUnderline
               displayEmpty
-              IconComponent="null"
+              IconComponent={undefined}
             >
               <MenuItem>* Time</MenuItem>
             </Select>
@@ -325,7 +325,7 @@ const Modal: FunctionComponent<ModalType> = ({ className = "" }) => {
                 color="secondary"
                 disableUnderline
                 displayEmpty
-                IconComponent="null"
+                IconComponent={undefined}
               >
                 <MenuItem>* Assigned to</MenuItem>
               </Select>
@@ -443,7 +443,7 @@ const Modal: FunctionComponent<ModalType> = ({ className = "" }) => {
                 color="secondary"
                 disableUnderline
                 displayEmpty
-                IconComponent="null"
+                IconComponent={undefined}
               >
                 <MenuItem>* Due Date</MenuItem>
               </Select>
@@ -507,7 +507,7 @@ const Modal: FunctionComponent<ModalType> = ({ className = "" }) => {
                 color="secondary"
                 disableUnderline
                 displayEmpty
-                IconComponent="null"
+                IconComponent={undefined}
               >
                 <MenuItem>* Time</MenuItem>
               </Select>

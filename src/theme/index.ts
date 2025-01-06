@@ -1,8 +1,18 @@
-import { extendTheme, type ThemeConfig } from '@chakra-ui/react';
+import { createTheme } from '@mui/material/styles';
 
-const config: ThemeConfig = {
-  initialColorMode: 'light',
-  useSystemColorMode: false,
-};
+// Material UI theme only since we're not using Chakra UI
 
-export const theme = extendTheme({ config });
+// Material UI theme
+export const muiTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#ff6f3c',
+    },
+    secondary: {
+      main: '#9e9e9e',
+    },
+  },
+  typography: {
+    fontFamily: 'Poppins, sans-serif',
+  },
+});
