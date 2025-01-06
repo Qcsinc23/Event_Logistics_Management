@@ -13,6 +13,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.12",
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
@@ -47,9 +49,5 @@
     "vite-plugin-pwa": "^0.21.1",
     "web-vitals": "^4.2.4",
     "zustand": "^5.0.2"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.2.1",
-    "vite": "^5.0.12"
   }
 }
