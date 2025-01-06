@@ -17,6 +17,7 @@
     "allowJs": true,
     "esModuleInterop": true
   },
-  "include": ["src"],
+  "include": ["src", "src/env.d.ts"],
+  "types": ["vite/client"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
