@@ -2,6 +2,7 @@ import { ID, Query } from 'appwrite';
 import { databases } from '../config/appwrite';
 import { DATABASE_ID, COLLECTIONS } from '../config/constants';
 import { jsPDF } from 'jspdf';
+import Konva from 'konva';
 import { EventLayout } from '../features/events/types/event-layouts';
 
 // Helper function to map Appwrite document to EventLayout
@@ -80,4 +81,20 @@ export const deleteEventLayout = async (id: string) => {
     COLLECTIONS.EVENT_LAYOUTS,
     id
   );
+};
+
+export const exportLayoutAsPng = async (stage: Konva.Stage): Promise<string> => {
+  return stage.toDataURL({ pixelRatio: 2 });
+};
+
+export const exportLayoutAsPdf = async (stage: Konva.Stage): Promise<Blob> => {
+  const dataUrl = stage.toDataURL({ pixelRatio: 2 });
+  const pdf = new jsPDF({
+    orientation: 'landscape',
+    unit: 'px',
+    format: [stage.width(), stage.height()]
+  });
+
+  pdf.addImage(dataUrl, 'PNG', 0, 0, stage.width(), stage.height());
+  return new Blob([pdf.output('blob')], { type: 'application/pdf' });
 };

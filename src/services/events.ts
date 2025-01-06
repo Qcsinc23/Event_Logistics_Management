@@ -1,10 +1,11 @@
 import { ID, Query } from 'appwrite';
 import { databases } from '../config/appwrite';
-import { DATABASE_ID } from '../config/constants';
 
+// Database configuration
+const DATABASE_ID = 'event_logistics_db';
 const COLLECTIONS = {
   EVENTS: 'events'
-};
+} as const;
 
 export interface Event {
   id: string;
@@ -26,7 +27,17 @@ export const getEvents = async () => {
       Query.orderAsc('start_date')
     ]
   );
-  return data.documents;
+  return data.documents.map(doc => ({
+    id: doc.$id,
+    name: doc.name,
+    description: doc.description,
+    start_date: doc.start_date,
+    end_date: doc.end_date,
+    venue_id: doc.venue_id,
+    status: doc.status as Event['status'],
+    created_at: doc.$createdAt,
+    updated_at: doc.$updatedAt
+  }));
 };
 
 export const getEvent = async (id: string) => {
@@ -35,7 +46,17 @@ export const getEvent = async (id: string) => {
     COLLECTIONS.EVENTS,
     id
   );
-  return data;
+  return {
+    id: data.$id,
+    name: data.name,
+    description: data.description,
+    start_date: data.start_date,
+    end_date: data.end_date,
+    venue_id: data.venue_id,
+    status: data.status as Event['status'],
+    created_at: data.$createdAt,
+    updated_at: data.$updatedAt
+  };
 };
 
 export const createEvent = async (event: Omit<Event, 'id' | 'created_at' | 'updated_at'>) => {
@@ -49,7 +70,17 @@ export const createEvent = async (event: Omit<Event, 'id' | 'created_at' | 'upda
       updated_at: new Date().toISOString()
     }
   );
-  return data;
+  return {
+    id: data.$id,
+    name: data.name,
+    description: data.description,
+    start_date: data.start_date,
+    end_date: data.end_date,
+    venue_id: data.venue_id,
+    status: data.status as Event['status'],
+    created_at: data.$createdAt,
+    updated_at: data.$updatedAt
+  };
 };
 
 export const updateEvent = async (id: string, event: Partial<Event>) => {
@@ -62,7 +93,17 @@ export const updateEvent = async (id: string, event: Partial<Event>) => {
       updated_at: new Date().toISOString()
     }
   );
-  return data;
+  return {
+    id: data.$id,
+    name: data.name,
+    description: data.description,
+    start_date: data.start_date,
+    end_date: data.end_date,
+    venue_id: data.venue_id,
+    status: data.status as Event['status'],
+    created_at: data.$createdAt,
+    updated_at: data.$updatedAt
+  };
 };
 
 export const deleteEvent = async (id: string) => {

@@ -17,6 +17,7 @@ import ConditionReportForm from '../components/ConditionReportForm';
 import ConditionHistoryViewer from '../components/ConditionHistoryViewer';
 import StorageInstructionsManager from '../components/StorageInstructionsManager';
 import InventoryAnalytics from '../components/InventoryAnalytics';
+import { Models } from 'appwrite';
 import { InventoryItem } from '../types/inventory';
 import { getInventoryItem } from '../../../services/inventory';
 
@@ -70,7 +71,68 @@ const InventoryDetailsPage = () => {
 
       try {
         const data = await getInventoryItem(id);
-        setItem(data);
+        // Map Appwrite document to InventoryItem type
+        const mainItem = data as unknown as Models.Document & {
+          name: string;
+          sku: string;
+          category_id: string;
+          description: string;
+          total_quantity: number;
+          available_quantity: number;
+          reserved_quantity: number;
+          min_quantity: number;
+          reorder_point: number;
+          unit: string;
+          default_location: string;
+          status: 'active' | 'discontinued' | 'pending';
+          last_inventory_count: string;
+          tracking_method: 'none' | 'batch' | 'serial';
+        };
+
+        const storageInstructions = data.storage_instructions?.map(doc => ({
+          id: doc.$id,
+          type: doc.type as 'storage' | 'handling' | 'safety',
+          instruction: doc.instruction,
+          priority: doc.priority as 'low' | 'medium' | 'high',
+          applicableCategories: doc.applicable_categories
+        })) || [];
+
+        const customAttributes = data.custom_attributes?.map(doc => ({
+          id: doc.$id,
+          attributeId: doc.attribute_id,
+          value: doc.value
+        })) || [];
+
+        const complianceInfo = data.compliance_info ? {
+          id: data.compliance_info.$id,
+          type: data.compliance_info.type as 'hazardous' | 'fragile' | 'temperature-sensitive' | 'other',
+          certifications: data.compliance_info.certifications,
+          handlingRequirements: data.compliance_info.handling_requirements,
+          expirationDate: data.compliance_info.expiration_date
+        } : undefined;
+
+        setItem({
+          id: mainItem.$id,
+          name: mainItem.name,
+          sku: mainItem.sku,
+          categoryId: mainItem.category_id,
+          description: mainItem.description,
+          totalQuantity: mainItem.total_quantity,
+          availableQuantity: mainItem.available_quantity,
+          reservedQuantity: mainItem.reserved_quantity,
+          minQuantity: mainItem.min_quantity,
+          reorderPoint: mainItem.reorder_point,
+          unit: mainItem.unit,
+          defaultLocation: mainItem.default_location,
+          status: mainItem.status,
+          createdAt: mainItem.$createdAt,
+          updatedAt: mainItem.$updatedAt,
+          lastInventoryCount: mainItem.last_inventory_count,
+          trackingMethod: mainItem.tracking_method,
+          storageInstructions,
+          customAttributes,
+          compliance: complianceInfo
+        });
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load item details');
       } finally {

@@ -67,8 +67,8 @@ const EventLayoutPage = ({ eventId, layoutId }: EventLayoutPageProps) => {
       try {
         const items = await getInventoryItems();
         const inventory: Record<string, number> = {};
-        items.forEach((item: { id: string; quantity_available?: number }) => {
-          inventory[item.id] = item.quantity_available || 0;
+        items.forEach((item) => {
+          inventory[item.$id] = item.availableQuantity || 0;
         });
         setInventoryItems(inventory);
       } catch (error) {
@@ -91,8 +91,23 @@ const EventLayoutPage = ({ eventId, layoutId }: EventLayoutPageProps) => {
       const layoutData = {
         event_id: eventId,
         name: layoutName,
-        objects: objects.map(({ isDragging, ...obj }) => obj),
-        background_image_url: backgroundImage?.url
+        layout_data: {
+          elements: objects.map(({ isDragging, ...obj }) => ({
+            id: obj.id,
+            type: obj.type as 'table' | 'stage' | 'booth' | 'entrance' | 'exit' | 'wall' | 'custom',
+            position: { x: obj.x, y: obj.y },
+            dimensions: { width: obj.width, height: obj.height },
+            rotation: obj.rotation
+          })),
+          dimensions: {
+            width: dimensions.width,
+            height: dimensions.height
+          },
+          grid: {
+            enabled: showGrid,
+            size: GRID_SIZE
+          }
+        }
       };
 
       if (layoutId) {

@@ -35,7 +35,7 @@ const mapToInventoryBundle = async (doc: Models.Document): Promise<InventoryBund
   };
 };
 
-interface CreateBundleInput {
+export interface CreateBundleInput {
   name: string;
   description: string;
   items: { itemId: string; quantity: number }[];
@@ -281,4 +281,13 @@ export const deleteBundle = async (id: string) => {
     COLLECTIONS.INVENTORY_BUNDLES,
     id
   );
+};
+
+// Export bundleService object with all methods
+export const bundleService = {
+  createBundle,
+  getBundle,
+  listBundles,
+  updateBundle,
+  deleteBundle
 };

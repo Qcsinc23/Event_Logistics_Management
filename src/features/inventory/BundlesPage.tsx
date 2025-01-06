@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from '../../utils/supabase/client';
+import { account } from '../../config/appwrite';
 import {
   Box,
   Typography,
@@ -21,15 +21,8 @@ import { bundleService } from '../../services/bundles';
 import { BundleFormModal } from './components/BundleFormModal';
 import { useDebounce } from '../../hooks/useDebounce';
 
-interface Bundle {
-  id: string;
-  name: string;
-  description?: string;
-  image_url?: string;
-  is_public: boolean;
-  bundle_tags?: { tag: string }[];
-  bundle_items?: any[];
-}
+import { InventoryBundle } from './types/inventory';
+type Bundle = InventoryBundle;
 
 const BundlesPage: React.FC = () => {
   const [bundles, setBundles] = useState<Bundle[]>([]);
@@ -48,13 +41,13 @@ const BundlesPage: React.FC = () => {
       setIsLoading(true);
 
       // Check authentication first
-      const { data: { user } } = await supabase.auth.getUser();
+      const user = await account.get();
       if (!user) {
         throw new Error('Please sign in to view bundles');
       }
 
-      const data = await bundleService.getBundles({
-        search: debouncedSearch,
+      const data = await bundleService.listBundles({
+        isPublic: undefined,
         tags: selectedTags.length > 0 ? selectedTags : undefined,
       });
       setBundles(data || []);
@@ -181,34 +174,26 @@ const BundlesPage: React.FC = () => {
             {bundles.map((bundle) => (
               <Grid item xs={12} sm={6} md={4} key={bundle.id}>
                 <Card>
-                  {bundle.image_url && (
-                    <CardMedia
-                      component="img"
-                      height="140"
-                      image={bundle.image_url}
-                      alt={bundle.name}
-                    />
-                  )}
                   <CardContent>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
                       <Typography variant="h6" component="div">
                         {bundle.name}
                       </Typography>
                       <Chip
-                        label={bundle.is_public ? 'Public' : 'Private'}
-                        color={bundle.is_public ? 'success' : 'default'}
+                        label={bundle.isPublic ? 'Public' : 'Private'}
+                        color={bundle.isPublic ? 'success' : 'default'}
                         size="small"
                       />
                     </Box>
                     <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
                       {bundle.description}
                     </Typography>
-                    {bundle.bundle_tags && bundle.bundle_tags.length > 0 && (
+                    {bundle.tags && bundle.tags.length > 0 && (
                       <Stack direction="row" spacing={1} sx={{ mb: 2 }}>
-                        {bundle.bundle_tags.map((tag) => (
+                        {bundle.tags.map((tag) => (
                           <Chip
-                            key={tag.tag}
-                            label={tag.tag}
+                            key={tag}
+                            label={tag}
                             size="small"
                             variant="outlined"
                           />
@@ -217,7 +202,7 @@ const BundlesPage: React.FC = () => {
                     )}
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <Typography variant="body2" color="text.secondary">
-                        {bundle.bundle_items?.length || 0} items in bundle
+                        {bundle.items?.length || 0} items in bundle
                       </Typography>
                       <Button
                         size="small"
@@ -244,14 +229,9 @@ const BundlesPage: React.FC = () => {
           id: selectedBundle.id,
           name: selectedBundle.name,
           description: selectedBundle.description || '',
-          imageUrl: selectedBundle.image_url || '',
-          isPublic: selectedBundle.is_public,
-          items: (selectedBundle.bundle_items || []).map(item => ({
-            itemId: item.item_id,
-            nestedBundleId: item.nested_bundle_id,
-            quantity: item.quantity
-          })),
-          tags: selectedBundle.bundle_tags?.map(t => t.tag) || [],
+          isPublic: selectedBundle.isPublic,
+          items: selectedBundle.items || [],
+          tags: selectedBundle.tags || [],
         } : undefined}
       />
     </Box>

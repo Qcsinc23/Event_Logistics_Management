@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from '../../../utils/supabase/client';
+import { account } from '../../../config/appwrite';
 import {
   Dialog,
   DialogTitle,
@@ -44,7 +44,6 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
   const [formData, setFormData] = useState<CreateBundleInput>({
     name: '',
     description: '',
-    imageUrl: '',
     isPublic: false,
     items: [],
     tags: [],
@@ -56,7 +55,6 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
       setFormData({
         name: initialData.name || '',
         description: initialData.description || '',
-        imageUrl: initialData.imageUrl || '',
         isPublic: initialData.isPublic || false,
         items: initialData.items || [],
         tags: initialData.tags || [],
@@ -66,7 +64,6 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
       setFormData({
         name: '',
         description: '',
-        imageUrl: '',
         isPublic: false,
         items: [],
         tags: [],
@@ -87,7 +84,6 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
       setFormData({
         name: '',
         description: '',
-        imageUrl: '',
         isPublic: false,
         items: [],
         tags: [],
@@ -106,7 +102,28 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
         setError(null);
         try {
           const items = await getInventoryItems();
-          setAvailableItems(items);
+          // Map Appwrite documents to InventoryItem type
+          setAvailableItems(items.map(doc => ({
+            id: doc.$id,
+            name: doc.name,
+            sku: doc.sku,
+            categoryId: doc.category_id,
+            description: doc.description,
+            totalQuantity: doc.total_quantity,
+            availableQuantity: doc.available_quantity,
+            reservedQuantity: doc.reserved_quantity,
+            minQuantity: doc.min_quantity,
+            reorderPoint: doc.reorder_point,
+            unit: doc.unit,
+            defaultLocation: doc.default_location,
+            status: doc.status,
+            createdAt: doc.$createdAt,
+            updatedAt: doc.$updatedAt,
+            lastInventoryCount: doc.last_inventory_count,
+            trackingMethod: doc.tracking_method,
+            storageInstructions: [],
+            customAttributes: [],
+          })));
         } catch (err) {
           setError('Failed to load inventory items');
           console.error('Error loading inventory items:', err);
@@ -125,8 +142,7 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
       setError(null);
 
       // Check authentication first
-      const { data: { user }, error: authError } = await supabase.auth.getUser();
-      if (authError) throw authError;
+      const user = await account.get();
       if (!user) throw new Error('Please sign in to manage bundles');
 
       // Validate required fields
@@ -139,7 +155,7 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
       }
 
       // Validate items
-      const invalidItems = formData.items.filter(item => !item.itemId && !item.nestedBundleId);
+      const invalidItems = formData.items.filter(item => !item.itemId);
       if (invalidItems.length > 0) {
         throw new Error('Each bundle item must be either an inventory item or a nested bundle');
       }
@@ -148,7 +164,6 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
         await bundleService.updateBundle(initialData.id, {
           name: formData.name,
           description: formData.description,
-          imageUrl: formData.imageUrl,
           isPublic: formData.isPublic,
           items: formData.items,
           tags: formData.tags,
@@ -263,13 +278,6 @@ export const BundleFormModal: React.FC<BundleFormModalProps> = ({
             rows={3}
           />
 
-          <TextField
-            fullWidth
-            label="Image URL"
-            name="imageUrl"
-            value={formData.imageUrl}
-            onChange={handleInputChange}
-          />
 
           <FormControlLabel
             control={

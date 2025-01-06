@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, TextField, Box, Typography } from '@mui/material';
-import api from '../../services/api';
+import { authService } from '../../services/auth.service';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -14,13 +14,8 @@ const LoginPage = () => {
     setError('');
     
     try {
-      const { data, error } = await api.auth.signInWithPassword({
-        email,
-        password,
-      });
-      
-      if (error) throw error;
-      if (data.user) navigate('/dashboard');
+      await authService.login(email, password);
+      navigate('/dashboard');
     } catch (error) {
       setError(error instanceof Error ? error.message : 'Login failed');
     }

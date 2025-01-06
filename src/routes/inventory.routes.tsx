@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Component, ErrorInfo } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { supabase } from '../utils/supabase/client';
+import { account } from '../config/appwrite';
 import { Box, CircularProgress, Typography, Button } from '@mui/material';
 import InventoryPage from '../features/inventory/InventoryPage';
 import InventoryDetailsPage from '../features/inventory/pages/InventoryDetailsPage';
@@ -56,7 +56,7 @@ const InventoryRoutes = () => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const { data: { user } } = await supabase.auth.getUser();
+        const user = await account.get();
         setIsAuthenticated(!!user);
       } catch (error) {
         console.error('Error checking auth status:', error);
