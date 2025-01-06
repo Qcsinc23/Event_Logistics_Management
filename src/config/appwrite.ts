@@ -1,19 +1,21 @@
 import { Client, Account, Databases, Storage, Teams } from 'appwrite';
 
-declare const __APPWRITE_ENDPOINT__: string;
-declare const __APPWRITE_PROJECT_ID__: string;
-
-if (!__APPWRITE_ENDPOINT__ || !__APPWRITE_PROJECT_ID__) {
-    throw new Error('Missing required environment variables for Appwrite configuration');
-}
+// Get environment variables
+const endpoint = import.meta.env.VITE_APPWRITE_ENDPOINT ?? '';
+const projectId = import.meta.env.VITE_APPWRITE_PROJECT_ID ?? '';
 
 // Initialize client for web platform
 const client = new Client();
 
 // Set up client configuration
 client
-    .setEndpoint(__APPWRITE_ENDPOINT__)
-    .setProject(__APPWRITE_PROJECT_ID__);
+    .setEndpoint(endpoint)
+    .setProject(projectId);
+
+// Validate configuration
+if (!endpoint || !projectId) {
+    throw new Error('Missing required environment variables for Appwrite configuration');
+}
 
 export { client };
 
