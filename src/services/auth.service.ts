@@ -8,7 +8,15 @@ const APPWRITE_PROJECT_ID = client.config.project;
 export class AuthService {
     async createAccount(email: string, password: string, name: string) {
         try {
-            const user = await account.create(ID.unique(), email, password, name);
+            // Create user account
+            const user = await account.create(
+                ID.unique(),
+                email,
+                password,
+                name
+            );
+
+            // After creating account, create a session
             await this.login(email, password);
             return user;
         } catch (error: any) {
@@ -18,6 +26,7 @@ export class AuthService {
 
     async login(email: string, password: string) {
         try {
+            // Create session
             const session = await account.createSession(email, password);
             return session;
         } catch (error: any) {
@@ -30,7 +39,7 @@ export class AuthService {
             const redirectUrl = `${window.location.origin}/auth/callback`;
             const failureUrl = `${window.location.origin}/auth/failure`;
             
-            // Construct OAuth URL manually as before
+            // Construct OAuth URL manually
             const oauthUrl = `${APPWRITE_ENDPOINT}/account/sessions/oauth2/google?project=${APPWRITE_PROJECT_ID}&success=${encodeURIComponent(redirectUrl)}&failure=${encodeURIComponent(failureUrl)}`;
             window.location.href = oauthUrl;
             
@@ -42,11 +51,19 @@ export class AuthService {
 
     async handleOAuthCallback() {
         try {
+            // Get the current session
             const session = await account.getSession('current');
+            
             if (session) {
-                window.location.href = '/dashboard';
-                return;
+                // Get user details
+                const user = await account.get();
+                if (user) {
+                    window.location.href = '/dashboard';
+                    return;
+                }
             }
+            
+            throw new Error('Authentication failed');
         } catch (error) {
             console.error('OAuth callback error:', error);
             window.location.href = '/login';
@@ -55,6 +72,7 @@ export class AuthService {
 
     async logout() {
         try {
+            // Delete the current session
             await account.deleteSession('current');
         } catch (error: any) {
             throw this.handleError(error);
@@ -63,6 +81,7 @@ export class AuthService {
 
     async getCurrentUser() {
         try {
+            // Get current user
             const user = await account.get();
             return user;
         } catch (error: any) {

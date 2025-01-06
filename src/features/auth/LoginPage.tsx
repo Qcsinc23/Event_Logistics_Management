@@ -1,24 +1,20 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  Button,
-  Container,
-  TextField,
-  Typography,
-  Paper,
-  Divider,
-  IconButton,
-  InputAdornment,
-  Alert,
-  Link as MuiLink,
-  useTheme
-} from '@mui/material';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import Alert from '@mui/material/Alert';
+import Link from '@mui/material/Link';
 import { Google as GoogleIcon, Visibility, VisibilityOff } from '@mui/icons-material';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { authService } from '../../services';
 
 export const LoginPage: React.FC = () => {
-  const theme = useTheme();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -50,119 +46,72 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <Box
-      sx={{
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.light} 100%)`,
-        py: 4
-      }}
-    >
-      <Container maxWidth="sm">
+    <Container component="main" maxWidth="xs">
+      <Box
+        sx={{
+          marginTop: 8,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
         <Paper
-          elevation={12}
+          elevation={3}
           sx={{
-            p: { xs: 3, sm: 6 },
+            padding: 3,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            borderRadius: 3,
-            backdropFilter: 'blur(10px)',
-            background: 'rgba(255, 255, 255, 0.95)',
-            transition: 'transform 0.2s ease-in-out',
-            '&:hover': {
-              transform: 'scale(1.01)'
-            }
+            width: '100%',
           }}
         >
-          <Typography
-            component="h1"
-            variant="h4"
-            sx={{
-              mb: 4,
-              fontWeight: 700,
-              color: 'primary.main',
-              textAlign: 'center',
-              fontFamily: 'Poppins, sans-serif'
-            }}
-          >
+          <Typography component="h1" variant="h5">
             Event Logistics Manager
           </Typography>
 
           {error && (
-            <Alert 
-              severity="error" 
-              sx={{ 
-                width: '100%', 
-                mb: 3,
-                borderRadius: 2
-              }}
-            >
+            <Alert severity="error" sx={{ mt: 2, width: '100%' }}>
               {error}
             </Alert>
           )}
 
-          <Box 
-            component="form" 
-            onSubmit={handleLogin} 
-            sx={{ 
-              width: '100%',
-              '& .MuiTextField-root': {
-                transition: 'transform 0.2s ease-in-out',
-                '&:hover': {
-                  transform: 'translateY(-2px)'
-                }
-              }
-            }}
-          >
+          <Box component="form" onSubmit={handleLogin} sx={{ mt: 1, width: '100%' }}>
             <TextField
               margin="normal"
               required
               fullWidth
+              id="email"
               label="Email Address"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name="email"
               autoComplete="email"
               autoFocus
-              sx={{
-                mb: 2,
-                '& .MuiOutlinedInput-root': {
-                  borderRadius: 2
-                }
-              }}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <TextField
               margin="normal"
               required
               fullWidth
+              name="password"
               label="Password"
               type={showPassword ? 'text' : 'password'}
+              id="password"
+              autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              autoComplete="current-password"
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton
+                      aria-label="toggle password visibility"
                       onClick={() => setShowPassword(!showPassword)}
                       edge="end"
-                      sx={{
-                        color: 'primary.main'
-                      }}
                     >
                       {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
                 ),
-              }}
-              sx={{
-                mb: 3,
-                '& .MuiOutlinedInput-root': {
-                  borderRadius: 2
-                }
               }}
             />
 
@@ -170,110 +119,43 @@ export const LoginPage: React.FC = () => {
               type="submit"
               fullWidth
               variant="contained"
-              size="large"
               disabled={isLoading}
-              sx={{
-                mb: 3,
-                py: 1.5,
-                fontSize: '1rem',
-                borderRadius: 2,
-                fontWeight: 600,
-                textTransform: 'none',
-                boxShadow: '0 4px 6px rgba(255, 111, 60, 0.2)',
-                transition: 'all 0.2s ease-in-out',
-                '&:hover': {
-                  transform: 'translateY(-2px)',
-                  boxShadow: '0 6px 8px rgba(255, 111, 60, 0.3)'
-                }
-              }}
+              sx={{ mt: 3, mb: 2 }}
             >
               {isLoading ? 'Signing in...' : 'Sign In'}
             </Button>
 
-            <Divider 
-              sx={{ 
-                mb: 3,
-                '&::before, &::after': {
-                  borderColor: 'primary.light'
-                }
-              }}
-            >
-              OR
-            </Divider>
+            <Divider sx={{ my: 2 }}>OR</Divider>
 
             <Button
               fullWidth
               variant="outlined"
-              size="large"
-              onClick={handleGoogleLogin}
               startIcon={<GoogleIcon />}
-              sx={{
-                mb: 3,
-                py: 1.5,
-                fontSize: '1rem',
-                borderRadius: 2,
-                fontWeight: 600,
-                textTransform: 'none',
-                borderColor: 'primary.main',
-                color: 'primary.main',
-                transition: 'all 0.2s ease-in-out',
-                '&:hover': {
-                  transform: 'translateY(-2px)',
-                  borderColor: 'primary.main',
-                  backgroundColor: 'primary.main',
-                  color: 'white'
-                }
-              }}
+              onClick={handleGoogleLogin}
+              sx={{ mb: 2 }}
             >
               Continue with Google
             </Button>
 
             <Box sx={{ textAlign: 'center' }}>
-              <Typography 
-                variant="body2" 
-                sx={{
-                  color: 'text.secondary',
-                  fontFamily: 'Poppins, sans-serif'
-                }}
-              >
+              <Typography variant="body2">
                 Don't have an account?{' '}
-                <MuiLink 
-                  component={Link} 
-                  to="/signup" 
-                  sx={{ 
-                    fontWeight: 600,
-                    color: 'primary.main',
-                    textDecoration: 'none',
-                    transition: 'color 0.2s ease-in-out',
-                    '&:hover': {
-                      color: 'primary.dark'
-                    }
-                  }}
-                >
+                <Link component={RouterLink} to="/signup">
                   Sign up
-                </MuiLink>
+                </Link>
               </Typography>
-              <MuiLink
-                component={Link}
+              <Link
+                component={RouterLink}
                 to="/forgot-password"
-                sx={{
-                  mt: 1,
-                  display: 'inline-block',
-                  color: 'text.secondary',
-                  textDecoration: 'none',
-                  transition: 'all 0.2s ease-in-out',
-                  '&:hover': {
-                    color: 'primary.main',
-                    transform: 'translateY(-1px)'
-                  }
-                }}
+                variant="body2"
+                sx={{ display: 'inline-block', mt: 1 }}
               >
                 Forgot password?
-              </MuiLink>
+              </Link>
             </Box>
           </Box>
         </Paper>
-      </Container>
-    </Box>
+      </Box>
+    </Container>
   );
 };
