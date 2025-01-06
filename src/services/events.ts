@@ -1,4 +1,10 @@
-import { supabase } from '../utils/supabase/client';
+import { ID, Query } from 'appwrite';
+import { databases } from '../config/appwrite';
+import { DATABASE_ID } from '../config/constants';
+
+const COLLECTIONS = {
+  EVENTS: 'events'
+};
 
 export interface Event {
   id: string;
@@ -13,54 +19,56 @@ export interface Event {
 }
 
 export const getEvents = async () => {
-  const { data, error } = await supabase
-    .from('events')
-    .select('*')
-    .order('start_date', { ascending: true });
-
-  if (error) throw error;
-  return data;
+  const data = await databases.listDocuments(
+    DATABASE_ID,
+    COLLECTIONS.EVENTS,
+    [
+      Query.orderAsc('start_date')
+    ]
+  );
+  return data.documents;
 };
 
 export const getEvent = async (id: string) => {
-  const { data, error } = await supabase
-    .from('events')
-    .select('*')
-    .eq('id', id)
-    .single();
-
-  if (error) throw error;
+  const data = await databases.getDocument(
+    DATABASE_ID,
+    COLLECTIONS.EVENTS,
+    id
+  );
   return data;
 };
 
 export const createEvent = async (event: Omit<Event, 'id' | 'created_at' | 'updated_at'>) => {
-  const { data, error } = await supabase
-    .from('events')
-    .insert([event])
-    .select()
-    .single();
-
-  if (error) throw error;
+  const data = await databases.createDocument(
+    DATABASE_ID,
+    COLLECTIONS.EVENTS,
+    ID.unique(),
+    {
+      ...event,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
+    }
+  );
   return data;
 };
 
 export const updateEvent = async (id: string, event: Partial<Event>) => {
-  const { data, error } = await supabase
-    .from('events')
-    .update(event)
-    .eq('id', id)
-    .select()
-    .single();
-
-  if (error) throw error;
+  const data = await databases.updateDocument(
+    DATABASE_ID,
+    COLLECTIONS.EVENTS,
+    id,
+    {
+      ...event,
+      updated_at: new Date().toISOString()
+    }
+  );
   return data;
 };
 
 export const deleteEvent = async (id: string) => {
-  const { error } = await supabase
-    .from('events')
-    .delete()
-    .eq('id', id);
-
-  if (error) throw error;
+  await databases.deleteDocument(
+    DATABASE_ID,
+    COLLECTIONS.EVENTS,
+    id
+  );
 };

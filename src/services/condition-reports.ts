@@ -1,4 +1,6 @@
-import { supabase } from '../utils/supabase/client';
+import { ID, Query, Models } from 'appwrite';
+import { databases, storage } from '../config/appwrite';
+import { DATABASE_ID, COLLECTIONS, STORAGE_BUCKETS } from '../config/constants';
 import type {
   ConditionReport,
   ConditionReportMedia,
@@ -9,6 +11,7 @@ import type {
   InventoryForecast,
   AnalyticsFilters,
   ForecastParameters,
+  ConditionStatus,
 } from '../features/inventory/types/condition-reports';
 
 // Helper function to upload media files
@@ -17,75 +20,133 @@ const uploadMedia = async (file: File, reportId: string): Promise<string> => {
   const fileName = `${reportId}/${Math.random().toString(36).substring(7)}.${fileExt}`;
   const filePath = `condition-reports/${fileName}`;
 
-  const { error: uploadError } = await supabase.storage
-    .from('media')
-    .upload(filePath, file);
+  const uploadedFile = await storage.createFile(
+    STORAGE_BUCKETS.MEDIA,
+    ID.unique(),
+    file
+  );
 
-  if (uploadError) throw uploadError;
+  const fileUrl = storage.getFileView(
+    STORAGE_BUCKETS.MEDIA,
+    uploadedFile.$id
+  ).toString();
 
-  const { data: { publicUrl } } = supabase.storage
-    .from('media')
-    .getPublicUrl(filePath);
-
-  return publicUrl;
+  return fileUrl;
 };
+
+// Helper function to map Appwrite document to ConditionReport
+const mapToConditionReport = (doc: Models.Document): ConditionReport => ({
+  id: doc.$id,
+  item_id: doc.item_id,
+  event_id: doc.event_id,
+  reported_by: doc.reported_by,
+  condition: doc.condition as ConditionStatus,
+  notes: doc.notes,
+  reported_at: doc.reported_at,
+  created_at: doc.$createdAt,
+  updated_at: doc.$updatedAt,
+  media: doc.media || []
+});
+
+// Helper function to map Appwrite document to ConditionReportMedia
+const mapToConditionReportMedia = (doc: Models.Document): ConditionReportMedia => ({
+  id: doc.$id,
+  report_id: doc.report_id,
+  storage_path: doc.storage_path,
+  media_type: doc.media_type,
+  annotations: doc.annotations,
+  created_at: doc.$createdAt
+});
+
+// Helper function to map Appwrite document to InventoryUsageStats
+const mapToInventoryUsageStats = (doc: Models.Document): InventoryUsageStats => ({
+  id: doc.$id,
+  item_id: doc.item_id,
+  date: doc.date,
+  times_reserved: doc.times_reserved,
+  times_checked_out: doc.times_checked_out,
+  times_returned_damaged: doc.times_returned_damaged,
+  total_rental_duration: doc.total_rental_duration,
+  revenue_generated: doc.revenue_generated,
+  created_at: doc.$createdAt,
+  updated_at: doc.$updatedAt
+});
+
+// Helper function to map Appwrite document to InventoryForecast
+const mapToInventoryForecast = (doc: Models.Document): InventoryForecast => ({
+  id: doc.$id,
+  item_id: doc.item_id,
+  forecast_date: doc.forecast_date,
+  predicted_demand: doc.predicted_demand,
+  confidence_level: doc.confidence_level,
+  factors: doc.factors,
+  created_at: doc.$createdAt,
+  updated_at: doc.$updatedAt
+});
 
 // Create a new condition report
 export const createConditionReport = async (
   request: CreateConditionReportRequest
 ): Promise<ConditionReportResponse> => {
-  const { data: report, error: reportError } = await supabase
-    .from('condition_reports')
-    .insert([{
+  const report = await databases.createDocument(
+    DATABASE_ID,
+    COLLECTIONS.CONDITION_REPORTS,
+    ID.unique(),
+    {
       item_id: request.item_id,
       event_id: request.event_id,
       condition: request.condition,
       notes: request.notes,
-      reported_by: (await supabase.auth.getUser()).data.user?.id,
-    }])
-    .select()
-    .single();
-
-  if (reportError) throw reportError;
+      reported_at: new Date().toISOString()
+    }
+  );
 
   const media: ConditionReportMedia[] = [];
 
   if (request.media && request.media.length > 0) {
     for (const mediaItem of request.media) {
-      const storagePath = await uploadMedia(mediaItem.file, report.id);
+      const storagePath = await uploadMedia(mediaItem.file, report.$id);
 
-      const { data: mediaData, error: mediaError } = await supabase
-        .from('condition_report_media')
-        .insert([{
-          report_id: report.id,
+      const mediaDoc = await databases.createDocument(
+        DATABASE_ID,
+        COLLECTIONS.CONDITION_REPORT_MEDIA,
+        ID.unique(),
+        {
+          report_id: report.$id,
           storage_path: storagePath,
           media_type: mediaItem.type,
           annotations: mediaItem.annotations,
-        }])
-        .select()
-        .single();
+        }
+      );
 
-      if (mediaError) throw mediaError;
-      media.push(mediaData);
+      media.push(mapToConditionReportMedia(mediaDoc));
     }
   }
 
-  return { report, media };
+  return {
+    report: mapToConditionReport(report),
+    media
+  };
 };
 
 // Get a condition report by ID
 export const getConditionReport = async (id: string): Promise<ConditionReportResponse> => {
-  const { data: report, error: reportError } = await supabase
-    .from('condition_reports')
-    .select(`
-      *,
-      media:condition_report_media(*)
-    `)
-    .eq('id', id)
-    .single();
+  const report = await databases.getDocument(
+    DATABASE_ID,
+    COLLECTIONS.CONDITION_REPORTS,
+    id
+  );
 
-  if (reportError) throw reportError;
-  return { report, media: report.media || [] };
+  const mediaList = await databases.listDocuments(
+    DATABASE_ID,
+    COLLECTIONS.CONDITION_REPORT_MEDIA,
+    [Query.equal('report_id', id)]
+  );
+
+  return {
+    report: mapToConditionReport(report),
+    media: mediaList.documents.map(mapToConditionReportMedia)
+  };
 };
 
 // Update a condition report
@@ -93,45 +154,44 @@ export const updateConditionReport = async (
   id: string,
   request: UpdateConditionReportRequest
 ): Promise<ConditionReportResponse> => {
-  const { data: report, error: reportError } = await supabase
-    .from('condition_reports')
-    .update({
+  const report = await databases.updateDocument(
+    DATABASE_ID,
+    COLLECTIONS.CONDITION_REPORTS,
+    id,
+    {
       condition: request.condition,
       notes: request.notes,
       updated_at: new Date().toISOString(),
-    })
-    .eq('id', id)
-    .select()
-    .single();
-
-  if (reportError) throw reportError;
+    }
+  );
 
   if (request.media) {
     for (const mediaItem of request.media) {
       if (mediaItem.id) {
         // Update existing media
-        const { error: mediaError } = await supabase
-          .from('condition_report_media')
-          .update({
+        await databases.updateDocument(
+          DATABASE_ID,
+          COLLECTIONS.CONDITION_REPORT_MEDIA,
+          mediaItem.id,
+          {
             annotations: mediaItem.annotations,
-          })
-          .eq('id', mediaItem.id);
-
-        if (mediaError) throw mediaError;
+          }
+        );
       } else if (mediaItem.file) {
         // Add new media
         const storagePath = await uploadMedia(mediaItem.file, id);
 
-        const { error: mediaError } = await supabase
-          .from('condition_report_media')
-          .insert([{
+        await databases.createDocument(
+          DATABASE_ID,
+          COLLECTIONS.CONDITION_REPORT_MEDIA,
+          ID.unique(),
+          {
             report_id: id,
             storage_path: storagePath,
             media_type: mediaItem.type,
             annotations: mediaItem.annotations,
-          }]);
-
-        if (mediaError) throw mediaError;
+          }
+        );
       }
     }
   }
@@ -143,69 +203,110 @@ export const updateConditionReport = async (
 export const getInventoryUsageStats = async (
   filters: AnalyticsFilters
 ): Promise<InventoryUsageStats[]> => {
-  let query = supabase
-    .from('inventory_usage_stats')
-    .select('*');
+  const queries = [];
 
   if (filters.startDate) {
-    query = query.gte('date', filters.startDate);
+    queries.push(Query.greaterThanEqual('date', filters.startDate));
   }
   if (filters.endDate) {
-    query = query.lte('date', filters.endDate);
+    queries.push(Query.lessThanEqual('date', filters.endDate));
   }
-  if (filters.itemIds?.length) {
-    query = query.in('item_id', filters.itemIds);
+  if (filters.itemIds && filters.itemIds.length > 0) {
+    queries.push(Query.equal('item_id', filters.itemIds[0]));
+  }
+  queries.push(Query.orderAsc('date'));
+
+  const data = await databases.listDocuments(
+    DATABASE_ID,
+    COLLECTIONS.INVENTORY_USAGE_STATS,
+    queries
+  );
+
+  const stats = data.documents.map(mapToInventoryUsageStats);
+
+  // Filter for multiple itemIds if needed
+  if (filters.itemIds && filters.itemIds.length > 1) {
+    return stats.filter(stat => filters.itemIds?.includes(stat.item_id));
   }
 
-  const { data, error } = await query.order('date', { ascending: true });
-  if (error) throw error;
-  return data;
+  return stats;
 };
 
 // Get inventory forecasts
 export const getInventoryForecasts = async (
   params: ForecastParameters
 ): Promise<InventoryForecast[]> => {
-  const { data, error } = await supabase
-    .from('inventory_forecasts')
-    .select('*')
-    .eq('item_id', params.itemId)
-    .gte('forecast_date', params.startDate)
-    .lte('forecast_date', params.endDate)
-    .order('forecast_date', { ascending: true });
+  const data = await databases.listDocuments(
+    DATABASE_ID,
+    COLLECTIONS.INVENTORY_FORECASTS,
+    [
+      Query.equal('item_id', params.itemId),
+      Query.greaterThanEqual('forecast_date', params.startDate),
+      Query.lessThanEqual('forecast_date', params.endDate),
+      Query.orderAsc('forecast_date')
+    ]
+  );
 
-  if (error) throw error;
-  return data;
+  return data.documents.map(mapToInventoryForecast);
 };
 
 // Get item condition history
 export const getItemConditionHistory = async (itemId: string) => {
-  const { data, error } = await supabase
-    .from('condition_reports')
-    .select(`
-      *,
-      media:condition_report_media(*)
-    `)
-    .eq('item_id', itemId)
-    .order('reported_at', { ascending: false });
+  const reports = await databases.listDocuments(
+    DATABASE_ID,
+    COLLECTIONS.CONDITION_REPORTS,
+    [
+      Query.equal('item_id', itemId),
+      Query.orderDesc('reported_at')
+    ]
+  );
 
-  if (error) throw error;
-  return data;
+  const reportsWithMedia = await Promise.all(
+    reports.documents.map(async (report) => {
+      const media = await databases.listDocuments(
+        DATABASE_ID,
+        COLLECTIONS.CONDITION_REPORT_MEDIA,
+        [Query.equal('report_id', report.$id)]
+      );
+      
+      const conditionReport = mapToConditionReport(report);
+      conditionReport.media = media.documents.map(mapToConditionReportMedia);
+      
+      return conditionReport;
+    })
+  );
+
+  return reportsWithMedia;
 };
 
 // Get maintenance alerts
 export const getMaintenanceAlerts = async () => {
-  const { data, error } = await supabase
-    .from('condition_reports')
-    .select(`
-      *,
-      item:inventory_items(name)
-    `)
-    .in('condition', ['damaged', 'requires_maintenance'])
-    .order('reported_at', { ascending: false });
+  const reports = await databases.listDocuments(
+    DATABASE_ID,
+    COLLECTIONS.CONDITION_REPORTS,
+    [
+      Query.equal('condition', ['damaged', 'requires_maintenance']),
+      Query.orderDesc('reported_at')
+    ]
+  );
 
-  if (error) throw error;
-  return data;
+  const reportsWithItems = await Promise.all(
+    reports.documents.map(async (report) => {
+      const item = await databases.getDocument(
+        DATABASE_ID,
+        COLLECTIONS.INVENTORY_ITEMS,
+        report.item_id
+      );
+      
+      const conditionReport = mapToConditionReport(report);
+      return {
+        ...conditionReport,
+        item: { name: item.name }
+      };
+    })
+  );
+
+  return reportsWithItems;
 };
 
 // Add collaboration comment
@@ -215,33 +316,50 @@ export const addComment = async (
   parentId?: string,
   mentionedUsers: string[] = []
 ) => {
-  const { data, error } = await supabase
-    .from('collaboration_comments')
-    .insert([{
+  const comment = await databases.createDocument(
+    DATABASE_ID,
+    COLLECTIONS.COLLABORATION_COMMENTS,
+    ID.unique(),
+    {
       event_id: eventId,
-      user_id: (await supabase.auth.getUser()).data.user?.id,
       parent_id: parentId,
       content,
       mentioned_users: mentionedUsers,
-    }])
-    .select()
-    .single();
+      created_at: new Date().toISOString()
+    }
+  );
 
-  if (error) throw error;
-  return data;
+  return comment;
 };
 
 // Get event comments
 export const getEventComments = async (eventId: string) => {
-  const { data, error } = await supabase
-    .from('collaboration_comments')
-    .select(`
-      *,
-      user:users(name, avatar_url)
-    `)
-    .eq('event_id', eventId)
-    .order('created_at', { ascending: true });
+  const comments = await databases.listDocuments(
+    DATABASE_ID,
+    COLLECTIONS.COLLABORATION_COMMENTS,
+    [
+      Query.equal('event_id', eventId),
+      Query.orderAsc('created_at')
+    ]
+  );
 
-  if (error) throw error;
-  return data;
+  const commentsWithUsers = await Promise.all(
+    comments.documents.map(async (comment) => {
+      const user = await databases.getDocument(
+        DATABASE_ID,
+        'users',
+        comment.user_id
+      );
+      return {
+        ...comment,
+        id: comment.$id,
+        user: {
+          name: user.name,
+          avatar_url: user.avatar_url
+        }
+      };
+    })
+  );
+
+  return commentsWithUsers;
 };

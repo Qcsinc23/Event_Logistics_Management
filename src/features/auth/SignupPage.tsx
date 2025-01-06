@@ -1,131 +1,112 @@
 import { useState } from 'react';
+import { account } from '../../config/appwrite';
+import { ID } from 'appwrite';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '../../utils/supabase/client';
+import { Box, Button, TextField, Typography, Alert } from '@mui/material';
 
-export default function SignupPage() {
-  const navigate = useNavigate();
-  const [fullName, setFullName] = useState('');
+export const SignupPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSignup = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     setLoading(true);
 
     try {
-      // Sign up with Supabase
-      const { data: signupData, error: signupError } = await supabase.auth.signUp({
+      // Create user account
+      await account.create(
+        ID.unique(),
         email,
         password,
-        options: {
-          data: {
-            full_name: fullName,
-            email: email,
-          },
-        },
-      });
+        name
+      );
 
-      if (signupError) {
-        throw signupError;
-      }
+      // Create session (login)
+      await account.createSession(email, password);
 
-      if (!signupData.user) {
-        throw new Error('No user data returned');
-      }
-
-      // Redirect to dashboard or confirmation page
+      // Redirect to dashboard
       navigate('/dashboard');
-    } catch (err) {
-      console.error('Signup error:', err);
-      setError(err instanceof Error ? err.message : 'An error occurred during signup');
+    } catch (err: any) {
+      setError(err.message || 'An error occurred during signup');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-50">
-      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-3xl font-bold text-center text-gray-900">Sign Up</h2>
-        
-        {error && (
-          <div className="p-3 text-sm text-red-600 bg-red-100 rounded">
-            {error}
-          </div>
-        )}
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{
+        maxWidth: 400,
+        mx: 'auto',
+        mt: 4,
+        p: 3,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 2,
+      }}
+    >
+      <Typography variant="h4" component="h1" gutterBottom>
+        Sign Up
+      </Typography>
 
-        <form onSubmit={handleSignup} className="space-y-4">
-          <div>
-            <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
-              Full Name *
-            </label>
-            <input
-              id="fullName"
-              type="text"
-              required
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Full Name"
-              disabled={loading}
-            />
-          </div>
+      {error && (
+        <Alert severity="error" sx={{ mb: 2 }}>
+          {error}
+        </Alert>
+      )}
 
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email *
-            </label>
-            <input
-              id="email"
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Email"
-              disabled={loading}
-            />
-          </div>
+      <TextField
+        label="Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        required
+        fullWidth
+      />
 
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-              Password *
-            </label>
-            <input
-              id="password"
-              type="password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Password"
-              disabled={loading}
-            />
-          </div>
+      <TextField
+        label="Email"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        fullWidth
+      />
 
-          <button
-            type="submit"
-            disabled={loading}
-            className={`w-full px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-              loading ? 'opacity-50 cursor-not-allowed' : ''
-            }`}
-          >
-            {loading ? 'Signing up...' : 'SIGN UP'}
-          </button>
-        </form>
+      <TextField
+        label="Password"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+        fullWidth
+      />
 
-        <div className="text-center">
-          <a
-            href="/login"
-            className="text-sm text-blue-600 hover:text-blue-800"
-          >
-            ALREADY HAVE AN ACCOUNT? LOGIN
-          </a>
-        </div>
-      </div>
-    </div>
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        disabled={loading}
+        fullWidth
+      >
+        {loading ? 'Signing up...' : 'Sign Up'}
+      </Button>
+
+      <Button
+        variant="text"
+        onClick={() => navigate('/login')}
+        fullWidth
+      >
+        Already have an account? Log in
+      </Button>
+    </Box>
   );
-}
+};
+
+export default SignupPage;

@@ -1,4 +1,5 @@
-import { supabase } from '../utils/supabase/client';
+import { ID, Query } from 'appwrite';
+import { databases } from '../config/appwrite';
 import {
   Category,
   CategoryAttribute,
@@ -12,48 +13,48 @@ import {
   CustomAttribute,
 } from '../features/inventory/types/inventory';
 
+import { DATABASE_ID, COLLECTIONS } from '../config/constants';
+
 // Categories
 export const createCategory = async (category: Omit<Category, 'id'>) => {
-  const { data, error } = await supabase
-    .from('categories')
-    .insert([category])
-    .select()
-    .single();
-  if (error) throw error;
+  const data = await databases.createDocument(
+    DATABASE_ID,
+    COLLECTIONS.CATEGORIES,
+    ID.unique(),
+    category
+  );
   return data;
 };
 
 export const updateCategory = async (id: string, category: Partial<Category>) => {
-  const { data, error } = await supabase
-    .from('categories')
-    .update(category)
-    .eq('id', id)
-    .select()
-    .single();
-  if (error) throw error;
+  const data = await databases.updateDocument(
+    DATABASE_ID,
+    COLLECTIONS.CATEGORIES,
+    id,
+    category
+  );
   return data;
 };
 
 export const getCategories = async () => {
-  const { data, error } = await supabase
-    .from('categories')
-    .select(`
-      *,
-      attributes:category_attributes(*)
-    `)
-    .order('name');
-  if (error) throw error;
-  return data;
+  const data = await databases.listDocuments(
+    DATABASE_ID,
+    COLLECTIONS.CATEGORIES,
+    [
+      Query.orderAsc('name')
+    ]
+  );
+  return data.documents;
 };
 
 // Category Attributes
 export const createCategoryAttribute = async (attribute: Omit<CategoryAttribute, 'id'>) => {
-  const { data, error } = await supabase
-    .from('category_attributes')
-    .insert([attribute])
-    .select()
-    .single();
-  if (error) throw error;
+  const data = await databases.createDocument(
+    DATABASE_ID,
+    COLLECTIONS.CATEGORY_ATTRIBUTES,
+    ID.unique(),
+    attribute
+  );
   return data;
 };
 
@@ -64,46 +65,46 @@ export const createInventoryItem = async (
   storageInstructions: Omit<StorageInstruction, 'id'>[],
   complianceInfo?: Omit<ComplianceInfo, 'id'>
 ) => {
-  const { data: itemData, error: itemError } = await supabase
-    .from('inventory_items')
-    .insert([item])
-    .select()
-    .single();
-  
-  if (itemError) throw itemError;
+  // Create main inventory item
+  const itemData = await databases.createDocument(
+    DATABASE_ID,
+    COLLECTIONS.INVENTORY_ITEMS,
+    ID.unique(),
+    item
+  );
 
-  // Insert custom attributes
+  // Create custom attributes
   if (customAttributes.length > 0) {
-    const { error: attrError } = await supabase
-      .from('custom_attributes')
-      .insert(
-        customAttributes.map(attr => ({
-          ...attr,
-          item_id: itemData.id
-        }))
-      );
-    if (attrError) throw attrError;
+    await Promise.all(customAttributes.map(attr =>
+      databases.createDocument(
+        DATABASE_ID,
+        COLLECTIONS.CUSTOM_ATTRIBUTES,
+        ID.unique(),
+        { ...attr, item_id: itemData.$id }
+      )
+    ));
   }
 
-  // Insert storage instructions
+  // Create storage instructions
   if (storageInstructions.length > 0) {
-    const { error: instrError } = await supabase
-      .from('storage_instructions')
-      .insert(
-        storageInstructions.map(instr => ({
-          ...instr,
-          item_id: itemData.id
-        }))
-      );
-    if (instrError) throw instrError;
+    await Promise.all(storageInstructions.map(instr =>
+      databases.createDocument(
+        DATABASE_ID,
+        COLLECTIONS.STORAGE_INSTRUCTIONS,
+        ID.unique(),
+        { ...instr, item_id: itemData.$id }
+      )
+    ));
   }
 
-  // Insert compliance info if provided
+  // Create compliance info if provided
   if (complianceInfo) {
-    const { error: compError } = await supabase
-      .from('compliance_info')
-      .insert([{ ...complianceInfo, item_id: itemData.id }]);
-    if (compError) throw compError;
+    await databases.createDocument(
+      DATABASE_ID,
+      COLLECTIONS.COMPLIANCE_INFO,
+      ID.unique(),
+      { ...complianceInfo, item_id: itemData.$id }
+    );
   }
 
   return itemData;
@@ -116,73 +117,84 @@ export const updateInventoryItem = async (
   storageInstructions?: Omit<StorageInstruction, 'id'>[],
   complianceInfo?: Omit<ComplianceInfo, 'id'>
 ) => {
-  const { data: itemData, error: itemError } = await supabase
-    .from('inventory_items')
-    .update(item)
-    .eq('id', id)
-    .select()
-    .single();
-  
-  if (itemError) throw itemError;
+  // Update main inventory item
+  const itemData = await databases.updateDocument(
+    DATABASE_ID,
+    COLLECTIONS.INVENTORY_ITEMS,
+    id,
+    item
+  );
 
   // Update custom attributes if provided
-  if (customAttributes) {
+  if (customAttributes !== undefined) {
     // Delete existing attributes
-    await supabase
-      .from('custom_attributes')
-      .delete()
-      .eq('item_id', id);
+    const existingAttrs = await databases.listDocuments(
+      DATABASE_ID,
+      COLLECTIONS.CUSTOM_ATTRIBUTES,
+      [Query.equal('item_id', id)]
+    );
+    await Promise.all(existingAttrs.documents.map(attr =>
+      databases.deleteDocument(DATABASE_ID, COLLECTIONS.CUSTOM_ATTRIBUTES, attr.$id)
+    ));
 
-    // Insert new attributes
+    // Create new attributes
     if (customAttributes.length > 0) {
-      const { error: attrError } = await supabase
-        .from('custom_attributes')
-        .insert(
-          customAttributes.map(attr => ({
-            ...attr,
-            item_id: id
-          }))
-        );
-      if (attrError) throw attrError;
+      await Promise.all(customAttributes.map(attr =>
+        databases.createDocument(
+          DATABASE_ID,
+          COLLECTIONS.CUSTOM_ATTRIBUTES,
+          ID.unique(),
+          { ...attr, item_id: id }
+        )
+      ));
     }
   }
 
   // Update storage instructions if provided
-  if (storageInstructions) {
+  if (storageInstructions !== undefined) {
     // Delete existing instructions
-    await supabase
-      .from('storage_instructions')
-      .delete()
-      .eq('item_id', id);
+    const existingInstr = await databases.listDocuments(
+      DATABASE_ID,
+      COLLECTIONS.STORAGE_INSTRUCTIONS,
+      [Query.equal('item_id', id)]
+    );
+    await Promise.all(existingInstr.documents.map(instr =>
+      databases.deleteDocument(DATABASE_ID, COLLECTIONS.STORAGE_INSTRUCTIONS, instr.$id)
+    ));
 
-    // Insert new instructions
+    // Create new instructions
     if (storageInstructions.length > 0) {
-      const { error: instrError } = await supabase
-        .from('storage_instructions')
-        .insert(
-          storageInstructions.map(instr => ({
-            ...instr,
-            item_id: id
-          }))
-        );
-      if (instrError) throw instrError;
+      await Promise.all(storageInstructions.map(instr =>
+        databases.createDocument(
+          DATABASE_ID,
+          COLLECTIONS.STORAGE_INSTRUCTIONS,
+          ID.unique(),
+          { ...instr, item_id: id }
+        )
+      ));
     }
   }
 
   // Update compliance info if provided
   if (complianceInfo !== undefined) {
     // Delete existing compliance info
-    await supabase
-      .from('compliance_info')
-      .delete()
-      .eq('item_id', id);
+    const existingComp = await databases.listDocuments(
+      DATABASE_ID,
+      COLLECTIONS.COMPLIANCE_INFO,
+      [Query.equal('item_id', id)]
+    );
+    await Promise.all(existingComp.documents.map(comp =>
+      databases.deleteDocument(DATABASE_ID, COLLECTIONS.COMPLIANCE_INFO, comp.$id)
+    ));
 
-    // Insert new compliance info if not null
+    // Create new compliance info if not null
     if (complianceInfo) {
-      const { error: compError } = await supabase
-        .from('compliance_info')
-        .insert([{ ...complianceInfo, item_id: id }]);
-      if (compError) throw compError;
+      await databases.createDocument(
+        DATABASE_ID,
+        COLLECTIONS.COMPLIANCE_INFO,
+        ID.unique(),
+        { ...complianceInfo, item_id: id }
+      );
     }
   }
 
@@ -190,60 +202,67 @@ export const updateInventoryItem = async (
 };
 
 export const getInventoryItem = async (id: string) => {
-  const { data, error } = await supabase
-    .from('inventory_items')
-    .select(`
-      *,
-      category:categories(*),
-      custom_attributes(*),
-      batches(*),
-      serial_numbers(
-        *,
-        maintenance_records(*),
-        assignment_records(*)
-      ),
-      storage_instructions(*),
-      compliance_info(*)
-    `)
-    .eq('id', id)
-    .single();
-  
-  if (error) throw error;
-  return data;
+  const [item, customAttrs, batches, serialNumbers, storageInstr, complianceInfo] = await Promise.all([
+    databases.getDocument(DATABASE_ID, COLLECTIONS.INVENTORY_ITEMS, id),
+    databases.listDocuments(DATABASE_ID, COLLECTIONS.CUSTOM_ATTRIBUTES, [Query.equal('item_id', id)]),
+    databases.listDocuments(DATABASE_ID, COLLECTIONS.BATCHES, [Query.equal('item_id', id)]),
+    databases.listDocuments(DATABASE_ID, COLLECTIONS.SERIAL_NUMBERS, [Query.equal('item_id', id)]),
+    databases.listDocuments(DATABASE_ID, COLLECTIONS.STORAGE_INSTRUCTIONS, [Query.equal('item_id', id)]),
+    databases.listDocuments(DATABASE_ID, COLLECTIONS.COMPLIANCE_INFO, [Query.equal('item_id', id)])
+  ]);
+
+  // Get maintenance and assignment records for each serial number
+  const serialNumbersWithHistory = await Promise.all(
+    serialNumbers.documents.map(async (sn) => {
+      const [maintenance, assignments] = await Promise.all([
+        databases.listDocuments(DATABASE_ID, COLLECTIONS.MAINTENANCE_RECORDS, [Query.equal('serial_number_id', sn.$id)]),
+        databases.listDocuments(DATABASE_ID, COLLECTIONS.ASSIGNMENT_RECORDS, [Query.equal('serial_number_id', sn.$id)])
+      ]);
+      return {
+        ...sn,
+        maintenance_records: maintenance.documents,
+        assignment_records: assignments.documents
+      };
+    })
+  );
+
+  return {
+    ...item,
+    custom_attributes: customAttrs.documents,
+    batches: batches.documents,
+    serial_numbers: serialNumbersWithHistory,
+    storage_instructions: storageInstr.documents,
+    compliance_info: complianceInfo.documents[0] || null
+  };
 };
 
 export const getInventoryItems = async () => {
-  const { data, error } = await supabase
-    .from('inventory_items')
-    .select(`
-      *,
-      category:categories(*)
-    `)
-    .order('name');
-  
-  if (error) throw error;
-  return data;
+  const data = await databases.listDocuments(
+    DATABASE_ID,
+    COLLECTIONS.INVENTORY_ITEMS,
+    [Query.orderAsc('name')]
+  );
+  return data.documents;
 };
 
 // Batch Management
 export const createBatch = async (batch: Omit<BatchInfo, 'id'>) => {
-  const { data, error } = await supabase
-    .from('batches')
-    .insert([batch])
-    .select()
-    .single();
-  if (error) throw error;
+  const data = await databases.createDocument(
+    DATABASE_ID,
+    COLLECTIONS.BATCHES,
+    ID.unique(),
+    batch
+  );
   return data;
 };
 
-export const updateBatch = async (itemId: string, batchNumber: string, batch: Partial<BatchInfo>) => {
-  const { data, error } = await supabase
-    .from('batches')
-    .update(batch)
-    .match({ item_id: itemId, batch_number: batchNumber })
-    .select()
-    .single();
-  if (error) throw error;
+export const updateBatch = async (id: string, batch: Partial<BatchInfo>) => {
+  const data = await databases.updateDocument(
+    DATABASE_ID,
+    COLLECTIONS.BATCHES,
+    id,
+    batch
+  );
   return data;
 };
 
@@ -251,49 +270,44 @@ export const updateBatch = async (itemId: string, batchNumber: string, batch: Pa
 export const createSerialNumber = async (
   serialNumber: Omit<SerialNumberInfo, 'id' | 'maintenanceHistory' | 'assignmentHistory'>
 ) => {
-  const { data, error } = await supabase
-    .from('serial_numbers')
-    .insert([serialNumber])
-    .select()
-    .single();
-  if (error) throw error;
+  const data = await databases.createDocument(
+    DATABASE_ID,
+    COLLECTIONS.SERIAL_NUMBERS,
+    ID.unique(),
+    serialNumber
+  );
   return data;
 };
 
-export const updateSerialNumber = async (
-  itemId: string,
-  serialNumber: string,
-  update: Partial<SerialNumberInfo>
-) => {
-  const { data, error } = await supabase
-    .from('serial_numbers')
-    .update(update)
-    .match({ item_id: itemId, serial_number: serialNumber })
-    .select()
-    .single();
-  if (error) throw error;
+export const updateSerialNumber = async (id: string, update: Partial<SerialNumberInfo>) => {
+  const data = await databases.updateDocument(
+    DATABASE_ID,
+    COLLECTIONS.SERIAL_NUMBERS,
+    id,
+    update
+  );
   return data;
 };
 
 // Maintenance Records
 export const addMaintenanceRecord = async (record: Omit<MaintenanceRecord, 'id'>) => {
-  const { data, error } = await supabase
-    .from('maintenance_records')
-    .insert([record])
-    .select()
-    .single();
-  if (error) throw error;
+  const data = await databases.createDocument(
+    DATABASE_ID,
+    COLLECTIONS.MAINTENANCE_RECORDS,
+    ID.unique(),
+    record
+  );
   return data;
 };
 
 // Assignment Records
 export const addAssignmentRecord = async (record: Omit<AssignmentRecord, 'id'>) => {
-  const { data, error } = await supabase
-    .from('assignment_records')
-    .insert([record])
-    .select()
-    .single();
-  if (error) throw error;
+  const data = await databases.createDocument(
+    DATABASE_ID,
+    COLLECTIONS.ASSIGNMENT_RECORDS,
+    ID.unique(),
+    record
+  );
   return data;
 };
 
@@ -303,22 +317,25 @@ export const updateStorageInstructions = async (
   instructions: Omit<StorageInstruction, 'id'>[]
 ) => {
   // Delete existing instructions
-  await supabase
-    .from('storage_instructions')
-    .delete()
-    .eq('item_id', itemId);
+  const existingInstr = await databases.listDocuments(
+    DATABASE_ID,
+    COLLECTIONS.STORAGE_INSTRUCTIONS,
+    [Query.equal('item_id', itemId)]
+  );
+  await Promise.all(existingInstr.documents.map(instr =>
+    databases.deleteDocument(DATABASE_ID, COLLECTIONS.STORAGE_INSTRUCTIONS, instr.$id)
+  ));
 
-  // Insert new instructions
+  // Create new instructions
   if (instructions.length > 0) {
-    const { error } = await supabase
-      .from('storage_instructions')
-      .insert(
-        instructions.map(instr => ({
-          ...instr,
-          item_id: itemId
-        }))
-      );
-    if (error) throw error;
+    await Promise.all(instructions.map(instr =>
+      databases.createDocument(
+        DATABASE_ID,
+        COLLECTIONS.STORAGE_INSTRUCTIONS,
+        ID.unique(),
+        { ...instr, item_id: itemId }
+      )
+    ));
   }
 };
 
@@ -328,16 +345,22 @@ export const updateComplianceInfo = async (
   info: Omit<ComplianceInfo, 'id'> | null
 ) => {
   // Delete existing compliance info
-  await supabase
-    .from('compliance_info')
-    .delete()
-    .eq('item_id', itemId);
+  const existingComp = await databases.listDocuments(
+    DATABASE_ID,
+    COLLECTIONS.COMPLIANCE_INFO,
+    [Query.equal('item_id', itemId)]
+  );
+  await Promise.all(existingComp.documents.map(comp =>
+    databases.deleteDocument(DATABASE_ID, COLLECTIONS.COMPLIANCE_INFO, comp.$id)
+  ));
 
-  // Insert new compliance info if provided
+  // Create new compliance info if provided
   if (info) {
-    const { error } = await supabase
-      .from('compliance_info')
-      .insert([{ ...info, item_id: itemId }]);
-    if (error) throw error;
+    await databases.createDocument(
+      DATABASE_ID,
+      COLLECTIONS.COMPLIANCE_INFO,
+      ID.unique(),
+      { ...info, item_id: itemId }
+    );
   }
 };

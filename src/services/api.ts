@@ -1,3 +1,19 @@
-import { supabase } from '../utils/supabase/client';
+import { Client, Account, Databases, Storage, Teams } from 'appwrite';
+import { client, account, databases, storage, teams } from '../config/appwrite';
 
-export default supabase;
+export {
+  client,
+  account,
+  databases,
+  storage,
+  teams
+};
+
+// Also export types for convenience
+export type {
+  Client,
+  Account,
+  Databases,
+  Storage,
+  Teams
+};

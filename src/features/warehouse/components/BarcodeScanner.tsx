@@ -8,6 +8,7 @@ import LoadingState from './LoadingState';
 interface BarcodeScannerProps {
   onScan: (result: string) => void;
   onError?: (error: Error) => void;
+  disabled?: boolean;
 }
 
 const pulseAnimation = keyframes`
@@ -63,7 +64,7 @@ const createBeepSound = (frequency: number, duration: number) => {
 const playSuccessSound = () => createBeepSound(1000, 0.1);
 const playErrorSound = () => createBeepSound(200, 0.3);
 
-export const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onScan, onError }) => {
+export const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onScan, onError, disabled }) => {
   const theme = useTheme();
   const videoRef = useRef<HTMLVideoElement>(null);
   const codeReaderRef = useRef<BrowserMultiFormatReader | null>(null);
@@ -128,7 +129,7 @@ export const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onScan, onError 
         selectedDevice,
         videoRef.current,
         (result: Result | null, err?: Error) => {
-          if (result) {
+          if (result && !disabled) {
             console.log('Barcode detected:', result.getText());
             playSuccessSound();
             onScan(result.getText());

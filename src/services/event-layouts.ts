@@ -1,107 +1,83 @@
-import { supabase } from '../utils/supabase/client';
+import { ID, Query } from 'appwrite';
+import { databases } from '../config/appwrite';
+import { DATABASE_ID, COLLECTIONS } from '../config/constants';
 import { jsPDF } from 'jspdf';
+import { EventLayout } from '../features/events/types/event-layouts';
 
-export interface LayoutObject {
-  id: string;
-  type: string;
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  rotation: number;
-}
-
-export interface EventLayout {
-  id: string;
-  event_id: string;
-  name: string;
-  objects: LayoutObject[];
-  background_image_url?: string;
-  created_at?: string;
-  updated_at?: string;
-  version: number;
-}
+// Helper function to map Appwrite document to EventLayout
+const mapToEventLayout = (doc: any): EventLayout => ({
+  id: doc.$id,
+  event_id: doc.event_id,
+  name: doc.name,
+  layout_data: doc.layout_data,
+  version: doc.version,
+  created_at: doc.$createdAt,
+  updated_at: doc.$updatedAt
+});
 
 export const createEventLayout = async (layout: Omit<EventLayout, 'id' | 'created_at' | 'updated_at' | 'version'>) => {
-  const { data, error } = await supabase
-    .from('event_layouts')
-    .insert([{ ...layout, version: 1 }])
-    .select()
-    .single();
+  const doc = await databases.createDocument(
+    DATABASE_ID,
+    COLLECTIONS.EVENT_LAYOUTS,
+    ID.unique(),
+    {
+      ...layout,
+      version: 1
+    }
+  );
 
-  if (error) throw error;
-  return data;
+  return mapToEventLayout(doc);
 };
 
 export const updateEventLayout = async (id: string, layout: Partial<EventLayout>) => {
-  const { data: currentLayout } = await supabase
-    .from('event_layouts')
-    .select('version')
-    .eq('id', id)
-    .single();
+  // Get current version
+  const currentLayout = await databases.getDocument(
+    DATABASE_ID,
+    COLLECTIONS.EVENT_LAYOUTS,
+    id
+  );
 
-  const { data, error } = await supabase
-    .from('event_layouts')
-    .update({ ...layout, version: (currentLayout?.version || 0) + 1 })
-    .eq('id', id)
-    .select()
-    .single();
+  const doc = await databases.updateDocument(
+    DATABASE_ID,
+    COLLECTIONS.EVENT_LAYOUTS,
+    id,
+    {
+      ...layout,
+      version: (currentLayout.version || 0) + 1,
+      updated_at: new Date().toISOString()
+    }
+  );
 
-  if (error) throw error;
-  return data;
+  return mapToEventLayout(doc);
 };
 
 export const getEventLayout = async (id: string) => {
-  const { data, error } = await supabase
-    .from('event_layouts')
-    .select('*')
-    .eq('id', id)
-    .single();
+  const doc = await databases.getDocument(
+    DATABASE_ID,
+    COLLECTIONS.EVENT_LAYOUTS,
+    id
+  );
 
-  if (error) throw error;
-  return data;
+  return mapToEventLayout(doc);
 };
 
 export const getEventLayouts = async (eventId: string) => {
-  const { data, error } = await supabase
-    .from('event_layouts')
-    .select('*')
-    .eq('event_id', eventId)
-    .order('created_at', { ascending: false });
+  const response = await databases.listDocuments(
+    DATABASE_ID,
+    COLLECTIONS.EVENT_LAYOUTS,
+    [
+      Query.equal('event_id', eventId),
+      Query.orderDesc('version')
+    ]
+  );
 
-  if (error) throw error;
-  return data;
+  return response.documents.map(mapToEventLayout);
 };
 
 export const deleteEventLayout = async (id: string) => {
-  const { error } = await supabase
-    .from('event_layouts')
-    .delete()
-    .eq('id', id);
-
-  if (error) throw error;
-};
-
-// Helper function to export layout as PNG
-export const exportLayoutAsPng = async (stage: any): Promise<string> => {
-  return new Promise((resolve) => {
-    const dataURL = stage.toDataURL();
-    resolve(dataURL);
-  });
-};
-
-// Helper function to export layout as PDF
-export const exportLayoutAsPdf = async (stage: any): Promise<Blob> => {
-  const dataUrl = await exportLayoutAsPng(stage);
-  
-  // Create PDF using dataUrl
-  const pdf = new jsPDF({
-    orientation: 'landscape',
-    unit: 'px',
-    format: [stage.width(), stage.height()]
-  });
-  
-  pdf.addImage(dataUrl, 'PNG', 0, 0, stage.width(), stage.height());
-  
-  return pdf.output('blob');
+  await databases.deleteDocument(
+    DATABASE_ID,
+    COLLECTIONS.EVENT_LAYOUTS,
+    id
+  );
 };
