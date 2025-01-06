@@ -1,4 +1,5 @@
 import React from 'react';
+import { authService } from './services/auth.service';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { Layout } from './components/Layout';
@@ -21,7 +22,24 @@ const App: React.FC = () => {
                 {/* Public Routes */}
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/auth/callback" element={<Navigate to="/dashboard" replace />} />
+                <Route path="/auth/callback" element={
+                    <React.Fragment>
+                        {(() => {
+                            // Log the URL for debugging
+                            console.log('OAuth callback URL:', window.location.href);
+                            console.log('OAuth callback hash:', window.location.hash);
+                            
+                            // Handle the callback
+                            authService.handleOAuthCallback().catch(error => {
+                                console.error('OAuth callback handling failed:', error);
+                                window.location.href = '/login';
+                            });
+                            
+                            // Show loading state
+                            return <div>Processing login...</div>;
+                        })()}
+                    </React.Fragment>
+                } />
                 <Route path="/auth/failure" element={<Navigate to="/login" replace />} />
                 
                 {/* Protected Routes */}

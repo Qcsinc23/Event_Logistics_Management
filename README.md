@@ -1,24 +1,23 @@
 # Event Logistics Management
 
-## Continuous Deployment
+## Deployment
 
-This project is configured for automatic deployment to Netlify whenever changes are pushed to the main/master branch. To set up continuous deployment:
+This project is configured for automatic deployment through Netlify's GitHub integration. The deployment process:
 
-1. In your Netlify dashboard:
-   - Get your Netlify Auth Token from User Settings > Applications > New access token
-   - Get your Site ID from Site Settings > General > Site details > Site ID
+1. Automatically triggers when changes are pushed to the main/master branch
+2. Builds the project using the settings in `netlify.toml`
+3. Deploys to Netlify's CDN
+4. Handles all routing configurations for the SPA
 
-2. In your GitHub repository settings, add these secrets:
-   - `NETLIFY_AUTH_TOKEN`: Your Netlify authentication token
-   - `NETLIFY_SITE_ID`: Your Netlify site ID
-   - `VITE_APPWRITE_ENDPOINT`: Your Appwrite endpoint URL
-   - `VITE_APPWRITE_PROJECT_ID`: Your Appwrite project ID
+Required environment variables in Netlify:
+- `VITE_APPWRITE_ENDPOINT`: Your Appwrite endpoint URL
+- `VITE_APPWRITE_PROJECT_ID`: Your Appwrite project ID
 
-The GitHub Actions workflow will:
-- Trigger on pushes to main/master branch
-- Build the project with the correct environment variables
-- Deploy to Netlify automatically
-- Add deployment comments to pull requests
+The GitHub Actions workflow:
+- Runs on pushes to main/master branch
+- Verifies the build process
+- Ensures all tests pass
+- Does not handle deployment (managed by Netlify)
 
 A React-based event logistics management system built with Vite, TypeScript, and Appwrite.
 

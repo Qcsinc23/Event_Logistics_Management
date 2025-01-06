@@ -6,6 +6,19 @@
   from = "/*"
   to = "/index.html"
   status = 200
+  force = true
+
+[[redirects]]
+  from = "/auth/callback"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/auth/failure"
+  to = "/index.html"
+  status = 200
+  force = true
 
 [build.environment]
   NODE_VERSION = "18"

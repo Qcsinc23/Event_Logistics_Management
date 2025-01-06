@@ -1,4 +1,4 @@
-import { ID, Account, Models } from 'appwrite';
+import { ID, Account, Models, AppwriteException } from 'appwrite';
 import { account, client } from '../config/appwrite';
 
 // Get Appwrite endpoint and project ID from client config
@@ -63,30 +63,60 @@ export class AuthService {
 
     async loginWithGoogle() {
         try {
-            return await this.retryWithBackoff(() => {
-                const successUrl = 'http://localhost:3000/auth/callback';
-                const failureUrl = 'http://localhost:3000/auth/failure';
-                
-                try {
-                    // Use string literal for provider as per Appwrite SDK
-                    return (account.createOAuth2Session as Function)(
-                        'google',
-                        successUrl,
-                        failureUrl
-                    );
-                } catch (error: any) {
-                    console.error('OAuth Session Error:', error);
-                    if (error.message?.includes('storage')) {
-                        // Handle storage context error by using window.location
-                        window.location.href = `${APPWRITE_ENDPOINT}/account/sessions/oauth2/google?project=${APPWRITE_PROJECT_ID}&success=${encodeURIComponent(successUrl)}&failure=${encodeURIComponent(failureUrl)}`;
-                        return;
-                    }
-                    throw error;
-                }
-            });
+            // Construct OAuth URL manually
+            const redirectUri = encodeURIComponent(`${window.location.origin}/auth/callback`);
+            const failureUri = encodeURIComponent(`${window.location.origin}/auth/failure`);
+            const oauthUrl = `${APPWRITE_ENDPOINT}/account/sessions/oauth2/google?project=${APPWRITE_PROJECT_ID}&success=${redirectUri}&failure=${failureUri}`;
+            
+            // Redirect to OAuth URL
+            window.location.href = oauthUrl;
+            
+            return new Promise(() => {});
         } catch (error) {
             this.handleError(error);
             throw error;
+        }
+    }
+
+    // Add method to handle OAuth callback
+    async handleOAuthCallback() {
+        try {
+            // Check if we have a hash in the URL
+            if (window.location.hash) {
+                // Remove the # from the hash
+                const params = new URLSearchParams(window.location.hash.substring(1));
+                const userId = params.get('userId');
+                const secret = params.get('secret');
+
+                if (userId && secret) {
+                    try {
+                        // Try to create a session
+                        await account.createSession(userId, secret);
+                        window.location.href = '/dashboard';
+                        return;
+                    } catch (error) {
+                        console.error('Failed to create session:', error);
+                    }
+                }
+            }
+
+            // If we get here, try to get the current session
+            try {
+                const session = await account.get();
+                if (session) {
+                    window.location.href = '/dashboard';
+                    return;
+                }
+            } catch (error) {
+                console.error('Failed to get session:', error);
+            }
+
+            // If all else fails, redirect to login
+            window.location.href = '/login';
+        } catch (error) {
+            console.error('OAuth callback error:', error);
+            this.handleError(error);
+            window.location.href = '/login';
         }
     }
 
